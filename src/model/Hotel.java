@@ -12,13 +12,22 @@ public class Hotel {
   
   
   
-  public Hotel(String name,String adress, String city)
+  public Hotel(String name,String adress, String city, int singleRoomNumber, double singleRoomPrice, int doubleRoomNumber)
   {
 	  this.roomList = new ArrayList<>();
 	  this.name = name;
 	  this.adress = adress;
 	  this.city = city;
+	  
+	  for(int i = 0; i < singleRoomNumber; i++)
+	  {
+	     addSingleRoom(new SingleRoom(singleRoomPrice));
+	  }
   }
   
+  public void addSingleRoom(SingleRoom r)
+  {
+     roomList.add(r);
+  }
   
 }
