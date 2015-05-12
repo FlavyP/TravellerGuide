@@ -6,7 +6,7 @@ public class Hotel
    private String name;
    private String address;
    private String city;
-  
+   
    public Hotel(String name, String address, String city,
          int numberOfSingleRooms, double singleRoomPrice,
          int numberOfDoubleRooms, double doubleRoomPrice,
