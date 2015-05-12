@@ -8,6 +8,7 @@ public class Hotel
    private String name;
    private String address;
    private String city;
+    
    //create private parameters for each number of room
 
    public Hotel(String name, String address, String city, 
