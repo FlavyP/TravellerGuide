@@ -11,7 +11,7 @@ public class Reservation {
 	private int numberOfTripleRooms;
 	private int numberOfApartments;
 	private int status;
-	
+ 	
 	
 	public Reservation(MyDate checkIn, MyDate checkOut, User guest,
 			Hotel hotel, int numberOfSingleRooms, int numberOfDoubleRooms,
