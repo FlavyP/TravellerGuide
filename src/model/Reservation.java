@@ -27,6 +27,102 @@ public class Reservation {
 		this.numberOfApartments = numberOfApartments;
 		this.status = status;
 	}
+
+
+	public MyDate getCheckIn() {
+		return checkIn;
+	}
+
+
+	public void setCheckIn(MyDate checkIn) {
+		this.checkIn = checkIn;
+	}
+
+
+	public MyDate getCheckOut() {
+		return checkOut;
+	}
+
+
+	public void setCheckOut(MyDate checkOut) {
+		this.checkOut = checkOut;
+	}
+
+
+	public User getGuest() {
+		return guest;
+	}
+
+
+	public void setGuest(User guest) {
+		this.guest = guest;
+	}
+
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+
+	public int getNumberOfSingleRooms() {
+		return numberOfSingleRooms;
+	}
+
+
+	public void setNumberOfSingleRooms(int numberOfSingleRooms) {
+		this.numberOfSingleRooms = numberOfSingleRooms;
+	}
+
+
+	public int getNumberOfDoubleRooms() {
+		return numberOfDoubleRooms;
+	}
+
+
+	public void setNumberOfDoubleRooms(int numberOfDoubleRooms) {
+		this.numberOfDoubleRooms = numberOfDoubleRooms;
+	}
+
+
+	public int getNumberOfTripleRooms() {
+		return numberOfTripleRooms;
+	}
+
+
+	public void setNumberOfTripleRooms(int numberOfTripleRooms) {
+		this.numberOfTripleRooms = numberOfTripleRooms;
+	}
+
+
+	public int getNumberOfApartments() {
+		return numberOfApartments;
+	}
+
+
+	public void setNumberOfApartments(int numberOfApartments) {
+		this.numberOfApartments = numberOfApartments;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	
+	
+	public void reserve()
+	{
+		
+		
+	}
 	
 }
