@@ -6,57 +6,34 @@ public class Hotel
 {
    private ArrayList<Room> roomList;
    private String name;
-   private String adress;
+   private String address;
    private String city;
+   //create private parameters for each number of room
 
-   public Hotel(String name, String adress, String city, int singleRoomNumber,
-         double singleRoomPrice, int doubleRoomNumber, double doubleRoomPrice,
-         int tripleRoomNumber, double tripleRoomPrice, int apartmentNumber,
-         double apartmentPrice)
+   public Hotel(String name, String address, String city, 
+         int singleRoomNumber, double singleRoomPrice, 
+         int doubleRoomNumber, double doubleRoomPrice,
+         int tripleRoomNumber, double tripleRoomPrice, 
+         int apartmentNumber, double apartmentPrice)
    {
       this.roomList = new ArrayList<>();
       this.name = name;
-      this.adress = adress;
+      this.address = address;
       this.city = city;
-      addSingleRoom(new SingleRoom(singleRoomPrice), singleRoomNumber);
-      addDoubleRoom(new DoubleRoom(doubleRoomPrice), doubleRoomNumber);
-      addTripleRoom(new TripleRoom(tripleRoomPrice), tripleRoomNumber);
-      addApartment(new Apartment(apartmentPrice), apartmentNumber);
+      addRoom(new SingleRoom(singleRoomPrice), singleRoomNumber);
+      addRoom(new DoubleRoom(doubleRoomPrice), doubleRoomNumber);
+      addRoom(new TripleRoom(tripleRoomPrice), tripleRoomNumber);
+      addRoom(new Apartment(apartmentPrice), apartmentNumber);
    }
 
-   public void addSingleRoom(SingleRoom r, int singleRoomNumber)
+   public void addRoom(Room r, int numberOfRooms)
    {
-      for (int i = 0; i < singleRoomNumber; i++)
+      for (int i = 0; i < numberOfRooms; i++)
       {
          roomList.add(r);
-      }
-   }
-
-   public void addDoubleRoom(DoubleRoom r, int doubleRoomNumber)
-   {
-      for (int i = 0; i < doubleRoomNumber; i++)
-      {
-         roomList.add(r);
-      }
-   }
-
-   public void addTripleRoom(TripleRoom r, int tripleRoomNumber)
-   {
-      for (int i = 0; i < tripleRoomNumber; i++)
-      {
-         roomList.add(r);
-      }
-   }
-
-   public void addApartment(Apartment a, int apartmentNumber)
-   {
-      for (int i = 0; i < apartmentNumber; i++)
-      {
-         roomList.add(a);
       }
    }
    
-
    public String getName()
    {
       return name;
@@ -67,14 +44,14 @@ public class Hotel
       this.name = name;
    }
 
-   public String getAdress()
+   public String getAddress()
    {
-      return adress;
+      return address;
    }
 
-   public void setAdress(String adress)
+   public void setAddress(String address)
    {
-      this.adress = adress;
+      this.address = address;
    }
 
    public String getCity()
