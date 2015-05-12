@@ -19,11 +19,16 @@ public class Reservation {
 	
  	
 	
+	public Reservation()
+	{
+		reservationId = 0;
+	}
+	
 	public Reservation(MyDate checkIn, MyDate checkOut, int guestId,
 			int hotelId, Room type ) {
 	   
 	   
-	   this.reservationId = 0;
+		this.reservationId = 0;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.guestId = guestId;
@@ -41,7 +46,7 @@ public class Reservation {
       this.guestId = guestId;
       this.hotelId = hotelId;
       this.type = type;
-      reservationId++;
+      
 	}
 
 
@@ -133,5 +138,7 @@ public class Reservation {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	
 	
 }

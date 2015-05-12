@@ -14,6 +14,7 @@ public class User {
 	private Reservation book;
 	
 	
+	
 	//
 	
 	
@@ -69,6 +70,8 @@ public class User {
 	
 	public void reserve(int userId, int hotelId, MyDate checkIn, MyDate checkOut)
 	{
+		
+		MyDate today = new MyDate();
 	   
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Enter how many single rooms: ");
@@ -91,19 +94,29 @@ public class User {
 //	      System.out.println(book.getGuest() +" " + book.getHotel() +" " + book.getCheckIn());
 //	   }
 	   for(int i=0;i<singleRooms;i++){
-		      book = new Reservation(checkIn, checkOut, 1, 2, new SingleRoom(12.2));
+		      book = new Reservation(checkIn, checkOut, userId, hotelId, new SingleRoom(12.2));
 		      System.out.println(book.getGuest() +" " + book.getHotel() +" " + book.getCheckIn());
+		      
+		      if(today.isBefore(checkOut))
+		      {
+		    	  System.out.println("Reservation is on going");
+		      }
+		      else
+		      {
+		    	  System.out.println("Reservation is closed"); 
+		      }
+		      
 	   }
 	   for(int i=0;i<doubleRooms;i++){
-		      book = new Reservation(checkIn, checkOut, 1, 2, new DoubleRoom(12.2));
+		      book = new Reservation(checkIn, checkOut, userId, hotelId, new DoubleRoom(12.2));
 		      System.out.println(book.getGuest() +" " + book.getHotel() +" " + book.getCheckIn());
 	   }
 	   for(int i=0;i<tripleRooms;i++){
-		      book = new Reservation(checkIn, checkOut, 1, 2, new TripleRoom(12.2));
+		      book = new Reservation(checkIn, checkOut, userId, hotelId, new TripleRoom(12.2));
 		      System.out.println(book.getGuest() +" " + book.getHotel() +" " + book.getCheckIn());
 	   }
 	   for(int i=0;i<apartments;i++){
-		      book = new Reservation(checkIn, checkOut, 1, 2, new Apartment(12.2));
+		      book = new Reservation(checkIn, checkOut, userId, hotelId, new Apartment(12.2));
 		      System.out.println(book.getGuest() +" " + book.getHotel() +" " + book.getCheckIn());
 	   }
 	   
