@@ -3,41 +3,34 @@ package model;
 import java.util.ArrayList;
 
 public class RoomList {
-
-	private ArrayList<SingleRoom> singleRoom;
-	private ArrayList<DoubleRoom> doubleRoom;
-	private ArrayList<TripleRoom> tripleRoom;
-	private ArrayList<Apartment> apartment;
-	
+   
+   private ArrayList<Integer> numberOfRooms;
+   private ArrayList<Double> priceOfRooms;
 	
 	public RoomList()
 	{
-		singleRoom = new ArrayList<SingleRoom>();
-		doubleRoom = new ArrayList<DoubleRoom>();
-		tripleRoom = new ArrayList<TripleRoom>();
-		 apartment = new ArrayList<Apartment>();
+	   numberOfRooms = new ArrayList<Integer>();
+	   priceOfRooms = new ArrayList<Double>();
 	}
 	
-	public int getAllSingle()
-	{
-		return singleRoom.size();
-	}
-	
-	public int getAllDouble()
-	{
-		return doubleRoom.size();
-	}
-	
-	public int getAllTriple()
-	{
-		return tripleRoom.size();
-	}
-	
-	public int getAllApartments()
-	{
-		return apartment.size();
-	}
-	
-
+	public int getNumberOfRooms(int idx)
+   {
+      return numberOfRooms.get(idx);
+   }
+   
+   public void setNumberOfRooms(int number, int idx)
+   {
+      numberOfRooms.set(idx, number);
+   }
+   
+   public double getPriceOfRooms(int idx)
+   {
+      return priceOfRooms.get(idx);
+   }
+   
+   public void setPriceOfRooms(double price, int idx)
+   {
+      priceOfRooms.set(idx, price);
+   }
 	
 }

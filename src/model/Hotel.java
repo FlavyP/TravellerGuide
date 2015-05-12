@@ -1,43 +1,32 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Hotel
 {
-   private ArrayList<Room> roomList;
+   private RoomList roomList;
    private String name;
    private String address;
    private String city;
-   private int numberOfSingleRooms;
-   private double singleRoomPrice;
-   private int numberOfDoubleRooms;
-   private double doubleRoomPrice;
-   private int numberOfTripleRooms;
-   private double tripleRoomPrice;
-   private int numberOfApartments;
-   private double apartmentPrice;
-   //create private parameters for each number of room
-
-   public Hotel(String name, String address, String city, 
-         int singleRoomNumber, double singleRoomPrice, 
-         int doubleRoomNumber, double doubleRoomPrice,
-         int tripleRoomNumber, double tripleRoomPrice, 
-         int apartmentNumber, double apartmentPrice)
+  
+   public Hotel(String name, String address, String city,
+         int numberOfSingleRooms, double singleRoomPrice,
+         int numberOfDoubleRooms, double doubleRoomPrice,
+         int numberOfTripleRooms, double tripleRoomPrice,
+         int numberOfApartments, double apartmentPrice)
    {
-      this.roomList = new ArrayList<>();
       this.name = name;
       this.address = address;
       this.city = city;
+      
+      roomList.setNumberOfRooms(numberOfSingleRooms, 0);
+      roomList.setNumberOfRooms(numberOfDoubleRooms, 1);
+      roomList.setNumberOfRooms(numberOfTripleRooms, 2);
+      roomList.setNumberOfRooms(numberOfApartments, 3);
+      
+      roomList.setPriceOfRooms(singleRoomPrice, 0);
+      roomList.setPriceOfRooms(doubleRoomPrice, 1);
+      roomList.setPriceOfRooms(tripleRoomPrice, 2);
+      roomList.setPriceOfRooms(apartmentPrice, 3);
    }
-
-   public void addRoom(Room r, int numberOfRooms)
-   {
-      for (int i = 0; i < numberOfRooms; i++)
-      {
-         roomList.add(r);
-      }
-   }
-   
    public String getName()
    {
       return name;
@@ -68,84 +57,24 @@ public class Hotel
       this.city = city;
    }
    
-   public int getNumberOfSingleRooms()
+   public int getNumberOfRooms(int idx)
    {
-      return numberOfSingleRooms;
+      return roomList.getNumberOfRooms(idx);
    }
-
-   public void setNumberOfSingleRooms(int numberOfSingleRooms)
+   
+   public void setNumberOfRooms(int number, int idx)
    {
-      this.numberOfSingleRooms = numberOfSingleRooms;
+      roomList.setNumberOfRooms(number, idx);
    }
-
-   public double getSingleRoomPrice()
+   
+   public double getPriceOfRooms(int idx)
    {
-      return singleRoomPrice;
+      return roomList.getPriceOfRooms(idx);
    }
-
-   public void setSingleRoomPrice(double singleRoomPrice)
+   
+   public void setPriceOfRooms(double price, int idx)
    {
-      this.singleRoomPrice = singleRoomPrice;
-   }
-
-   public int getNumberOfDoubleRooms()
-   {
-      return numberOfDoubleRooms;
-   }
-
-   public void setNumberOfDoubleRooms(int numberOfDoubleRooms)
-   {
-      this.numberOfDoubleRooms = numberOfDoubleRooms;
-   }
-
-   public double getDoubleRoomPrice()
-   {
-      return doubleRoomPrice;
-   }
-
-   public void setDoubleRoomPrice(double doubleRoomPrice)
-   {
-      this.doubleRoomPrice = doubleRoomPrice;
-   }
-
-   public int getNumberOfTripleRooms()
-   {
-      return numberOfTripleRooms;
-   }
-
-   public void setNumberOfTripleRooms(int numberOfTripleRooms)
-   {
-      this.numberOfTripleRooms = numberOfTripleRooms;
-   }
-
-   public double getTripleRoomPrice()
-   {
-      return tripleRoomPrice;
-   }
-
-   public void setTripleRoomPrice(double tripleRoomPrice)
-   {
-      this.tripleRoomPrice = tripleRoomPrice;
-   }
-
-   public int getNumberOfApartments()
-   {
-      return numberOfApartments;
-   }
-
-   public void setNumberOfApartments(int numberOfApartments)
-   {
-      this.numberOfApartments = numberOfApartments;
-   }
-
-   public double getApartmentPrice()
-   {
-      return apartmentPrice;
-   }
-
-   public void setApartmentPrice(double apartmentPrice)
-   {
-      this.apartmentPrice = apartmentPrice;
+      roomList.setPriceOfRooms(price, idx);
    }
 
 }
