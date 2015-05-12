@@ -15,7 +15,7 @@ public class Reservation {
 	
 	public Reservation(MyDate checkIn, MyDate checkOut, User guest,
 			Hotel hotel, int numberOfSingleRooms, int numberOfDoubleRooms,
-			int numberOfTripleRooms, int numberOfApartments, int status) {
+			int numberOfTripleRooms, int numberOfApartments) {
 
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
@@ -25,7 +25,7 @@ public class Reservation {
 		this.numberOfDoubleRooms = numberOfDoubleRooms;
 		this.numberOfTripleRooms = numberOfTripleRooms;
 		this.numberOfApartments = numberOfApartments;
-		this.status = status;
+		this.status = 0;
 	}
 
 
