@@ -3,60 +3,67 @@ package traveller.mediator;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import traveller.model.*;
+import traveller.model.Hotel;
+import traveller.model.HotelList;
+import traveller.model.MyDate;
+import traveller.model.ReservationList;
+import traveller.model.User;
 
-public class TravellerModelManager extends Observable implements TravellerModel
+public class TravellerClientModelManager extends Observable implements TravellerModel
 {
 
    private ReservationList resList;
    private HotelList hList;
-   private ServerConnectionThread server;
    
-   public TravellerModelManager()
+   public TravellerClientModelManager()
    {
       resList = new ReservationList();
       hList = new HotelList();
-      server = new ServerConnectionThread(this);
-      server.start();
    }
    @Override
    public void addHotel(Hotel hotel)
    {
-      hList.addHotel(hotel);
-      super.setChanged();
-      super.notifyObservers("Hotel added");
+      // TODO Auto-generated method stub
+      
    }
 
    @Override
    public ArrayList<Hotel> searchHotelByCity(String city)
    {
-      return hList.getHotelsInCity(city);
+      // TODO Auto-generated method stub
+      return null;
    }
 
    @Override
    public ArrayList<Hotel> searchHotelByAddress(String address)
    {
-      return hList.getHotelsInAddress(address);
+      // TODO Auto-generated method stub
+      return null;
    }
 
    @Override
    public double reserve(User user, Hotel hotel, MyDate checkIn,
          MyDate checkOut, int sRn, int dRn, int tRn, int apN)
    {
-      super.setChanged();
-      super.notifyObservers("Reservation added");
-      return resList.reserve(user, hotel, checkIn, checkOut, sRn, dRn, tRn, apN);
+      // TODO Auto-generated method stub
+      return 0;
    }
-   
-   public Hotel getHotel(int index)
-   {
-      return hList.getHotel(index);
-   }
+
+   @Override
    public String getHotels()
    {
-      return hList.toString();
+      // TODO Auto-generated method stub
+      return null;
    }
-   
+
+   @Override
+   public Hotel getHotel(int index)
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
    public void showAnswer(String answer)
    {
       setChanged();

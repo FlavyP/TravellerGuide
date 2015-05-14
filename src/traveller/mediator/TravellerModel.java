@@ -12,5 +12,6 @@ public interface TravellerModel
    public double reserve(User user, Hotel hotel, MyDate checkIn, MyDate checkOut, int sRn, int dRn, int tRn, int apN);
    public String getHotels();
    public Hotel getHotel(int index);
+   public void showAnswer(String answer);
    
 }
