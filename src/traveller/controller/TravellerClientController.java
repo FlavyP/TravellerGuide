@@ -22,21 +22,7 @@ public class TravellerClientController {
  {
 	 switch (what) {
 		case "searchHotelByCity":
-			String input = view.get("City");
-			if (input == null)
-				return;
-			String msg = "";
-		     
-			ArrayList<Hotel> list = model.searchHotelByCity(input);
-			for (int i = 0; i < list.size(); i++)
-			{
-				msg += list.get(i) + "\n";
-			}
-			
-			if (list.size() == 0) {
-				msg = "No hotel: \"" + input + "\" found";
-			}
-			view.show(msg);
+			model.searchHotelByCity("");
 			break;
 		case "searchHotelByAddress":
 			model.searchHotelByCity("");
