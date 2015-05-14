@@ -61,8 +61,8 @@ public class TravellerConsole implements TravellerView
          default:
             break;
          }
-         show("\nPress ENTER to continue...");
-         in.nextLine();
+//         show("\nPress ENTER to continue...");
+//         in.nextLine();
       } while (menuSelection != 6);
    }
    @Override
