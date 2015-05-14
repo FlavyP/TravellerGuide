@@ -1,4 +1,4 @@
-package model;
+package traveller.model;
 
 import java.util.ArrayList;
 

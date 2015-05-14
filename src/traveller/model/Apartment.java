@@ -1,4 +1,4 @@
-package model;
+package traveller.model;
 
 public class Apartment extends Room{
 

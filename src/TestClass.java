@@ -1,4 +1,4 @@
-import model.*;
+import traveller.model.*;
 
 
 public class TestClass

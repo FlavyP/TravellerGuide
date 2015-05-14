@@ -1,10 +1,10 @@
-package model;
+package traveller.model;
 
-public class SingleRoom extends Room{
+public class TripleRoom extends Room{
 
 	private double price;
 	
-	public SingleRoom(int roomId, double price)
+	public TripleRoom(int roomId, double price)
 	{
 	   super(roomId);
 		this.price = price;
