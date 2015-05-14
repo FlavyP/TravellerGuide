@@ -4,8 +4,9 @@ public class TripleRoom extends Room{
 
 	private double price;
 	
-	public TripleRoom(double price)
+	public TripleRoom(int roomId, double price)
 	{
+	   super(roomId);
 		this.price = price;
 	}
 	

@@ -16,16 +16,18 @@ public class Hotel
       this.name = name;
       this.address = address;
       this.city = city;
+//      roomList = new RoomList(numberOfSingleRooms, numberOfDoubleRooms, numberOfTripleRooms, numberOfApartments);
+      roomList = new RoomList();
+      roomList.setPriceOfRooms(0, singleRoomPrice);
+      roomList.setPriceOfRooms(1, doubleRoomPrice);
+      roomList.setPriceOfRooms(2, tripleRoomPrice);
+      roomList.setPriceOfRooms(3, apartmentPrice);
+      roomList.addRooms(numberOfSingleRooms, numberOfDoubleRooms, numberOfTripleRooms, numberOfApartments);
       
-      roomList.setNumberOfRooms(numberOfSingleRooms, 0);
+      /*roomList.setNumberOfRooms(numberOfSingleRooms, 0);
       roomList.setNumberOfRooms(numberOfDoubleRooms, 1);
       roomList.setNumberOfRooms(numberOfTripleRooms, 2);
-      roomList.setNumberOfRooms(numberOfApartments, 3);
-      
-      roomList.setPriceOfRooms(singleRoomPrice, 0);
-      roomList.setPriceOfRooms(doubleRoomPrice, 1);
-      roomList.setPriceOfRooms(tripleRoomPrice, 2);
-      roomList.setPriceOfRooms(apartmentPrice, 3);
+      roomList.setNumberOfRooms(numberOfApartments, 3);*/
    }
    public String getName()
    {
@@ -62,19 +64,42 @@ public class Hotel
       return roomList.getNumberOfRooms(idx);
    }
    
-   public void setNumberOfRooms(int number, int idx)
-   {
-      roomList.setNumberOfRooms(number, idx);
-   }
-   
    public double getPriceOfRooms(int idx)
    {
       return roomList.getPriceOfRooms(idx);
    }
    
-   public void setPriceOfRooms(double price, int idx)
+   public void setPriceOfRooms(int idx, double price)
    {
-      roomList.setPriceOfRooms(price, idx);
+      roomList.setPriceOfRooms(idx, price);
    }
-
+   public int getRoomId(int index){
+	   return roomList.getId(index);
+   }
+   public Room getfirstAvailableSingleRoom(){
+	   return roomList.getFirstSingleRoom();
+   }
+   public Room getfirstAvailableDoubleRoom(){
+	   return roomList.getFirstDoubleRoom();
+   }
+   public Room getfirstAvailableTripleRoom(){
+	   return roomList.getFirstTripleRoom();
+   }
+   public Room getfirstAvailableApartment(){
+	   return roomList.getFirstApartment();
+   }
+   public void setAvailability(Room r, boolean isAv, MyDate checkIn, MyDate checkOut)
+   {
+      roomList.setAvailability(r, isAv, checkIn, checkOut);
+   }
+   
+   public void markFreeRooms()
+   {
+      roomList.markFreeRooms();
+   }
+   
+   public Room getRoom(int index)
+   {
+      return roomList.getRoom(index);
+   }
 }

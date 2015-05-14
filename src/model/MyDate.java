@@ -1,4 +1,5 @@
 package model;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 
@@ -210,5 +211,21 @@ public class MyDate
    public String toString()
    {
       return day + "/" + month + "/" + year;
+   }
+   
+   public static int numberOfDays(MyDate date1, MyDate date2)
+   {
+      java.util.Calendar cal1 = new java.util.GregorianCalendar();
+      java.util.Calendar cal2 = new java.util.GregorianCalendar();
+      
+      cal1.set(date1.getYear(), date1.getMonth(), date1.getDay());
+      cal2.set(date2.getYear(), date2.getMonth(), date2.getDay());
+      
+      return daysBetween(cal1.getTime(),cal2.getTime());
+   }
+   
+   public static int daysBetween(Date d1, Date d2)
+   {
+      return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
    }
 }
