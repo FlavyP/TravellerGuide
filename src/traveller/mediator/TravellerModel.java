@@ -11,5 +11,6 @@ public interface TravellerModel
    public ArrayList<Hotel> searchHotelByAddress(String address);
    public double reserve(User user, Hotel hotel, MyDate checkIn, MyDate checkOut, int sRn, int dRn, int tRn, int apN);
    public String getHotels();
+   public Hotel getHotel(int index);
    
 }

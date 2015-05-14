@@ -45,6 +45,10 @@ public class TravellerModelManager extends Observable implements TravellerModel
       return resList.reserve(user, hotel, checkIn, checkOut, sRn, dRn, tRn, apN);
    }
    
+   public Hotel getHotel(int index)
+   {
+      return hList.getHotel(index);
+   }
    public String getHotels()
    {
       return hList.toString();
