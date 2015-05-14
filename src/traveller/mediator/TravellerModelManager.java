@@ -2,7 +2,6 @@ package traveller.mediator;
 
 import java.util.ArrayList;
 import java.util.Observable;
-
 import traveller.model.*;
 
 public class TravellerModelManager extends Observable implements TravellerModel
@@ -10,11 +9,14 @@ public class TravellerModelManager extends Observable implements TravellerModel
 
    private ReservationList resList;
    private HotelList hList;
+   private ServerConnectionThread server;
    
    public TravellerModelManager()
    {
       resList = new ReservationList();
       hList = new HotelList();
+      server = new ServerConnectionThread(this);
+      server.start();
    }
    @Override
    public void addHotel(Hotel hotel)
