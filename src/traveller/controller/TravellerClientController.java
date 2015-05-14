@@ -39,21 +39,7 @@ public class TravellerClientController {
 			view.show(msg);
 			break;
 		case "searchHotelByAddress":
-			 input = view.get("Address");
-			if (input == null)
-				return;
-			 msg = "";
-	 
-		    list = model.searchHotelByAddress(input);
-			for (int i = 0; i < list.size(); i++)
-			{
-				msg += list.get(i) + "\n";
-			}
-			
-			if (list.size() == 0) {
-				msg = "No hotel: \"" + input + "\" found";
-			}
-			view.show(msg);
+			model.searchHotelByCity("");
 			break;
 		case "reserve":
 			User user = new User("name", "email", "phoneNumber", "address", true, 12);

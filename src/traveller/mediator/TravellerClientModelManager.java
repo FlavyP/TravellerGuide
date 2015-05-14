@@ -2,7 +2,6 @@ package traveller.mediator;
 
 import java.util.ArrayList;
 import java.util.Observable;
-
 import traveller.model.Hotel;
 import traveller.model.HotelList;
 import traveller.model.MyDate;
@@ -14,11 +13,14 @@ public class TravellerClientModelManager extends Observable implements Traveller
 
    private ReservationList resList;
    private HotelList hList;
+   private TravellerModelProxy proxy;
    
    public TravellerClientModelManager()
    {
       resList = new ReservationList();
       hList = new HotelList();
+      proxy = new TravellerModelProxy(this);
+
    }
    @Override
    public void addHotel(Hotel hotel)
@@ -30,7 +32,7 @@ public class TravellerClientModelManager extends Observable implements Traveller
    @Override
    public ArrayList<Hotel> searchHotelByCity(String city)
    {
-      // TODO Auto-generated method stub
+      proxy.searchHotelByCity();
       return null;
    }
 
