@@ -3,6 +3,7 @@ package traveller.view;
 import java.util.Observable;
 import java.util.Scanner;
 
+import traveller.controller.TravellerClientController;
 import traveller.controller.TravellerController;
 
 public class TravellerClientConsole implements TravellerClientView

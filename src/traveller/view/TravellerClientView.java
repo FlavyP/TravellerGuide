@@ -2,6 +2,8 @@ package traveller.view;
 
 import java.util.Observer;
 
+import traveller.controller.TravellerClientController;
+
 
 public interface TravellerClientView extends Observer
 {
