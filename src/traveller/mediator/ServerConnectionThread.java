@@ -25,6 +25,7 @@ public class ServerConnectionThread extends Thread
             Socket connectionSocket = welcomeSocket.accept();
             ServerCommunicationThread communicationThread = new ServerCommunicationThread(connectionSocket, model);
             communicationThread.start();
+            System.out.println("Connected");
          }
       }
       catch (Exception e)
