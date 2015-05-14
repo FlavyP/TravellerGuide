@@ -73,7 +73,7 @@ public class TravellerClientConsole implements TravellerClientView
       return selection;
    }
    
-   
+    
    public void start(TravellerController controller) {
       int menuSelection;
       do {
