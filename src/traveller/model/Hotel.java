@@ -102,4 +102,9 @@ public class Hotel
    {
       return roomList.getRoom(index);
    }
+   
+   public String toString()
+   {
+      return "Name: " + name + "; Address: " + address + "; City: " + city;
+   }
 }
