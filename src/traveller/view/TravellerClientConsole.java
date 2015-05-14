@@ -18,8 +18,30 @@ public class TravellerClientConsole implements TravellerClientView
    @Override
    public void start(TravellerClientController controller)
    {
-      // TODO Auto-generated method stub
-      
+      int menuSelection;
+      do {
+         menuSelection = menu();
+         switch (menuSelection) {
+         case 1:
+            controller.execute("addHotel");
+            break;
+         case 2:
+             controller.execute("searchHotelByCity");
+             break;
+         case 3:
+             controller.execute("searchHotelByAddress");
+             break;
+         case 4:
+             controller.execute("reserve");
+             break;
+         case 5:
+          controller.execute("showHotels");
+         default:
+            break;
+         }
+         show("\nPress ENTER to continue...");
+         in.nextLine();
+      } while (menuSelection != 6);
    }
 
    public void show(String value) {
