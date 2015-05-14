@@ -21,7 +21,7 @@ public class TravellerModelManager extends Observable implements TravellerModel
    {
       hList.addHotel(hotel);
       super.setChanged();
-      super.notifyObservers(hotel);
+      super.notifyObservers("Hotel added");
    }
 
    @Override
@@ -41,7 +41,7 @@ public class TravellerModelManager extends Observable implements TravellerModel
          MyDate checkOut, int sRn, int dRn, int tRn, int apN)
    {
       super.setChanged();
-      super.notifyObservers(new Reservation(user, hotel, checkIn, checkOut, sRn, dRn, tRn, apN));
+      super.notifyObservers("Reservation added");
       return resList.reserve(user, hotel, checkIn, checkOut, sRn, dRn, tRn, apN);
    }
 
