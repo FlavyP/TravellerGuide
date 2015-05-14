@@ -33,13 +33,7 @@ public class ReservationList
     	  Room r = resList.get(resList.size()-1).getHotel().getfirstAvailableApartment();
     	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, checkIn, checkOut);
       }
-      hotel.markFreeRooms(); // should make rooms free
-//      Room r = resList.get(0).getHotel().getfirstAvailableSingleRoom();
-//      System.out.println(hotel.getRoom(0).getCheckOut());
-//      System.out.println(r.getId());
-//      resList.get(0).getHotel().setAvailability(r, false, checkIn, checkOut);
-//      Room r2 = resList.get(0).getHotel().getfirstAvailableRoom();
-//      System.out.println(r2.getId());
+      hotel.markFreeRooms();
       return res.getTotalPrice();
       
       //SQL Code for insert into 'Reservation'
@@ -50,9 +44,11 @@ public class ReservationList
       //SQL Code for ALTERING
    }
    
-   public void cancelReservation()
+   public void cancelReservation(int index)
    {
-      resList.remove(0);
+      //Not sure = when you delete a reservation from DB, index is lost, when you delete a reservation from ArrayList
+      //every reservation goes -1 in index
+      resList.remove(index);
       //SQL Code for removing
    }
 }
