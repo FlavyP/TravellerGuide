@@ -33,7 +33,7 @@ public class ServerCommunicationThread extends Thread implements Observer {
 				switch (choice) {
 				case 1:
 					send("Enter city: ");
-					String input = (String) inFromClient.readObject();
+					String input = inFromClient.readObject().toString();
 					String msg = "";
 					ArrayList<Hotel> list = model.searchHotelByCity(input);
 					for (int i = 0; i < list.size(); i++) {
@@ -46,7 +46,6 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					send(msg);
 					break;
 				case 2:
-					// model.borrowItem();
 					break;
 				case 3:
 					// model.returnItem();

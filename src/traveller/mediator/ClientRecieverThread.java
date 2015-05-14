@@ -23,6 +23,7 @@ public class ClientRecieverThread extends Thread
          try
          {
             answer = (String) in.readObject();
+//            System.out.println(answer);
             model.showAnswer(answer);
          }
          catch (Exception e)

@@ -71,5 +71,9 @@ public class TravellerClientModelManager extends Observable implements Traveller
       setChanged();
       notifyObservers(answer);
    }
+   
+   public void writeToServer(String message){
+	   proxy.writeToServer(message);
+   }
 
 }

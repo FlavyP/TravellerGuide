@@ -23,8 +23,6 @@ public class TravellerModelManager extends Observable implements TravellerModel
    public void addHotel(Hotel hotel)
    {
       hList.addHotel(hotel);
-      super.setChanged();
-      super.notifyObservers("Hotel added");
    }
 
    @Override
@@ -43,8 +41,6 @@ public class TravellerModelManager extends Observable implements TravellerModel
    public double reserve(User user, Hotel hotel, MyDate checkIn,
          MyDate checkOut, int sRn, int dRn, int tRn, int apN)
    {
-      super.setChanged();
-      super.notifyObservers("Reservation added");
       return resList.reserve(user, hotel, checkIn, checkOut, sRn, dRn, tRn, apN);
    }
    

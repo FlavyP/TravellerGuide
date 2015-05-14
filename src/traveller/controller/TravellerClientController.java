@@ -1,7 +1,9 @@
 package traveller.controller;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
+import traveller.mediator.TravellerClientModelManager;
 import traveller.mediator.TravellerModel;
 import traveller.model.Hotel;
 import traveller.model.MyDate;
@@ -9,13 +11,15 @@ import traveller.model.User;
 import traveller.view.TravellerClientView;
 
 public class TravellerClientController {
-       private TravellerModel model;
+       private TravellerClientModelManager model;
        private TravellerClientView view;
        
- public TravellerClientController(TravellerModel model, TravellerClientView view )
+ public TravellerClientController(TravellerClientModelManager model, TravellerClientView view )
  {
 	 this.model = model;
 	 this.view = view;
+     Observable obs = (Observable) model;
+     obs.addObserver(view);
  }
  
  public void execute(String what)
@@ -23,6 +27,7 @@ public class TravellerClientController {
 	 switch (what) {
 		case "searchHotelByCity":
 			model.searchHotelByCity("");
+			model.writeToServer(view.get(""));
 			break;
 		case "searchHotelByAddress":
 			model.searchHotelByCity("");
