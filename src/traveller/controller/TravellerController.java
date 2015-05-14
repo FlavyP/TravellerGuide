@@ -2,12 +2,10 @@ package traveller.controller;
 
 import java.util.ArrayList;
 
-import cd.domain.model.Cd;
-import cd.domain.model.CdList;
-import library.domain.mediator.LibraryModelManager;
 import traveller.mediator.TravellerModel;
 import traveller.model.Hotel;
 import traveller.model.HotelList;
+import traveller.model.MyDate;
 import traveller.model.User;
 import traveller.view.TravellerView;
 
@@ -26,28 +24,28 @@ public class TravellerController
  {
 	 
            switch (what) {
-   		case "add a hotel":
-   			String name = view.get("name");
-   			String address = view.get("address");
-   			String city = view.get("city");
-   			int nSr = Integer.parseInt(view.get("numberS"));
-   			double pSr = Double.parseDouble(view.get("priceS"));
-   			int nDr = Integer.parseInt(view.get("numberD"));
-   			double pDr = Double.parseDouble(view.get("priceD"));
-   			int nTr = Integer.parseInt(view.get("numberT"));
-   			double pTr = Double.parseDouble(view.get("priceT"));
-   			int nA = Integer.parseInt(view.get("numberA"));
-   			double pA = Double.parseDouble(view.get("priceA"));
+   		case "addHotel":
+   			String name = view.get("Name");
+   			String address = view.get("Address");
+   			String city = view.get("City");
+   			int nSr = Integer.parseInt(view.get("number single: "));
+   			double pSr = Double.parseDouble(view.get("price single: "));
+   			int nDr = Integer.parseInt(view.get("number double: "));
+   			double pDr = Double.parseDouble(view.get("price double: "));
+   			int nTr = Integer.parseInt(view.get("number triple: "));
+   			double pTr = Double.parseDouble(view.get("price triple: "));
+   			int nA = Integer.parseInt(view.get("number apartment: "));
+   			double pA = Double.parseDouble(view.get("price apartment: "));
    			Hotel hotel = new Hotel(name, address, city, nSr,pSr, nDr, pDr, nTr,pTr, nA, pA);
    			model.addHotel(hotel);
    			break;
-   		case "Search by title":
-   			String input = view.get("Title");
+   		case "searchHotelByCity":
+   			String input = view.get("City");
    			if (input == null)
    				return;
    			String msg = "";
    		     
-   			ArrayList<Hotel> list = model.searchHotelByCity(city);
+   			ArrayList<Hotel> list = model.searchHotelByCity(input);
    			for (int i = 0; i < list.size(); i++)
    			{
    				msg += list.get(i) + "\n";
@@ -58,13 +56,13 @@ public class TravellerController
    			}
    			view.show(msg);
    			break;
-   		case "search by address":
+   		case "searchHotelByAddress":
    			 input = view.get("Address");
    			if (input == null)
    				return;
    			 msg = "";
    	 
-   		    list = model.searchHotelByCity(address);
+   		    list = model.searchHotelByAddress(input);
    			for (int i = 0; i < list.size(); i++)
    			{
    				msg += list.get(i) + "\n";
@@ -78,6 +76,16 @@ public class TravellerController
    		case "reserve":
    			User user = new User("name", "email", "phoneNumber", "address", true, 12);
    			view.show (model.getHotels());
+   			int id = Integer.parseInt(view.get("Enter id of hotel: "));
+   			int sRn = Integer.parseInt(view.get("number single: "));
+   			int dRn = Integer.parseInt(view.get("number double: "));
+   			int tRn = Integer.parseInt(view.get("number triple: "));
+   			int apN = Integer.parseInt(view.get("number apartment: "));
+   			view.show("Price:" + model.reserve(user, model.getHotel(id), new MyDate(), new MyDate(20,05,2015), sRn, dRn, tRn, apN));
+   			break;
+   		case "showHotels":
+   			view.show (model.getHotels());
+   			break;
    		case "Quit":
    			System.out.println("Quit");
    			break;
