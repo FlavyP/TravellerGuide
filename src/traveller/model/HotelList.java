@@ -53,6 +53,11 @@ public class HotelList
       return hotels;
    }
    
+   public Hotel getHotel(int index)
+   {
+      return hotelList.get(index);
+   }
+   
    public String toString()
    {
       String res = "";
