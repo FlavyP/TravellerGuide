@@ -44,5 +44,10 @@ public class TravellerModelManager extends Observable implements TravellerModel
       super.notifyObservers("Reservation added");
       return resList.reserve(user, hotel, checkIn, checkOut, sRn, dRn, tRn, apN);
    }
+   
+   public String getHotels()
+   {
+      return hList.toString();
+   }
 
 }
