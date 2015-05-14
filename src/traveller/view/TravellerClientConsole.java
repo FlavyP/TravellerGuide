@@ -56,18 +56,16 @@ public class TravellerClientConsole implements TravellerClientView
 
    private int menu()
    {
-      show("Library Application");
+      show("TravellerGuide Application");
       show("--------------");
-      show("1) Add item");
-      show("2) Borrow item");
-      show("3) Return item");
-      show("4) Reserve item");
-      show("5) Search item");
-      show("6) Cancel reseration");
-      show("7) Remove item");
-      show("8) Quit");
+      show("1) Add hotel");
+      show("2) Search for hotel by city");
+      show("3) Search for hotel by address");
+      show("4) Reserve");
+      show("5) Show all hotels");
+      show("6) Quit");
       show("");
-      show("Select an item 1-8: ");
+      show("Select an item 1-6: ");
       int selection = in.nextInt();
       in.nextLine();
       return selection;
