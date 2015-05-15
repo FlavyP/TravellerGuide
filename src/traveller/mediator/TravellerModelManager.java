@@ -48,6 +48,8 @@ public class TravellerModelManager extends Observable implements TravellerModel
    @Override
    public double reserve(Reservation res)
    {
+      super.setChanged();
+      super.notifyObservers("Reservation added");
       return resList.reserve(res);
    }
    
