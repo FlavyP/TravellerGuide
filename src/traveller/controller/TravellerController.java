@@ -6,6 +6,7 @@ import traveller.mediator.TravellerModel;
 import traveller.model.Hotel;
 import traveller.model.HotelList;
 import traveller.model.MyDate;
+import traveller.model.Reservation;
 import traveller.model.User;
 import traveller.view.TravellerView;
 
@@ -26,8 +27,8 @@ public class TravellerController
            switch (what) {
    		case "addHotel":
    			String name = view.get("Name");
-   			String address = view.get("Address");
    			String city = view.get("City");
+   			String address = view.get("Address");
    			int nSr = Integer.parseInt(view.get("number single: "));
    			double pSr = Double.parseDouble(view.get("price single: "));
    			int nDr = Integer.parseInt(view.get("number double: "));
@@ -36,7 +37,7 @@ public class TravellerController
    			double pTr = Double.parseDouble(view.get("price triple: "));
    			int nA = Integer.parseInt(view.get("number apartment: "));
    			double pA = Double.parseDouble(view.get("price apartment: "));
-   			Hotel hotel = new Hotel(name, address, city, nSr,pSr, nDr, pDr, nTr,pTr, nA, pA);
+   			Hotel hotel = new Hotel(name, city, address, nSr,pSr, nDr, pDr, nTr,pTr, nA, pA);
    			model.addHotel(hotel);
    			break;
    		case "searchHotelByCity":
@@ -74,14 +75,15 @@ public class TravellerController
    			view.show(msg);
    			break;
    		case "reserve":
-   			User user = new User("name", "email", "phoneNumber", "address", true, 12);
+   			User user = new User(1, "name", "email", "phoneNumber", "address", true, "pass");
    			view.show (model.getHotels());
    			int id = Integer.parseInt(view.get("Enter id of hotel: "));
    			int sRn = Integer.parseInt(view.get("number single: "));
    			int dRn = Integer.parseInt(view.get("number double: "));
    			int tRn = Integer.parseInt(view.get("number triple: "));
    			int apN = Integer.parseInt(view.get("number apartment: "));
-   			view.show("Price:" + model.reserve(user, model.getHotel(id), new MyDate(), new MyDate(20,05,2015), sRn, dRn, tRn, apN));
+   			Reservation res = new Reservation(1, user, model.getHotel(id), new MyDate(), new MyDate(20,05,2015), sRn, dRn, tRn, apN);
+   			view.show("Price:" + model.reserve(res));
    			break;
    		case "showHotels":
    			view.show (model.getHotels());

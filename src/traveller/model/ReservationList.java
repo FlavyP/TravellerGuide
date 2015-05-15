@@ -11,44 +11,45 @@ public class ReservationList
       resList = new ArrayList<Reservation>();
    }
    
-   public double reserve(User user, Hotel hotel, MyDate checkIn, MyDate checkOut, int sRn, int dRn, int tRn, int apN)
+   public double reserve(Reservation res)
    {
-      Reservation res = new Reservation(user, hotel, checkIn, checkOut, sRn, dRn, tRn, apN);
+      
       resList.add(res);
       
       
-      for(int i=0;i<sRn;i++){
+      for(int i=0;i<res.getNumberOfSingleRooms();i++){
     	  Room r = resList.get(resList.size()-1).getHotel().getfirstAvailableSingleRoom();
-    	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, checkIn, checkOut);
+    	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, res.getCheckIn(), res.getCheckOut());
       }
-      for(int i=0;i<dRn;i++){
+      for(int i=0;i<res.getNumberOfDoubleRooms();i++){
     	  Room r = resList.get(resList.size()-1).getHotel().getfirstAvailableDoubleRoom();
-    	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, checkIn, checkOut);
+    	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, res.getCheckIn(), res.getCheckOut());
       }
-      for(int i=0;i<tRn;i++){
+      for(int i=0;i<res.getNumberOfTripleRooms();i++){
     	  Room r = resList.get(resList.size()-1).getHotel().getfirstAvailableTripleRoom();
-    	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, checkIn, checkOut);
+    	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, res.getCheckIn(), res.getCheckOut());
       }
-      for(int i=0;i<apN;i++){
+      for(int i=0;i<res.getNumberOfApartments();i++){
     	  Room r = resList.get(resList.size()-1).getHotel().getfirstAvailableApartment();
-    	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, checkIn, checkOut);
+    	  resList.get(resList.size()-1).getHotel().setAvailability(r, false, res.getCheckIn(), res.getCheckOut());
       }
-      hotel.markFreeRooms();
+      res.getHotel().markFreeRooms();
       return res.getTotalPrice();
       
       //SQL Code for insert into 'Reservation'
    }
    
-   public void editReservation()
-   {
-      //SQL Code for ALTERING
-   }
-   
-   public void cancelReservation(int index)
+   public void cancelReservation(int resId)
    {
       //Not sure = when you delete a reservation from DB, index is lost, when you delete a reservation from ArrayList
       //every reservation goes -1 in index
-      resList.remove(index);
+      for( int i = 0; i < resList.size(); i++)
+      {
+         if ( resList.get(i).getResId() == resId)
+         {
+            resList.remove(i);
+         }
+      }
       //SQL Code for removing
    }
 }

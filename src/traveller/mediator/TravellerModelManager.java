@@ -10,12 +10,14 @@ public class TravellerModelManager extends Observable implements TravellerModel
 
    private ReservationList resList;
    private HotelList hList;
+   private UserList userList;
    private ServerConnectionThread server;
    
    public TravellerModelManager()
    {
       resList = new ReservationList();
       hList = new HotelList();
+      userList = new UserList();
       server = new ServerConnectionThread(this);
       server.start();
    }
@@ -23,14 +25,18 @@ public class TravellerModelManager extends Observable implements TravellerModel
    public void addHotel(Hotel hotel)
    {
       hList.addHotel(hotel);
-      super.setChanged();
-      super.notifyObservers("Hotel added");
    }
 
    @Override
    public ArrayList<Hotel> searchHotelByCity(String city)
    {
       return hList.getHotelsInCity(city);
+   }
+   
+   
+   public ArrayList<Hotel> searchHotelByName(String name)
+   {
+      return hList.getHotelsByName(name);
    }
 
    @Override
@@ -40,12 +46,9 @@ public class TravellerModelManager extends Observable implements TravellerModel
    }
 
    @Override
-   public double reserve(User user, Hotel hotel, MyDate checkIn,
-         MyDate checkOut, int sRn, int dRn, int tRn, int apN)   
+   public double reserve(Reservation res)
    {
-      super.setChanged();
-      super.notifyObservers("Reservation added");
-      return resList.reserve(user, hotel, checkIn, checkOut, sRn, dRn, tRn, apN);
+      return resList.reserve(res);
    }
    
    public Hotel getHotel(int index)
@@ -55,6 +58,11 @@ public class TravellerModelManager extends Observable implements TravellerModel
    public String getHotels()
    {
       return hList.toString();
+   }
+   
+   public void addUser(User user)
+   {
+      userList.addUser(user);
    }
    
    public void showAnswer(String answer)

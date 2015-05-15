@@ -38,6 +38,20 @@ public class HotelList
          
    }
    
+   public ArrayList<Hotel> getHotelsByName(String name)
+   {
+      ArrayList<Hotel> hotels = new ArrayList<Hotel>();
+      for (int i = 0; i < hotelList.size(); i++)
+      {
+         if (hotelList.get(i).getName().contains(name))
+         {
+            hotels.add(hotelList.get(i));
+         }
+      }
+      
+      return hotels;
+   }
+   
    public ArrayList<Hotel> getHotelsInAddress(String address)
    {
       ArrayList<Hotel> hotels = new ArrayList<Hotel>();

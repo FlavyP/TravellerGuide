@@ -6,10 +6,11 @@ public class User {
 	private String email;
 	private String phoneNumber;
 	private String address;
+	private String password;
 	private boolean isGuest;
 	private int userId;
 	
-	public User(String name,String email,String phoneNumber,String address,boolean isGuest, int userId)
+	public User(int userId, String name,String email,String phoneNumber,String address,boolean isGuest, String password)
 	{
 		this.name = name;
 		this.email = email;
@@ -17,6 +18,7 @@ public class User {
 		this.address = address;
 		this.isGuest = isGuest;
 		this.userId = userId;
+		this.password = password;
 	}
 
 	public String getName() {
@@ -68,6 +70,17 @@ public class User {
    {
       this.userId = userId;
    }
+
+   public String getPassword()
+   {
+      return password;
+   }
+
+   public void setPassword(String password)
+   {
+      this.password = password;
+   }
 	
+   
 
 }

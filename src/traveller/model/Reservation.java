@@ -13,8 +13,9 @@ public class Reservation
    private int numberOfApartments;
    private int status;
    private double totalPrice;
+   private int resId;
 
-   public Reservation(User guest, Hotel hotel, MyDate checkIn, MyDate checkOut, int sRn, int dRn, int tRn, int apN)
+   public Reservation(int resId, User guest, Hotel hotel, MyDate checkIn, MyDate checkOut, int sRn, int dRn, int tRn, int apN)
    {
 
       this.checkIn = checkIn;
@@ -26,6 +27,7 @@ public class Reservation
       this.numberOfTripleRooms = tRn;
       this.numberOfApartments = apN;
       totalPrice = 0;
+      this.resId = resId;
    }
 
    public MyDate getCheckIn()
@@ -118,6 +120,16 @@ public class Reservation
       return hotel;
    }
    
+   public int getResId()
+   {
+      return resId;
+   }
+
+   public void setResId(int resId)
+   {
+      this.resId = resId;
+   }
+
    public double getTotalPrice()
    {
       double totalSr = hotel.getPriceOfRooms(0) * numberOfSingleRooms * MyDate.numberOfDays(checkIn, checkOut);
