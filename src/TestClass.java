@@ -30,8 +30,9 @@ public class TestClass {
 		try {
 			TravellerModelManager model = new TravellerModelManager();
 			TravellerView view = new TravellerConsole();
+			DatabaseQueries db = new DatabaseQueries();
 			TravellerController controller = new TravellerController(view,
-					model);
+					model, db);
 
 			view.start(controller);
 		} catch (Exception e)

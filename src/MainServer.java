@@ -1,5 +1,6 @@
 import traveller.controller.TravellerController;
 import traveller.mediator.TravellerModelManager;
+import traveller.model.DatabaseQueries;
 import traveller.view.TravellerConsole;
 import traveller.view.TravellerView;
 
@@ -11,7 +12,8 @@ public class MainServer
       {
          TravellerModelManager model = new TravellerModelManager();
          TravellerView view = new TravellerConsole();
-         TravellerController controller = new TravellerController(view, model);
+         DatabaseQueries db = new DatabaseQueries();
+         TravellerController controller = new TravellerController(view, model, db);
          
          view.start(controller);
       }
