@@ -6,13 +6,13 @@ public class DatabaseTest
 {
 
    private TravellerPersistence database;
-   //private HotelList hotellist;
+   private HotelList hotellist;
    private UserList userlist;
 
    public DatabaseTest() throws ClassNotFoundException, IOException
    {
       database = new TravellerDatabaseAdapter();
-      //hotellist = database.loadHotels();
+      hotellist = database.loadHotels();
       userlist = database.loadUsers();
    }
 
@@ -23,11 +23,11 @@ public class DatabaseTest
       DatabaseTest adaptertest = new DatabaseTest();
       adaptertest.test();
 
-
    }
-   
+
    public void test() throws IOException
    {
+      System.out.println(hotellist);
       System.out.println(userlist);
    }
 
