@@ -27,12 +27,13 @@ public class TestClass {
 		// System.out.println(list.getHotelsInCity("City2").get(0).getName());
 		// //System.out.println(rs.reserve(user, h1, new MyDate(), new
 		// MyDate(20, 06, 2015), 1, 1, 0, 1));
+	   
 		try {
 			TravellerModelManager model = new TravellerModelManager();
 			TravellerView view = new TravellerConsole();
-			DatabaseQueries db = new DatabaseQueries();
+			//DatabaseQueries db = new DatabaseQueries();
 			TravellerController controller = new TravellerController(view,
-					model, db);
+					model);
 
 			view.start(controller);
 		} catch (Exception e)

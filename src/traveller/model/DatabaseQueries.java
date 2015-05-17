@@ -1,4 +1,4 @@
-package traveller.model;
+/*package traveller.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,4 +56,4 @@ public class DatabaseQueries
       }
    }
 
-}
+}*/

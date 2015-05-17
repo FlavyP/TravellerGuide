@@ -3,7 +3,6 @@ package traveller.controller;
 import java.util.ArrayList;
 
 import traveller.mediator.TravellerModel;
-import traveller.model.DatabaseQueries;
 import traveller.model.Hotel;
 import traveller.model.HotelList;
 import traveller.model.MyDate;
@@ -15,13 +14,13 @@ public class TravellerController
 {
  private TravellerView view;
  private TravellerModel model;
- private DatabaseQueries db;
+
  
- public TravellerController(TravellerView view, TravellerModel model, DatabaseQueries db)
+ public TravellerController(TravellerView view, TravellerModel model)
  {
     this.view = view;
     this.model= model;
-    this.db = db;
+
  }
  
  public void execute(String what)
@@ -42,7 +41,7 @@ public class TravellerController
             double pA = Double.parseDouble(view.get("price apartment: "));
             Hotel hotel = new Hotel(name, city, address, nSr,pSr, nDr, pDr, nTr,pTr, nA, pA);
             model.addHotel(hotel);
-            db.addHotelToDatabase(name, address, city, nSr, pSr, nDr, pDr, nTr, pTr, nA, pA);
+            //db.addHotelToDatabase(name, address, city, nSr, pSr, nDr, pDr, nTr, pTr, nA, pA);
             break;
          case "searchHotelByCity":
             String input = view.get("City");

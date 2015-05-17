@@ -12,9 +12,11 @@ public class TravellerModelManager extends Observable implements TravellerModel
    private HotelList hList;
    private UserList userList;
    private ServerConnectionThread server;
+   private TravellerPersistence database;
    
-   public TravellerModelManager()
+   public TravellerModelManager() throws ClassNotFoundException
    {
+      database = new TravellerDatabaseAdapter();
       resList = new ReservationList();
       hList = new HotelList();
       userList = new UserList();
