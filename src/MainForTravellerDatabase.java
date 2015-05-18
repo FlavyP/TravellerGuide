@@ -2,14 +2,14 @@ import java.io.IOException;
 import traveller.mediator.*;
 import traveller.model.*;
 
-public class DatabaseTest
+public class MainForTravellerDatabase
 {
 
    private TravellerPersistence database;
    private HotelList hotellist;
    private UserList userlist;
 
-   public DatabaseTest() throws ClassNotFoundException, IOException
+   public MainForTravellerDatabase() throws ClassNotFoundException, IOException
    {
       database = new TravellerDatabaseAdapter();
       hotellist = database.loadHotels();
@@ -20,7 +20,7 @@ public class DatabaseTest
          ClassNotFoundException
 
    {
-      DatabaseTest adaptertest = new DatabaseTest();
+      MainForTravellerDatabase adaptertest = new MainForTravellerDatabase();
       adaptertest.test();
 
    }
