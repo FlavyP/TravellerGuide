@@ -1,3 +1,4 @@
+
 import traveller.controller.TravellerController;
 import traveller.mediator.TravellerModelManager;
 import traveller.view.TravellerConsole;
