@@ -12,15 +12,13 @@ import traveller.view.TravellerView;
 
 public class TravellerController
 {
- private TravellerView view;
  private TravellerModel model;
-
+ private TravellerView view;
  
- public TravellerController(TravellerView view, TravellerModel model)
+ public TravellerController(TravellerModel model,TravellerView view)
  {
-    this.view = view;
     this.model= model;
-
+    this.view = view; 
  }
  
  public void execute(String what)

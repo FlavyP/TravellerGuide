@@ -12,7 +12,7 @@ public class MainServer
          TravellerModelManager model = new TravellerModelManager();
          TravellerView view = new TravellerConsole();
          //DatabaseQueries db = new DatabaseQueries();
-         TravellerController controller = new TravellerController(view, model);
+         TravellerController controller = new TravellerController(model, view);
          
          view.start(controller);
       }
