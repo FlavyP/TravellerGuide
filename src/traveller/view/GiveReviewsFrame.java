@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class GiveReviewsFrame extends JDialog implements View {
@@ -19,7 +20,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 	
 	private JLabel commentLabel;
 	
-	private JTextField commentField;
+	private JTextArea commentField;
 	
 	private JButton submitButton;
 	private JButton cancelButton;
@@ -57,7 +58,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 	@Override
 	public void createComponents() {
 		commentLabel = new JLabel("Comment: ");
-		commentField = new JTextField(10);
+		commentField = new JTextArea();
 		submitButton = new JButton("Submit");
 		cancelButton = new JButton("Cancel");
 		comboBox = new JComboBox<String>(review);
@@ -69,7 +70,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 
 	@Override
 	public void initializeComponents() {
-		setSize(new Dimension(500, 500));
+		setSize(new Dimension(500, 250));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.setName("GiveReviewsFrame");

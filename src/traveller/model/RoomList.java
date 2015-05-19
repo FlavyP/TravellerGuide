@@ -158,8 +158,7 @@ public class RoomList {
       {
          if (sRn.get(i).getCheckOut() != null && sRn.get(i).getCheckOut().isBefore(MyDate.today()))
          {
-            sRn.get(i).markFreeRoom();
-         }
+            sRn.get(i).markFreeRoom();         }
       }
       
 //      for( int i = 0; i < dRn.size(); i++)
