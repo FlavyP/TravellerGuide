@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -31,7 +32,7 @@ public class LogInFrame extends JFrame implements View {
 	private JLabel passLabel;
 
 	private JTextField userField;
-	private JTextField passField;
+	private JPasswordField passField;
 
 	private JPanel contentPanel;
 	private JPanel userPanel;
@@ -78,7 +79,7 @@ public class LogInFrame extends JFrame implements View {
 		userLabel = new JLabel("Username: ");
 		passLabel = new JLabel("Password: ");
 		userField = new JTextField(10);
-		passField = new JTextField(10);
+		passField = new JPasswordField(10);
 	}
 
 	@Override
