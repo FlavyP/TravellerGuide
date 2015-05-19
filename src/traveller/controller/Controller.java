@@ -32,7 +32,7 @@ public class Controller {
 		if (command.equals("Register")) {
 			this.gui.display("RegisterFrame");
 		} else if (command.equals("Log in")) {
-			this.gui.display("GiveReviewsFrame");
+			this.gui.display("ReserveFrame");
 		}
 	}
 
