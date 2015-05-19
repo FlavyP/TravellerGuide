@@ -70,7 +70,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 
 	@Override
 	public void initializeComponents() {
-		setSize(new Dimension(500, 500));
+		setSize(new Dimension(500, 250));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.setName("GiveReviewsFrame");
