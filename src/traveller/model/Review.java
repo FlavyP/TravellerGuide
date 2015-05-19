@@ -1,5 +1,5 @@
 package traveller.model;
-
+ 
 public class Review
 {
    private int grade;
