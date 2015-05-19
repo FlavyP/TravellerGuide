@@ -6,13 +6,16 @@ public class Hotel
    private String name;
    private String address;
    private String city;
+   private int hotelId;
+   private ReviewList rl;
 
-   public Hotel(String name, String city, String address,
+   public Hotel(int hotelId, String name, String city, String address,
          int numberOfSingleRooms, double singleRoomPrice,
          int numberOfDoubleRooms, double doubleRoomPrice,
          int numberOfTripleRooms, double tripleRoomPrice,
          int numberOfApartments, double apartmentPrice)
    {
+      this.hotelId = hotelId;
       this.name = name;
       this.address = address;
       this.city = city;
@@ -25,6 +28,7 @@ public class Hotel
       roomList.setPriceOfRooms(3, apartmentPrice);
       roomList.addRooms(numberOfSingleRooms, numberOfDoubleRooms,
             numberOfTripleRooms, numberOfApartments);
+      rl = new ReviewList();
 
       /*
        * roomList.setNumberOfRooms(numberOfSingleRooms, 0);
@@ -104,6 +108,26 @@ public class Hotel
       return roomList.getFirstApartment();
    }
 
+   public int getHotelId()
+   {
+      return hotelId;
+   }
+
+   public void setHotelId(int hotelId)
+   {
+      this.hotelId = hotelId;
+   }
+
+   public ReviewList getRl()
+   {
+      return rl;
+   }
+
+   public void setRl(ReviewList rl)
+   {
+      this.rl = rl;
+   }
+
    public void setAvailability(Room r, boolean isAv, MyDate checkIn,
          MyDate checkOut)
    {
@@ -122,7 +146,7 @@ public class Hotel
 
    public String toString()
    {
-      return "Name: " + name + "; Address: " + address + "; City: " + city
+      return "ID: " + hotelId + "; Name: " + name + "; Address: " + address + "; City: " + city
             + "\n" + "Number of Single Rooms: " + roomList.getNumberOfRooms(0)
             + " Price of Single Rooms: " + roomList.getPriceOfRooms(0) + "\n"
             + "Number of Double Rooms: " + roomList.getNumberOfRooms(1)
@@ -130,6 +154,7 @@ public class Hotel
             + "Number of Triple Rooms: " + roomList.getNumberOfRooms(2)
             + " Price of Triple Rooms: " + roomList.getPriceOfRooms(2) + "\n"
             + "Number of Apartments: " + roomList.getNumberOfRooms(3)
-            + " Price of Apartments: " + roomList.getPriceOfRooms(3);
+            + " Price of Apartments: " + roomList.getPriceOfRooms(3) + "\n"
+            + "Reviews: \n" + rl;
    }
 }

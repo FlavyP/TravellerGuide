@@ -17,7 +17,32 @@ public class HotelList
       hotelList.add(hotel);
    }
    
-   public int getHowManyHotels()
+   public Hotel editHotel(int id, Hotel newHotel)
+   {
+      for(int i = 0; i < hotelList.size(); i++)
+      {
+         if( hotelList.get(i).getHotelId() == id)
+         {
+            hotelList.set(i, newHotel);
+            break;
+         }
+      }
+      return newHotel;
+   }
+   
+   public void deleteHotel(int id)
+   {
+      for(int i = 0; i < hotelList.size(); i++)
+      {
+         if( hotelList.get(i).getHotelId() == id)
+         {
+            hotelList.remove(i);
+            break;
+         }
+      }
+   }
+   
+   public int size()
    {
       return hotelList.size();
    }
@@ -77,7 +102,7 @@ public class HotelList
       String res = "";
       for( int i = 0; i < hotelList.size(); i++)
       {
-         res = res + "ID: " + i + ": " + hotelList.get(i).toString() + "\n";
+         res = res + hotelList.get(i).toString() + "\n";
       }
       return res;
    }

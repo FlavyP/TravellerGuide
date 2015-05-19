@@ -26,6 +26,7 @@ public class TravellerController
     
            switch (what) {
          case "addHotel":
+            int hotelId = Integer.parseInt(view.get("Hotel id"));
             String name = view.get("Name");
             String city = view.get("City");
             String address = view.get("Address");
@@ -37,7 +38,7 @@ public class TravellerController
             double pTr = Double.parseDouble(view.get("price triple: "));
             int nA = Integer.parseInt(view.get("number apartment: "));
             double pA = Double.parseDouble(view.get("price apartment: "));
-            Hotel hotel = new Hotel(name, city, address, nSr,pSr, nDr, pDr, nTr,pTr, nA, pA);
+            Hotel hotel = new Hotel(hotelId, name, city, address, nSr,pSr, nDr, pDr, nTr,pTr, nA, pA);
             model.addHotel(hotel);
             //db.addHotelToDatabase(name, address, city, nSr, pSr, nDr, pDr, nTr, pTr, nA, pA);
             break;

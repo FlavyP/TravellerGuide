@@ -42,7 +42,7 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 				int nA = Integer.parseInt(row[10].toString());
 				double pA = Double.parseDouble(row[11].toString());
 
-				Hotel hotel = new Hotel(name, city, address, nSr, pSr, nDr,
+				Hotel hotel = new Hotel(hotelId, name, city, address, nSr, pSr, nDr,
 						pDr, nTr, pTr, nA, pA);
 				hotels.addHotel(hotel);
 			}
