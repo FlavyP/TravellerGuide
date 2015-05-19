@@ -39,6 +39,12 @@ public class TravellerGUI {
 		} else if (frame.equals("RegisterFrame")) {
 			RegisterFrame.getInstance(this.getActiveWindow(), this.handler, this.handler);
 		}
+		else if(frame.equals("ReserveFrame")){
+			ReserveFrame.getInstance(this.getActiveWindow(), this.handler, this.handler);
+		}
+		else if(frame.equals("GiveReviewsFrame")){
+			GiveReviewsFrame.getInstance(this.getActiveWindow(), this.handler, this.handler);
+		}
 	}
 
 }
