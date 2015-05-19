@@ -44,6 +44,7 @@ public class InterestPointsFrame extends JFrame implements View {
    private String[] ip = {"CAFE","MUSEUM","NIGHT_CLUB","RESTAURANT","SHOPPING_MALL"};
    private JLabel iplabel;
    private JButton getButton;
+   private JTextField textField;
 
    private static InterestPointsFrame instance = null;
 
@@ -79,14 +80,14 @@ public class InterestPointsFrame extends JFrame implements View {
       contentPanel = new JPanel(new BorderLayout());
       ipPanel = new JPanel(new FlowLayout());
       buttonsPanel = new JPanel(new FlowLayout());
+      textField = new JTextField();
    }
-
    @Override
    public void initializeComponents() {
       setSize(400, 200);
       setLocationRelativeTo(null); // center of the screen
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setName("LogInFrame");
+      this.setName("InterestPointsFrame");
    }
 
    @Override
@@ -95,10 +96,12 @@ public class InterestPointsFrame extends JFrame implements View {
       
       ipPanel.add(iplabel);
       ipPanel.add(comboBox);
+      ipPanel.add(textField);
       buttonsPanel.add(getButton);
       
       
       contentPanel.add(ipPanel, BorderLayout.NORTH);
+      contentPanel.add(textField, BorderLayout.CENTER);
       contentPanel.add(buttonsPanel, BorderLayout.SOUTH);
    }
 
