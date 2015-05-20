@@ -29,6 +29,9 @@ public class MainForTravellerDatabase
    {
       System.out.println(hotellist);
       System.out.println(userlist);
+      
+      Hotel newHotel = new Hotel(1, "Kazkas", "Kazkas", "Kazkas", 0, 0, 0, 0, 0, 0, 0, 0);
+      database.editHotel(newHotel, 1);
    }
 
 }
