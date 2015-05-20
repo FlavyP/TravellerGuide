@@ -69,4 +69,12 @@ public class TravellerModelProxy extends Thread {
 			e.printStackTrace();
 		}
 	}
+	public void deleteHotel(int hotelId){
+		try {
+			outToServer.writeObject("5");
+			outToServer.writeObject(hotelId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

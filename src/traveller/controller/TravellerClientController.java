@@ -109,6 +109,9 @@ public class TravellerClientController {
 		} else if (command.equals("Edit hotel")) {
 			String[] input = this.gui.getInput();
 			model.editHotel(input);
+		} else if (command.equals("Delete")) {
+			String[] input = this.gui.getInput();
+			model.deleteHotel(Integer.parseInt(input[0]));
 		}
 	}
 
@@ -117,8 +120,9 @@ public class TravellerClientController {
 			this.gui.display("SearchFrame1");
 		}
 	}
-	public void controllerSearchFrame1(String command){
-		if(command.equals("Search")){
+
+	public void controllerSearchFrame1(String command) {
+		if (command.equals("Search")) {
 			this.gui.display("SearchFrame2");
 		}
 	}

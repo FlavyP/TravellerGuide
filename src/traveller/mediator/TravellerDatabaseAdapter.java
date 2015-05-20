@@ -206,16 +206,13 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 	}
 
 	@Override
-	public int deleteHotel(Hotel hotel) throws IOException {
-		int sum = 0;
-
-		int hotelid = hotel.getHotelId();
-		
+	public int deleteHotel(int hotelId) throws IOException {
+		int sum = 0;	
 
 		String sql = "DELETE FROM Hotel WHERE hotelID=?";
 
 		try {
-			sum += db.update(sql, hotelid);
+			sum += db.update(sql, hotelId);
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}

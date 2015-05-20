@@ -19,7 +19,7 @@ public interface TravellerPersistence
    //public int EditHotel(Hotel hotel) throws IOException;
   // public int EditHotel(Hotel hotel, String pname, String paddress) throws IOException;
    public int editHotel(Hotel hotel, int pid) throws IOException;
-   public int deleteHotel(Hotel hotel) throws IOException;
+   public int deleteHotel(int hotelId) throws IOException;
    
 
 }

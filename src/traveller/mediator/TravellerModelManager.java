@@ -126,6 +126,14 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 			e.getMessage();
 		}
 	}
+	public void deleteHotel(int hotelId){
+		hList.deleteHotel(hotelId);
+		try {
+			database.deleteHotel(hotelId);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
 	public void showAnswer(String answer) {
 		setChanged();
 		notifyObservers(answer);

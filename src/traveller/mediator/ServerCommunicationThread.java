@@ -49,7 +49,8 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					model.editHotel(input4);
 					break;
 				case 5:
-					// model.searchItem();
+					int input5 = (int) inFromClient.readObject();
+					model.deleteHotel(input5);
 					break;
 				case 6:
 					System.exit(0);
