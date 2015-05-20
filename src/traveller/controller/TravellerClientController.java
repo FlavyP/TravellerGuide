@@ -21,43 +21,10 @@ public class TravellerClientController {
 			TravellerGUI gui) {
 		this.model = model;
 		this.gui = gui;
-//		Observable obs = (Observable) model;
-//		obs.addObserver(view);
+		// Observable obs = (Observable) model;
+		// obs.addObserver(view);
 	}
 
-	// public void execute(String what)
-	// {
-	// switch (what) {
-	// case "searchHotelByCity":
-	// model.searchHotelByCity("");
-	// model.writeToServer(view.get(""));
-	// break;
-	// case "searchHotelByAddress":
-	// model.searchHotelByCity("");
-	// break;
-	// case "reserve":
-	// User user = new User(1, "name", "email", "phoneNumber", "address", true,
-	// "pass");
-	// view.show (model.getHotels());
-	// int id = Integer.parseInt(view.get("Enter id of hotel: "));
-	// int sRn = Integer.parseInt(view.get("number single: "));
-	// int dRn = Integer.parseInt(view.get("number double: "));
-	// int tRn = Integer.parseInt(view.get("number triple: "));
-	// int apN = Integer.parseInt(view.get("number apartment: "));
-	// Reservation res = new Reservation(1, user, model.getHotel(id), new
-	// MyDate(), new MyDate(20,05,2015), sRn, dRn, tRn, apN);
-	// view.show("Price:" + model.reserve(res));
-	// break;
-	// case "showHotels":
-	// view.show (model.getHotels());
-	// break;
-	// case "Quit":
-	// System.out.println("Quit");
-	// break;
-	// default:
-	// view.show("Wrong input");
-	// break;
-	// }
 	public void execute(String command) {
 		if (command.equals("Exit")) {
 			System.exit(0);
@@ -69,9 +36,8 @@ public class TravellerClientController {
 			this.controllerRegisterFrame(command);
 		} else if (this.gui.getActiveWindow().getName().equals("ReserveFrame")) {
 			this.controllerReserveFrame(command);
-		} else if (this.gui.getActiveWindow().getName()
-				.equals("GiveReviewsFrame")) {
-			this.controllerReserveFrame(command);
+		} else if (this.gui.getActiveWindow().getName().equals("AdminFrame")) {
+			this.controllerAdminFrame(command);
 		}
 	}
 
@@ -80,11 +46,13 @@ public class TravellerClientController {
 			this.gui.display("RegisterFrame");
 		} else if (command.equals("Log in")) {
 			String[] input = this.gui.getInput();
-			System.out.println(input[0]);
-			System.out.println(input[1]);
 			boolean[] answer = model.login(input);
-			if(answer[0] == false && answer[1] == false)
-				this.gui.display("RegisterFrame");
+			if (answer[0] == false && answer[1] == false) {
+
+			} else if (answer[0] == true && answer[1] == false) {
+				this.gui.display("AdminFrame");
+			}
+
 		}
 	}
 
@@ -101,5 +69,11 @@ public class TravellerClientController {
 
 	public void controllerGiveReviewsFrame(String command) {
 
+	}
+
+	public void controllerAdminFrame(String command) {
+		if (command.equals("Add Hotel")) {
+			this.gui.display("AddHotelFrame");
+		}
 	}
 }

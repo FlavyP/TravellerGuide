@@ -79,7 +79,7 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 				User user = new User(userId, name, email, phone, address,
 						isGuest, password);
 				users.addUser(user);
-				System.out.println(user.getName());
+//				System.out.println(user.getName());
 
 			}
 		} catch (Exception e) {

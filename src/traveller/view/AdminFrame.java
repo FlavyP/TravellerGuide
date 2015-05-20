@@ -1,14 +1,18 @@
 package traveller.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowFocusListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class AdminFrame extends JFrame implements View {
+public class AdminFrame extends JDialog implements View {
 	
 	private JButton addButton;
 	private JButton editButton;
@@ -18,13 +22,25 @@ public class AdminFrame extends JFrame implements View {
 	private JPanel panel2;
 	private JPanel panel3;
 	
-	
-    public AdminFrame() {
-    	super("Admin");
+	private static AdminFrame instance = null;
+    public AdminFrame(Window owner, ActionListener actionListener,
+			WindowFocusListener focusListener) {
+		super(owner, "Admin");
+//		 super(owner, "Register", JDialog.DEFAULT_MODALITY_TYPE);
 		createComponents();
 		initializeComponents();
 		addComponentsToFrame();
+		addActionListeners(actionListener);
+		addWindowFocusListener(focusListener);
 		setVisible(true);
+    }
+	public static AdminFrame getInstance(Window owner,
+			ActionListener actionListener, WindowFocusListener focusListener) {
+		if (instance == null) {
+			instance = new AdminFrame(owner, actionListener, focusListener);
+			instance.setVisible(true);
+		}
+		return instance;
 	}
 	@Override
 	public void createComponents() {
@@ -39,11 +55,10 @@ public class AdminFrame extends JFrame implements View {
 	}
 	@Override
 	public void initializeComponents() {
-		setSize(400, 200);
-		setLocationRelativeTo(null); 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setName("Admin");
-		
+		setSize(new Dimension(500, 500));
+		setLocationRelativeTo(null); // center of the screen
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setName("AdminFrame");	
 	}
 	@Override
 	public void addComponentsToFrame() {
@@ -61,14 +76,13 @@ public class AdminFrame extends JFrame implements View {
 	    editButton.addActionListener(actionListener);
 	    logsButton.addActionListener(actionListener);
 	}
-	
-	public static void main(String[] args) {
-		AdminFrame admin = new AdminFrame();
-	}
 	@Override
 	public String[] getInput() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	public void dispose() {
+		instance = null;
+		super.dispose();
+	}
 }

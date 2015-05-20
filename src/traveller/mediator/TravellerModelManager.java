@@ -1,5 +1,6 @@
 package traveller.mediator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -17,9 +18,14 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		database = new TravellerDatabaseAdapter();
 		resList = new ReservationList();
 		hList = new HotelList();
-		userList = new UserList();
+		userList = null;
 		server = new ServerConnectionThread(this);
 		server.start();
+		try {
+			this.userList = database.loadUsers();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	@Override
@@ -65,8 +71,8 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		User user = userList.getUser(email, password);
 		if (user != null) {
 			b[0] = true;
-			if(user.isGuest())
-			b[1] = true;
+			if (user.isGuest())
+				b[1] = true;
 			else
 				b[1] = false;
 		} else {

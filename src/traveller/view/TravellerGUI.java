@@ -52,9 +52,12 @@ public class TravellerGUI {
 		} else if (frame.equals("GiveReviewsFrame")) {
 			GiveReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
 					this.handler);
-		}
-		else if(frame.equals("AddHotelFrame")){
-			AddHotelFrame addHotel = new AddHotelFrame(this.handler, this.handler);
+		} else if (frame.equals("AdminFrame")) {
+			AdminFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
+		} else if (frame.equals("AddHotelFrame")) {
+			AddHotelFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
 		}
 	}
 
