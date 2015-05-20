@@ -55,7 +55,7 @@ public class TravellerClientController {
 			} else if (answer[0] == true && answer[1] == false) {
 				this.gui.display("AdminFrame");
 			}
-
+			this.gui.update(null);
 		}
 	}
 

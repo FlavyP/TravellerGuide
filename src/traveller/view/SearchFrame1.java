@@ -1,28 +1,46 @@
 package traveller.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Window;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowFocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class SearchFrame1 extends JFrame implements View {
+public class SearchFrame1 extends JDialog implements View {
 
 	private JComboBox<String> comboList;
 	private JTextField searchName;
 	private JButton searchButton;
 	private JPanel contentPanel;
 
-	public SearchFrame1() {
-		super("Search1");
+	private static SearchFrame1 instance = null;
+
+	public SearchFrame1(Window owner, ActionListener actionListener,
+			WindowFocusListener focusListener) {
+		super(owner, "Search");
 		createComponents();
 		initializeComponents();
 		addComponentsToFrame();
+		addActionListeners(actionListener);
+		addWindowFocusListener(focusListener);
 		setVisible(true);
+	}
+
+	public static SearchFrame1 getInstance(Window owner,
+			ActionListener actionListener, WindowFocusListener focusListener) {
+		if (instance == null) {
+			instance = new SearchFrame1(owner, actionListener, focusListener);
+			instance.setVisible(true);
+		}
+		return instance;
 	}
 
 	@Override
@@ -36,9 +54,9 @@ public class SearchFrame1 extends JFrame implements View {
 
 	@Override
 	public void initializeComponents() {
-		setSize(500, 500);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(new Dimension(500, 500));
+		setLocationRelativeTo(null); // center of the screen
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.setName("Search1");
 
 	}
@@ -58,9 +76,9 @@ public class SearchFrame1 extends JFrame implements View {
 
 	}
 
-	public static void main(String[] args) {
-
-		SearchFrame1 frame = new SearchFrame1();
+	public void dispose() {
+		instance = null;
+		super.dispose();
 	}
 
 	@Override
@@ -74,7 +92,7 @@ public class SearchFrame1 extends JFrame implements View {
 	@Override
 	public void update(String[] update) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

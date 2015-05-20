@@ -3,16 +3,18 @@ package traveller.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowFocusListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class SearchFrame2 extends JFrame implements View {
+public class SearchFrame2 extends JDialog implements View {
 
 	private JList<String> list;
 	private JButton reserve;
@@ -23,12 +25,26 @@ public class SearchFrame2 extends JFrame implements View {
 	private JPanel buttonsPanel;
 	private JPanel listPanel;
 
-	public SearchFrame2() {
-		super("Search2");
+	private static SearchFrame2 instance = null;
+
+	public SearchFrame2(Window owner, ActionListener actionListener,
+			WindowFocusListener focusListener) {
+		super(owner, "Search");
 		createComponents();
 		initializeComponents();
 		addComponentsToFrame();
+		addActionListeners(actionListener);
+		addWindowFocusListener(focusListener);
 		setVisible(true);
+	}
+
+	public static SearchFrame2 getInstance(Window owner,
+			ActionListener actionListener, WindowFocusListener focusListener) {
+		if (instance == null) {
+			instance = new SearchFrame2(owner, actionListener, focusListener);
+			instance.setVisible(true);
+		}
+		return instance;
 	}
 
 	@Override
@@ -41,15 +57,15 @@ public class SearchFrame2 extends JFrame implements View {
 		interestPoints = new JButton("Find interest points");
 		contentPanel = new JPanel(new BorderLayout());
 		buttonsPanel = new JPanel(new GridLayout(3, 1));
-		listPanel = new JPanel(new GridLayout(1,1));
+		listPanel = new JPanel(new GridLayout(1, 1));
 	}
 
 	@Override
 	public void initializeComponents() {
-		setSize(500, 500);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setName("Search2");
+		setSize(new Dimension(500, 500));
+		setLocationRelativeTo(null); // center of the screen
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setName("SearchFrame2");
 
 	}
 
@@ -72,9 +88,9 @@ public class SearchFrame2 extends JFrame implements View {
 		interestPoints.addActionListener(actionListener);
 	}
 
-	public static void main(String[] args) {
-
-		SearchFrame2 search = new SearchFrame2();
+	public void dispose() {
+		instance = null;
+		super.dispose();
 	}
 
 	@Override
@@ -85,6 +101,6 @@ public class SearchFrame2 extends JFrame implements View {
 	@Override
 	public void update(String[] update) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

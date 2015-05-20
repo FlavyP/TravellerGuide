@@ -2,6 +2,7 @@ package traveller.view;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -16,6 +17,7 @@ import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -27,7 +29,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.CaretListener;
 
-public class InterestPointsFrame extends JFrame implements View {
+public class InterestPointsFrame extends JDialog implements View {
 	private JPanel contentPanel;
 	private JPanel ipPanel;
 	private JPanel buttonsPanel;
@@ -45,7 +47,7 @@ public class InterestPointsFrame extends JFrame implements View {
 
 	public InterestPointsFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
-		super("Interest Points");
+		super(owner, "Interest Points");
 		createComponents();
 		initializeComponents();
 		addComponentsToFrame();
@@ -53,10 +55,6 @@ public class InterestPointsFrame extends JFrame implements View {
 		addWindowFocusListener(focusListener);
 		setVisible(true);
 	}
-
-	// public static LogInFrame getInstance() {
-	// return instance;
-	// }
 
 	public static InterestPointsFrame getInstance(Window owner,
 			ActionListener actionListener, WindowFocusListener focusListener) {
@@ -88,9 +86,9 @@ public class InterestPointsFrame extends JFrame implements View {
 
 	@Override
 	public void initializeComponents() {
-		setSize(400, 200);
+		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.setName("InterestPointsFrame");
 	}
 
@@ -112,13 +110,13 @@ public class InterestPointsFrame extends JFrame implements View {
 	@Override
 	public void addActionListeners(ActionListener actionListener) {
 
-		/*
-		 * getButton.addActionListener(actionListener);
-		 * comboBox.addActionListener(actionListener); <<<<<<< HEAD
-		 * 
-		 * ======= registerButton.addActionListener(actionListener);
-		 * logInButton.addActionListener(actionListener);
-		 */
+		getBtn.addActionListener(actionListener);
+		getDirectionsBtn.addActionListener(actionListener);
+	}
+
+	public void dispose() {
+		instance = null;
+		super.dispose();
 	}
 
 	@Override
@@ -131,6 +129,6 @@ public class InterestPointsFrame extends JFrame implements View {
 	@Override
 	public void update(String[] update) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
