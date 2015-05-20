@@ -16,6 +16,7 @@ public interface TravellerPersistence
    public int addHotel(Hotel hotel) throws IOException;
    public int addUser(User user) throws IOException;
    public int addReservation(Reservation reservation) throws IOException;
+   public int EditHotel(Hotel hotel) throws IOException;
    
 
 }
