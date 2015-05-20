@@ -210,26 +210,12 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 		int sum = 0;
 
 		int hotelid = hotel.getHotelId();
-		String name = hotel.getName();
-		String city = hotel.getCity();
-		String address = hotel.getAddress();
-		int nSr = hotel.getNumberOfRooms(0);
-		double pSr = hotel.getPriceOfRooms(0);
-		int nDr = hotel.getNumberOfRooms(1);
-		double pDr = hotel.getPriceOfRooms(1);
-		int nTr = hotel.getNumberOfRooms(2);
-		double pTr = hotel.getPriceOfRooms(2);
-		int nA = hotel.getNumberOfRooms(3);
-		double pA = hotel.getPriceOfRooms(3);
+		
 
-		String sql = "DELETE Hotel (hotelID, name, city, address, numberOfSingleRooms,"
-				+ "priceOfASingleRooms, numberOfDoubleRooms, priceOfADoubleRooms, "
-				+ "numberOfTripleRooms, priceOfATripleRooms, numberOfApartments, priceOfAnApartment"
-				+ ")";
+		String sql = "DELETE FROM Hotel WHERE hotelID=?";
 
 		try {
-			sum += db.update(sql, hotelid, name, city, address, nSr, pSr, nDr,
-					pDr, nTr, pTr, nA, pA);
+			sum += db.update(sql, hotelid);
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		}
