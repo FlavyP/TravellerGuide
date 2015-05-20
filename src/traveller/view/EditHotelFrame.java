@@ -167,25 +167,51 @@ public class EditHotelFrame extends JDialog implements View {
 
 	@Override
 	public String[] getInput() {
-		String[] input = new String[11];
-		input[0] = hotelNameField.getText();
-		input[1] = hotelCityField.getText();
-		input[2] = hotelAddressField.getText();
-		input[3] = nrSingleRoomsField.getText();
-		input[4] = nrDoubleRoomsField.getText();
-		input[5] = nrTripleRoomsField.getText();
-		input[6] = nrApartmentsField.getText();
-		input[7] = prSingleRoomsField.getText();
-		input[8] = prDoubleRoomsField.getText();
+		String[] input = new String[12];
+		input[0] = hotelInfoField.getText();
+		input[1] = hotelNameField.getText();
+		input[2] = hotelCityField.getText();
+		input[3] = hotelAddressField.getText();
+		input[4] = nrSingleRoomsField.getText();
+		input[5] = prSingleRoomsField.getText();
+		input[6] = nrDoubleRoomsField.getText();
+		input[7] = prDoubleRoomsField.getText();
+		input[8] = nrTripleRoomsField.getText();
 		input[9] = prTripleRoomsField.getText();
-		input[10] = prApartmentsField.getText();
+		input[10] = nrApartmentsField.getText();
+		input[11] = prApartmentsField.getText();
 		return input;
 	}
 
 	@Override
 	public void update(String[] update) {
-		// TODO Auto-generated method stub
-
+		if(update == null){
+			hotelInfoField.setText("");
+			hotelNameField.setText("");
+			hotelCityField.setText("");
+			hotelAddressField.setText("");
+			nrSingleRoomsField.setText("");
+			prSingleRoomsField.setText("");
+			nrDoubleRoomsField.setText("");
+			prDoubleRoomsField.setText("");
+			nrTripleRoomsField.setText("");
+			prTripleRoomsField.setText("");
+			nrApartmentsField.setText("");
+			prApartmentsField.setText("");
+		}
+		else{
+			hotelNameField.setText(update[0]);
+			hotelCityField.setText(update[1]);
+			hotelAddressField.setText(update[2]);
+			nrSingleRoomsField.setText(update[3]);
+			prSingleRoomsField.setText(update[4]);
+			nrDoubleRoomsField.setText(update[5]);
+			prDoubleRoomsField.setText(update[6]);
+			nrTripleRoomsField.setText(update[7]);
+			prTripleRoomsField.setText(update[8]);
+			nrApartmentsField.setText(update[9]);
+			prApartmentsField.setText(update[10]);
+		}
 	}
 
 }
