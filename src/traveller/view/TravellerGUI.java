@@ -35,6 +35,7 @@ public class TravellerGUI {
 
 		return window.getInput();
 	}
+
 	public void update(String[] update) {
 		View window = (View) this.getActiveWindow();
 		window.update(update);
@@ -61,6 +62,9 @@ public class TravellerGUI {
 					this.handler);
 		} else if (frame.equals("AddHotelFrame")) {
 			AddHotelFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
+		} else if (frame.equals("EditHotelFrame")) {
+			EditHotelFrame.getInstance(this.getActiveWindow(), this.handler,
 					this.handler);
 		}
 	}

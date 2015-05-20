@@ -73,6 +73,22 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	public Hotel getHotel(int index) {
 		return hList.getHotel(index);
 	}
+	public String[] getHotelString(int index) {
+		Hotel hotel = hList.getHotel(index);
+		String[] a = new String[11];
+		a[0] = hotel.getName();
+		a[1] = hotel.getCity();
+		a[2] = hotel.getAddress();
+		a[3] = "" + hotel.getNumberOfRooms(0);
+		a[4] = "" + hotel.getPriceOfRooms(0);
+		a[5] = "" + hotel.getNumberOfRooms(1);
+		a[6] = "" + hotel.getPriceOfRooms(1);
+		a[7] = "" + hotel.getNumberOfRooms(2);
+		a[8] = "" + hotel.getPriceOfRooms(2);
+		a[9] = "" + hotel.getNumberOfRooms(3);
+		a[10] = "" + hotel.getPriceOfRooms(3);
+		return a;
+	}
 
 	public String getHotels() {
 		return hList.toString();

@@ -38,9 +38,10 @@ public class TravellerClientController {
 			this.controllerReserveFrame(command);
 		} else if (this.gui.getActiveWindow().getName().equals("AdminFrame")) {
 			this.controllerAdminFrame(command);
-		}
-		else if (this.gui.getActiveWindow().getName().equals("AddHotelFrame")) {
+		} else if (this.gui.getActiveWindow().getName().equals("AddHotelFrame")) {
 			this.controllerAddHotelFrame(command);
+		} else if (this.gui.getActiveWindow().getName().equals("EditHotelFrame")) {
+			this.controllerEditHotelFrame(command);
 		}
 	}
 
@@ -78,15 +79,28 @@ public class TravellerClientController {
 		if (command.equals("Add Hotel")) {
 			this.gui.display("AddHotelFrame");
 		}
+		else if(command.equals("Edit Hotel")){
+			this.gui.display("EditHotelFrame");
+		}
 	}
 
 	public void controllerAddHotelFrame(String command) {
 		if (command.equals("Add hotel")) {
 			String[] input = this.gui.getInput();
 			model.addHotel(input);
+		} else if (command.equals("Clear")) {
+			this.gui.update(null);
+		}
+	}
+	public void controllerEditHotelFrame(String command) {
+		if(command.equals("Get info")){
+			String[] input = this.gui.getInput();
+			String[] answer = model.editHotel(Integer.parseInt(input[0]));
+			this.gui.update(answer);
 		}
 		else if(command.equals("Clear")){
 			this.gui.update(null);
 		}
 	}
+
 }

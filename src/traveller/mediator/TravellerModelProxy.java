@@ -16,14 +16,14 @@ public class TravellerModelProxy extends Thread {
 		try {
 			this.model = model;
 			socket = new Socket(HOST, PORT);
-//			System.out.println("Connected to server");
+			// System.out.println("Connected to server");
 			outToServer = new ObjectOutputStream(socket.getOutputStream());
 			inFromServer = new ObjectInputStream(socket.getInputStream());
-//			ClientRecieverThread recieverThread = new ClientRecieverThread(
-//					inFromServer, model);
-//			recieverThread.setDaemon(true);
-//			recieverThread.start();
-//			System.out.println("Receiver thread started");
+			// ClientRecieverThread recieverThread = new ClientRecieverThread(
+			// inFromServer, model);
+			// recieverThread.setDaemon(true);
+			// recieverThread.start();
+			// System.out.println("Receiver thread started");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -41,12 +41,24 @@ public class TravellerModelProxy extends Thread {
 		return answer;
 	}
 
-	public void addHotel(String[] input){
+	public void addHotel(String[] input) {
 		try {
 			outToServer.writeObject("2");
 			outToServer.writeObject(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String[] editHotel(int input) {
+		String[] answer = null;
+		try {
+			outToServer.writeObject("3");
+			outToServer.writeObject(input);
+			answer = (String[]) inFromServer.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return answer;
 	}
 }
