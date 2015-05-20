@@ -119,12 +119,12 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				Integer.parseInt(hotel[6]), Double.parseDouble(hotel[7]),
 				Integer.parseInt(hotel[8]), Double.parseDouble(hotel[9]),
 				Integer.parseInt(hotel[10]), Double.parseDouble(hotel[11]));
-		hList.editHotel(Integer.parseInt(hotel[0])+1, hotel2);
-//		try {
-//			database.editHotel(hotel2);
-//		} catch (Exception e) {
-//			e.getMessage();
-//		}
+		hList.editHotel(Integer.parseInt(hotel[0]), hotel2);
+		try {
+			database.editHotel(hotel2,Integer.parseInt(hotel[0]));
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 	public void showAnswer(String answer) {
 		setChanged();
