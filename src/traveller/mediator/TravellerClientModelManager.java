@@ -52,8 +52,11 @@ public class TravellerClientModelManager extends Observable implements Traveller
    public void addHotel(String[] input){
 	   proxy.addHotel(input);
    }
-   public String[] editHotel(int input){
-	   return proxy.editHotel(input);
+   public String[] editHotelGetInfo(int input){
+	   return proxy.editHotelGetInfo(input);
+   }
+   public void editHotel(String[] input){
+	   proxy.editHotel(input);
    }
    @Override
    public ArrayList<Hotel> searchHotelByAddress(String address)

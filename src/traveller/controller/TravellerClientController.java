@@ -40,8 +40,11 @@ public class TravellerClientController {
 			this.controllerAdminFrame(command);
 		} else if (this.gui.getActiveWindow().getName().equals("AddHotelFrame")) {
 			this.controllerAddHotelFrame(command);
-		} else if (this.gui.getActiveWindow().getName().equals("EditHotelFrame")) {
+		} else if (this.gui.getActiveWindow().getName()
+				.equals("EditHotelFrame")) {
 			this.controllerEditHotelFrame(command);
+		} else if (this.gui.getActiveWindow().getName().equals("GuestFrame")) {
+			this.controllerGuestFrame(command);
 		}
 	}
 
@@ -52,9 +55,10 @@ public class TravellerClientController {
 			String[] input = this.gui.getInput();
 			boolean[] answer = model.login(input);
 			if (answer[0] == false && answer[1] == false) {
-
 			} else if (answer[0] == true && answer[1] == false) {
 				this.gui.display("AdminFrame");
+			} else if (answer[0] == true && answer[1] == true) {
+				this.gui.display("GuestFrame");
 			}
 			this.gui.update(null);
 		}
@@ -78,8 +82,7 @@ public class TravellerClientController {
 	public void controllerAdminFrame(String command) {
 		if (command.equals("Add Hotel")) {
 			this.gui.display("AddHotelFrame");
-		}
-		else if(command.equals("Edit Hotel")){
+		} else if (command.equals("Edit Hotel")) {
 			this.gui.display("EditHotelFrame");
 		}
 	}
@@ -92,15 +95,24 @@ public class TravellerClientController {
 			this.gui.update(null);
 		}
 	}
+
 	public void controllerEditHotelFrame(String command) {
-		if(command.equals("Get info")){
+		if (command.equals("Get info")) {
 			String[] input = this.gui.getInput();
-			String[] answer = model.editHotel(Integer.parseInt(input[0]));
+			String[] answer = model
+					.editHotelGetInfo(Integer.parseInt(input[0]));
 			this.gui.update(answer);
-		}
-		else if(command.equals("Clear")){
+		} else if (command.equals("Clear")) {
 			this.gui.update(null);
+		} else if (command.equals("Edit hotel")) {
+			String[] input = this.gui.getInput();
+			model.editHotel(input);
 		}
 	}
 
+	public void controllerGuestFrame(String command){
+		if(command.equals("")){
+			
+		}
+	}
 }

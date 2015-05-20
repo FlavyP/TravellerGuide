@@ -73,7 +73,7 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	public Hotel getHotel(int index) {
 		return hList.getHotel(index);
 	}
-	public String[] getHotelString(int index) {
+	public String[] getHotelInfo(int index) {
 		Hotel hotel = hList.getHotel(index);
 		String[] a = new String[11];
 		a[0] = hotel.getName();
@@ -113,7 +113,19 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		}
 		return b;
 	}
-
+	public void editHotel(String[] hotel){
+		Hotel hotel2 = new Hotel(Integer.parseInt(hotel[0]),hotel[1], hotel[2], hotel[3],
+				Integer.parseInt(hotel[4]), Double.parseDouble(hotel[5]),
+				Integer.parseInt(hotel[6]), Double.parseDouble(hotel[7]),
+				Integer.parseInt(hotel[8]), Double.parseDouble(hotel[9]),
+				Integer.parseInt(hotel[10]), Double.parseDouble(hotel[11]));
+		hList.editHotel(Integer.parseInt(hotel[0])+1, hotel2);
+//		try {
+//			database.editHotel(hotel2);
+//		} catch (Exception e) {
+//			e.getMessage();
+//		}
+	}
 	public void showAnswer(String answer) {
 		setChanged();
 		notifyObservers(answer);

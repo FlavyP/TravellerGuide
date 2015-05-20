@@ -50,7 +50,7 @@ public class TravellerModelProxy extends Thread {
 		}
 	}
 
-	public String[] editHotel(int input) {
+	public String[] editHotelGetInfo(int input) {
 		String[] answer = null;
 		try {
 			outToServer.writeObject("3");
@@ -60,5 +60,13 @@ public class TravellerModelProxy extends Thread {
 			e.printStackTrace();
 		}
 		return answer;
+	}
+	public void editHotel(String[] input){
+		try {
+			outToServer.writeObject("4");
+			outToServer.writeObject(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

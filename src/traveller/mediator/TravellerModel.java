@@ -16,5 +16,5 @@ public interface TravellerModel
    public Hotel getHotel(int index);
    public void showAnswer(String answer);
    public void addUser(User user);
-   
+   public void editHotel(String[] hotel);
 }

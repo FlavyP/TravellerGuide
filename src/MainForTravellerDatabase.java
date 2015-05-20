@@ -29,10 +29,6 @@ public class MainForTravellerDatabase
    {
       System.out.println(hotellist);
       System.out.println(userlist);
-      
-      Hotel newhotel = new Hotel(1, "asfsdfsd", "gdfgdfg", "sdfsdfsd", 0, 0, 0, 0, 0, 0, 0, 0);
-      
-      database.editHotel(newhotel, 5);
    }
 
 }

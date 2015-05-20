@@ -42,10 +42,11 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					break;
 				case 3:
 					int input3 = (int) inFromClient.readObject();
-					send(model.getHotelString(input3-1));
+					send(model.getHotelInfo(input3-1));
 					break;
 				case 4:
-					// model.reserveItem();
+					String[] input4 = (String[]) inFromClient.readObject();
+					model.editHotel(input4);
 					break;
 				case 5:
 					// model.searchItem();
