@@ -135,4 +135,15 @@ public class RegisterFrame extends JDialog implements View {
 		registerButton.addActionListener(actionListener);
 		cancelButton.addActionListener(actionListener);
 	}
+
+	@Override
+	public String[] getInput() {
+		String[] input = new String[5];
+		input[0] = nameField.getText();
+		input[1] = emailField.getText();
+		input[2] = phoneNumberField.getText();
+		input[3] = addressField.getText();
+		input[4] = passField.getText();
+		return input;
+	}
 }

@@ -65,4 +65,11 @@ public class LogsFrame extends JFrame implements View {
 	public static void main(String[] args) {
 		LogsFrame logs = new LogsFrame();
 	}
+
+
+	@Override
+	public String[] getInput() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

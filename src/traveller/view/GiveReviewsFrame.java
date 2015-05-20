@@ -20,7 +20,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 	
 	private JLabel commentLabel;
 	
-	private JTextArea commentField;
+	private JTextArea commentArea;
 	
 	private JButton submitButton;
 	private JButton cancelButton;
@@ -58,7 +58,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 	@Override
 	public void createComponents() {
 		commentLabel = new JLabel("Comment: ");
-		commentField = new JTextArea();
+		commentArea = new JTextArea();
 		submitButton = new JButton("Submit");
 		cancelButton = new JButton("Cancel");
 		comboBox = new JComboBox<String>(review);
@@ -80,7 +80,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 	public void addComponentsToFrame() {
 		this.setContentPane(contentPanel);
 		commentPanel.add(commentLabel);
-		commentPanel.add(commentField);
+		commentPanel.add(commentArea);
 		buttonsPanel.add(cancelButton);
 		buttonsPanel.add(submitButton);
 		contentPanel.add(comboBox, BorderLayout.NORTH);
@@ -93,6 +93,13 @@ public class GiveReviewsFrame extends JDialog implements View {
 		submitButton.addActionListener(actionListener);
 		cancelButton.addActionListener(actionListener);
 		comboBox.addActionListener(actionListener);
+	}
+	@Override
+	public String[] getInput() {
+		String[] input = new String[2];
+		input[0] = String.valueOf(this.comboBox.getSelectedIndex());
+		input[1] = commentArea.getText();
+		return input;
 	}
 
 }

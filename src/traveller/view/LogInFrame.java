@@ -89,7 +89,14 @@ public class LogInFrame extends JFrame implements View {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setName("LogInFrame");
 	}
-
+	
+	public String[] getInput(){
+		String[] input = new String[2];
+		input[0] = userField.getText();
+		String password = new String(passField.getPassword());
+		input[1] = password;
+		return input;
+	}
 	@Override
 	public void addComponentsToFrame() {
 		this.setContentPane(contentPanel);

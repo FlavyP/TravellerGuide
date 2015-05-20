@@ -28,91 +28,103 @@ import javax.swing.JTextField;
 import javax.swing.event.CaretListener;
 
 public class InterestPointsFrame extends JFrame implements View {
+	private JPanel contentPanel;
+	private JPanel ipPanel;
+	private JPanel buttonsPanel;
 
-   private JPanel contentPanel;
-   private JPanel ipPanel;
-   private JPanel buttonsPanel;
-   
-   private JComboBox<String> comboBox;
-   private String[] ip = {"CAFE","MUSEUM","NIGHT_CLUB","RESTAURANT","SHOPPING_MALL"};
-   private JLabel iplabel;
-   private JButton getBtn;
-   private JButton getDirectionsBtn;
-   private JList<String> list;
-   private JScrollPane scrollPane;
+	private JComboBox<String> comboBox;
+	private String[] ip = { "CAFE", "MUSEUM", "NIGHT_CLUB", "RESTAURANT",
+			"SHOPPING_MALL" };
+	private JLabel iplabel;
+	private JButton getBtn;
+	private JButton getDirectionsBtn;
+	private JList<String> list;
+	private JScrollPane scrollPane;
 
-   private static InterestPointsFrame instance = null;
+	private static InterestPointsFrame instance = null;
 
-   public InterestPointsFrame(Window owner, ActionListener actionListener, WindowFocusListener focusListener) {
-      super("Interest Points");
-      createComponents();
-      initializeComponents();
-      addComponentsToFrame();
-      addActionListeners(actionListener);
-      addWindowFocusListener(focusListener);
-      setVisible(true);
-   }
+	public InterestPointsFrame(Window owner, ActionListener actionListener,
+			WindowFocusListener focusListener) {
+		super("Interest Points");
+		createComponents();
+		initializeComponents();
+		addComponentsToFrame();
+		addActionListeners(actionListener);
+		addWindowFocusListener(focusListener);
+		setVisible(true);
+	}
 
-// public static LogInFrame getInstance() {
-//    return instance;
-// }
+	// public static LogInFrame getInstance() {
+	// return instance;
+	// }
 
-   public static InterestPointsFrame getInstance(Window owner,
-         ActionListener actionListener, WindowFocusListener focusListener) {
-      if (instance == null) {
-         instance = new InterestPointsFrame(owner, actionListener, focusListener);
-         instance.setVisible(true);
-      }
-      return instance;
-   }
+	public static InterestPointsFrame getInstance(Window owner,
+			ActionListener actionListener, WindowFocusListener focusListener) {
+		if (instance == null) {
+			instance = new InterestPointsFrame(owner, actionListener,
+					focusListener);
+			instance.setVisible(true);
+		}
+		return instance;
+	}
 
-   @Override
-   public void createComponents() {
-      
-      iplabel = new JLabel("Type Of Interest Points: ");
-      comboBox = new JComboBox<String>(ip);
-      getBtn = new JButton("GET");
-      getDirectionsBtn = new JButton("GET DIRECTIONS");
-      contentPanel = new JPanel(new BorderLayout());
-      ipPanel = new JPanel(new FlowLayout());
-      buttonsPanel = new JPanel(new FlowLayout());
-      String[] array = {"sfsdgsd", "sdgsdgsd", "gdgdf", "gdfgdfgdf", "sdgsdfgsdg", "gdsgdgdf", "gdfgdfgdf", "gsdfgdfdfg", "sdgsdgsdgsdgsdgsdgsdgsdgsdgsdg"};
-      list = new JList<String>(array);
-      scrollPane = new JScrollPane();
-      scrollPane.setViewportView(list);
-   }
-   @Override
-   public void initializeComponents() {
-      setSize(400, 200);
-      setLocationRelativeTo(null); // center of the screen
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setName("InterestPointsFrame");
-   }
+	@Override
+	public void createComponents() {
 
-   @Override
-   public void addComponentsToFrame() {
-      this.setContentPane(contentPanel);
-      
-      ipPanel.add(iplabel);
-      ipPanel.add(comboBox);
-      ipPanel.add(scrollPane);
-      buttonsPanel.add(getBtn);
-      buttonsPanel.add(getDirectionsBtn);
-      
-      contentPanel.add(ipPanel, BorderLayout.NORTH);
-      contentPanel.add(scrollPane, BorderLayout.CENTER);
-      contentPanel.add(buttonsPanel, BorderLayout.SOUTH);
-   }
+		iplabel = new JLabel("Type Of Interest Points: ");
+		comboBox = new JComboBox<String>(ip);
+		getBtn = new JButton("GET");
+		getDirectionsBtn = new JButton("GET DIRECTIONS");
+		contentPanel = new JPanel(new BorderLayout());
+		ipPanel = new JPanel(new FlowLayout());
+		buttonsPanel = new JPanel(new FlowLayout());
+		String[] array = { "sfsdgsd", "sdgsdgsd", "gdgdf", "gdfgdfgdf",
+				"sdgsdfgsdg", "gdsgdgdf", "gdfgdfgdf", "gsdfgdfdfg",
+				"sdgsdgsdgsdgsdgsdgsdgsdgsdgsdg" };
+		list = new JList<String>(array);
+		scrollPane = new JScrollPane();
+		scrollPane.setViewportView(list);
+	}
 
-   @Override
-   public void addActionListeners(ActionListener actionListener) {
-      
-      /*getButton.addActionListener(actionListener);
-      comboBox.addActionListener(actionListener);
-      registerButton.addActionListener(actionListener);
-      logInButton.addActionListener(actionListener);*/
-   }
-   
-   
+	@Override
+	public void initializeComponents() {
+		setSize(400, 200);
+		setLocationRelativeTo(null); // center of the screen
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setName("InterestPointsFrame");
+	}
 
+	@Override
+	public void addComponentsToFrame() {
+		this.setContentPane(contentPanel);
+
+		ipPanel.add(iplabel);
+		ipPanel.add(comboBox);
+		ipPanel.add(scrollPane);
+		buttonsPanel.add(getBtn);
+		buttonsPanel.add(getDirectionsBtn);
+
+		contentPanel.add(ipPanel, BorderLayout.NORTH);
+		contentPanel.add(scrollPane, BorderLayout.CENTER);
+		contentPanel.add(buttonsPanel, BorderLayout.SOUTH);
+	}
+
+	@Override
+	public void addActionListeners(ActionListener actionListener) {
+
+		/*
+		 * getButton.addActionListener(actionListener);
+		 * comboBox.addActionListener(actionListener); <<<<<<< HEAD
+		 * 
+		 * ======= registerButton.addActionListener(actionListener);
+		 * logInButton.addActionListener(actionListener);
+		 */
+	}
+
+	@Override
+	public String[] getInput() {
+		String[] input = new String[1];
+		input[0] = String.valueOf(this.comboBox.getSelectedIndex());
+		return input;
+	}
 }

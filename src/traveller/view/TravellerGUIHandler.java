@@ -6,12 +6,13 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 
 import traveller.controller.Controller;
+import traveller.controller.TravellerClientController;
 
 public class TravellerGUIHandler implements ActionListener, WindowFocusListener {
 	private TravellerGUI gui;
-	private Controller controller;
+	private TravellerClientController controller;
 
-	public TravellerGUIHandler(TravellerGUI gui, Controller controller) {
+	public TravellerGUIHandler(TravellerGUI gui, TravellerClientController controller) {
 		this.gui = gui;
 		this.controller = controller;
 	}

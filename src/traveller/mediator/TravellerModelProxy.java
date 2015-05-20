@@ -10,36 +10,40 @@ public class TravellerModelProxy extends Thread {
 	private Socket socket;
 	private ObjectOutputStream outToServer;
 	private ObjectInputStream inFromServer;
-	private TravellerModel model;
+	private TravellerClientModelManager model;
 
-	public TravellerModelProxy(TravellerModel model) {
+	public TravellerModelProxy(TravellerClientModelManager model) {
 		try {
 			this.model = model;
 			socket = new Socket(HOST, PORT);
 //			System.out.println("Connected to server");
 			outToServer = new ObjectOutputStream(socket.getOutputStream());
 			inFromServer = new ObjectInputStream(socket.getInputStream());
-			ClientRecieverThread recieverThread = new ClientRecieverThread(
-					inFromServer, model);
-			recieverThread.setDaemon(true);
-			recieverThread.start();
+//			ClientRecieverThread recieverThread = new ClientRecieverThread(
+//					inFromServer, model);
+//			recieverThread.setDaemon(true);
+//			recieverThread.start();
 //			System.out.println("Receiver thread started");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void searchHotelByCity() {
+	public boolean[] login(String[] input) {
+		boolean[] answer = null;
 		try {
 			outToServer.writeObject("1");
+			outToServer.writeObject(input);
+			answer = (boolean[]) inFromServer.readObject();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return answer;
 	}
 
-	public void writeToServer(String message) {
+	public void writeToServer(String[] input) {
 		try {
-			outToServer.writeObject(message);
+			outToServer.writeObject(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

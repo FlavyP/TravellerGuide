@@ -114,4 +114,16 @@ public class ReserveFrame extends JDialog implements View {
 		cancelButton.addActionListener(actionListener);
 	}
 
+	@Override
+	public String[] getInput() {
+		String[] input = new String[6];
+		input[0] = checkInField.getText();
+		input[1] = checkOutField.getText();
+		input[2] = sRnField.getText();
+		input[3] = dRnField.getText();
+		input[4] = tRnField.getText();
+		input[5] = anField.getText();
+		return input;
+	}
+
 }

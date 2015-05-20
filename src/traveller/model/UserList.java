@@ -36,4 +36,12 @@ public class UserList
       
       return msg;
    }
+   
+   public User getUser(String email, String password){
+	   for(int i=0;i<userList.size();i++){
+		   if(userList.get(i).getEmail().equals(email) && userList.get(i).getPassword().equals(password))
+			   return userList.get(i);
+	   }
+	   return null;
+   }
 }

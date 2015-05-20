@@ -11,7 +11,7 @@ public class Main {
 	      {
 	         TravellerGUI gui = new TravellerGUI();
 	         Controller controller = new Controller(gui);
-	         gui.startGUI(controller);
+//	         gui.startGUI(controller);
 	      }
 	      catch (Exception e)
 	      {

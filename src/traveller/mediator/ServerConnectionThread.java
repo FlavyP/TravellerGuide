@@ -6,9 +6,9 @@ import java.net.Socket;
 public class ServerConnectionThread extends Thread
 {
    private static final int PORT = 2910;
-   private TravellerModel model;
+   private TravellerModelManager model;
    
-   public ServerConnectionThread (TravellerModel model)
+   public ServerConnectionThread (TravellerModelManager model)
    {
       this.model = model;
    }

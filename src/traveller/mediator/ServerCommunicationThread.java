@@ -14,9 +14,9 @@ import traveller.model.Hotel;
 public class ServerCommunicationThread extends Thread implements Observer {
 	private ObjectInputStream inFromClient;
 	private ObjectOutputStream outToClient;
-	private TravellerModel model;
+	private TravellerModelManager model;
 
-	public ServerCommunicationThread(Socket clientSocket, TravellerModel model)
+	public ServerCommunicationThread(Socket clientSocket, TravellerModelManager model)
 			throws IOException {
 		inFromClient = new ObjectInputStream(clientSocket.getInputStream());
 		outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -32,18 +32,9 @@ public class ServerCommunicationThread extends Thread implements Observer {
 						.readObject());
 				switch (choice) {
 				case 1:
-					send("Enter city: ");
-					String input = inFromClient.readObject().toString();
-					String msg = "";
-					ArrayList<Hotel> list = model.searchHotelByCity(input);
-					for (int i = 0; i < list.size(); i++) {
-						msg += list.get(i) + "\n";
-					}
-
-					if (list.size() == 0) {
-						msg = "No hotel: \"" + input + "\" found";
-					}
-					send(msg);
+					String[] input = (String[]) inFromClient.readObject();
+					boolean[] b = model.getUser(input[0], input[1]);
+					send(b);
 					break;
 				case 2:
 					break;
@@ -71,6 +62,16 @@ public class ServerCommunicationThread extends Thread implements Observer {
 	}
 
 	public void send(String message) {
+		try {
+			outToClient.writeObject(message);
+		} catch (Exception e) {
+			// no client connection
+			System.out.println("Exception for client broadcast to client - "
+					+ e.getMessage());
+
+		}
+	}
+	public void send(Object message) {
 		try {
 			outToClient.writeObject(message);
 		} catch (Exception e) {

@@ -63,4 +63,12 @@ public class SearchFrame1 extends JFrame implements View {
 		SearchFrame1 frame = new SearchFrame1();
 	}
 
+	@Override
+	public String[] getInput() {
+		String[] input = new String[2];
+		input[0] = String.valueOf(this.comboList.getSelectedIndex());
+		input[1] = searchName.getText();
+		return input;
+	}
+
 }

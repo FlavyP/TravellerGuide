@@ -152,4 +152,21 @@ public class EditHotelFrame extends JFrame implements View
       deleteButton.addActionListener(actionListener);
    }
 
+@Override
+public String[] getInput() {
+	String[] input = new String[11];
+	input[0] = hotelNameField.getText();
+	input[1] = hotelCityField.getText();
+	input[2] = hotelAddressField.getText();
+	input[3] = nrSingleRoomsField.getText();
+	input[4] = nrDoubleRoomsField.getText();
+	input[5] = nrTripleRoomsField.getText();
+	input[6] = nrApartmentsField.getText();
+	input[7] = prSingleRoomsField.getText();
+	input[8] = prDoubleRoomsField.getText();
+	input[9] = prTripleRoomsField.getText();
+	input[10] = prApartmentsField.getText();
+	return input;
+}
+
 }

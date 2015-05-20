@@ -65,5 +65,10 @@ public class GuestFrame extends JFrame implements View {
 	public static void main(String[] args) {
 		GuestFrame admin = new GuestFrame();
 	}
+	@Override
+	public String[] getInput() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

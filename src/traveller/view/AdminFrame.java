@@ -65,5 +65,10 @@ public class AdminFrame extends JFrame implements View {
 	public static void main(String[] args) {
 		AdminFrame admin = new AdminFrame();
 	}
+	@Override
+	public String[] getInput() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

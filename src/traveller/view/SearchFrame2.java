@@ -76,4 +76,9 @@ public class SearchFrame2 extends JFrame implements View {
 
 		SearchFrame2 search = new SearchFrame2();
 	}
+
+	@Override
+	public String[] getInput() {
+		return null;
+	}
 }

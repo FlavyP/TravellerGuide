@@ -91,7 +91,7 @@ public class AddHotelFrame extends JFrame implements View
       setLocationRelativeTo(null); // center of the screen
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setResizable(false);
-      this.setName("Add Hotel");
+      this.setName("AddHotelFrame");
    }
    @Override
    public void addComponentsToFrame()
@@ -139,4 +139,21 @@ public class AddHotelFrame extends JFrame implements View
       addHotelButton.addActionListener(actionListener);
       clearButton.addActionListener(actionListener);
    }
+
+@Override
+public String[] getInput() {
+	String[] input = new String[11];
+	input[0] = hotelNameField.getText();
+	input[1] = hotelCityField.getText();
+	input[2] = hotelAddressField.getText();
+	input[3] = nrSingleRoomsField.getText();
+	input[4] = nrDoubleRoomsField.getText();
+	input[5] = nrTripleRoomsField.getText();
+	input[6] = nrApartmentsField.getText();
+	input[7] = prSingleRoomsField.getText();
+	input[8] = prDoubleRoomsField.getText();
+	input[9] = prTripleRoomsField.getText();
+	input[10] = prApartmentsField.getText();
+	return input;
+}
 }
