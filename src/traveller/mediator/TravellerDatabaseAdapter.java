@@ -92,7 +92,8 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 	@Override
 	public int addHotel(Hotel hotel) throws IOException {
 		int sum = 0;
-
+		
+		int hotelid = hotel.getHotelId();
 		String name = hotel.getName();
 		String city = hotel.getCity();
 		String address = hotel.getAddress();
@@ -105,13 +106,13 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 		int nA = hotel.getNumberOfRooms(3);
 		double pA = hotel.getPriceOfRooms(3);
 
-		String sql = "INSERT INTO Hotel (name, city, address, numberOfSingleRooms,"
+		String sql = "INSERT INTO Hotel (hotelID, name, city, address, numberOfSingleRooms,"
 				+ "priceOfASingleRooms, numberOfDoubleRooms, priceOfADoubleRooms, "
 				+ "numberOfTripleRooms, priceOfATripleRooms, numberOfApartments, priceOfAnApartment"
-				+ ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
-			sum += db.update(sql, name, city, address, nSr, pSr, nDr, pDr, nTr,
+			sum += db.update(sql, hotelid, name, city, address, nSr, pSr, nDr, pDr, nTr,
 					pTr, nA, pA);
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
@@ -178,7 +179,7 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 	@Override
 	public int editHotel(Hotel hotel, int pid) throws IOException {
 		int sum = 0;
-		int hid = hotel.getHotelId();
+		int hotelid = hotel.getHotelId();
 		String name = hotel.getName();
 		String city = hotel.getCity();
 		String address = hotel.getAddress();
@@ -196,7 +197,7 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 				+ pid;
 
 		try {
-			sum += db.update(sql, hid, name, city, address, nSr, pSr, nDr, pDr,
+			sum += db.update(sql, hotelid, name, city, address, nSr, pSr, nDr, pDr,
 					nTr, pTr, nA, pA);
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
