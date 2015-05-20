@@ -206,9 +206,10 @@ public class TravellerDatabaseAdapter implements TravellerPersistence
    }
 
    @Override
-   public int EditHotel(Hotel hotel) throws IOException
+   public int editHotel(Hotel hotel, int pid) throws IOException
    {
       int sum = 0;
+      int hid = hotel.getHotelId();
       String name = hotel.getName();
       String city = hotel.getCity();
       String address = hotel.getAddress();
@@ -221,12 +222,12 @@ public class TravellerDatabaseAdapter implements TravellerPersistence
       int nA = hotel.getNumberOfRooms(3);
       double pA = hotel.getPriceOfRooms(3);
 
-      String sql = "UPDATE Hotel SET name = ?, city = ?, address = ?, numberOfSingleRooms = ?, priceOfASingleRooms = ?, numberOfDoubleRooms = ?, priceOfADoubleRooms = ?, numberOfTripleRooms = ?, "
-            + "priceOfATripleRooms = ?, numberOfApartments = ?, priceOfAnApartment = ? WHERE name = ? AND address = ?";
+      String sql = "UPDATE Hotel SET hotelID=?, name=?, city=?, address=?, numberOfSingleRooms=?, priceOfASingleRooms=?, numberOfDoubleRooms=?, priceOfADoubleRooms=?, numberOfTripleRooms=?, "
+            + "priceOfATripleRooms=?, numberOfApartments=?, priceOfAnApartment=? WHERE hotelID=" + pid;
       
       try
       {
-         sum += db.update(sql, name, city, address, nSr, pSr, nDr, pDr, nTr, pTr, nA, pA);
+          sum+=db.update(sql, hid, name, city, address, nSr, pSr, nDr, pDr, nTr, pTr, nA, pA);
       }
       catch (Exception e)
       {
