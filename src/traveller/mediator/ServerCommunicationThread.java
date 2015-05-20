@@ -32,11 +32,13 @@ public class ServerCommunicationThread extends Thread implements Observer {
 						.readObject());
 				switch (choice) {
 				case 1:
-					String[] input = (String[]) inFromClient.readObject();
-					boolean[] b = model.getUser(input[0], input[1]);
+					String[] input1 = (String[]) inFromClient.readObject();
+					boolean[] b = model.getUser(input1[0], input1[1]);
 					send(b);
 					break;
 				case 2:
+					String[] input2 = (String[]) inFromClient.readObject();
+					model.addHotel(input2);
 					break;
 				case 3:
 					// model.returnItem();

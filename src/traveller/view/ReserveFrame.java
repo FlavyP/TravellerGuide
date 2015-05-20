@@ -126,4 +126,10 @@ public class ReserveFrame extends JDialog implements View {
 		return input;
 	}
 
+	@Override
+	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

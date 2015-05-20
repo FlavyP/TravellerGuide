@@ -85,4 +85,9 @@ public class AdminFrame extends JDialog implements View {
 		instance = null;
 		super.dispose();
 	}
+	@Override
+	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -101,5 +101,10 @@ public class GiveReviewsFrame extends JDialog implements View {
 		input[1] = commentArea.getText();
 		return input;
 	}
+	@Override
+	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

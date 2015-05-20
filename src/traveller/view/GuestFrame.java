@@ -70,5 +70,10 @@ public class GuestFrame extends JFrame implements View {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

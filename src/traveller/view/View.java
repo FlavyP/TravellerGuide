@@ -12,4 +12,6 @@ public interface View {
 	public void addActionListeners(ActionListener actionListener);
 	
 	public String[] getInput();
+	
+	public void update(String[] update);
 }

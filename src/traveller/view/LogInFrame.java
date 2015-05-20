@@ -117,4 +117,10 @@ public class LogInFrame extends JFrame implements View {
 		logInButton.addActionListener(actionListener);
 	}
 
+	@Override
+	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

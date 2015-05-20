@@ -23,6 +23,7 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		server.start();
 		try {
 			this.userList = database.loadUsers();
+			this.hList = database.loadHotels();
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -31,6 +32,21 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	@Override
 	public void addHotel(Hotel hotel) {
 		hList.addHotel(hotel);
+	}
+
+	@Override
+	public void addHotel(String[] hotel) {
+		Hotel hotel2 = new Hotel(hList.size()+1, hotel[0], hotel[1], hotel[2],
+				Integer.parseInt(hotel[3]), Double.parseDouble(hotel[4]),
+				Integer.parseInt(hotel[5]), Double.parseDouble(hotel[6]),
+				Integer.parseInt(hotel[7]), Double.parseDouble(hotel[8]),
+				Integer.parseInt(hotel[9]), Double.parseDouble(hotel[10]));
+		hList.addHotel(hotel2);
+		try {
+			database.addHotel(hotel2);
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	@Override

@@ -39,6 +39,9 @@ public class TravellerClientController {
 		} else if (this.gui.getActiveWindow().getName().equals("AdminFrame")) {
 			this.controllerAdminFrame(command);
 		}
+		else if (this.gui.getActiveWindow().getName().equals("AddHotelFrame")) {
+			this.controllerAddHotelFrame(command);
+		}
 	}
 
 	public void controllerLogInFrame(String command) {
@@ -74,6 +77,16 @@ public class TravellerClientController {
 	public void controllerAdminFrame(String command) {
 		if (command.equals("Add Hotel")) {
 			this.gui.display("AddHotelFrame");
+		}
+	}
+
+	public void controllerAddHotelFrame(String command) {
+		if (command.equals("Add hotel")) {
+			String[] input = this.gui.getInput();
+			model.addHotel(input);
+		}
+		else if(command.equals("Clear")){
+			this.gui.update(null);
 		}
 	}
 }

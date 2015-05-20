@@ -158,12 +158,12 @@ public class AddHotelFrame extends JDialog implements View {
 		input[1] = hotelCityField.getText();
 		input[2] = hotelAddressField.getText();
 		input[3] = nrSingleRoomsField.getText();
-		input[4] = nrDoubleRoomsField.getText();
-		input[5] = nrTripleRoomsField.getText();
-		input[6] = nrApartmentsField.getText();
-		input[7] = prSingleRoomsField.getText();
-		input[8] = prDoubleRoomsField.getText();
-		input[9] = prTripleRoomsField.getText();
+		input[4] = prSingleRoomsField.getText();
+		input[5] = nrDoubleRoomsField.getText();
+		input[6] = prDoubleRoomsField.getText();
+		input[7] = nrTripleRoomsField.getText();
+		input[8] = prTripleRoomsField.getText();
+		input[9] = nrApartmentsField.getText();
 		input[10] = prApartmentsField.getText();
 		return input;
 	}
@@ -171,5 +171,22 @@ public class AddHotelFrame extends JDialog implements View {
 	public void dispose() {
 		instance = null;
 		super.dispose();
+	}
+
+	@Override
+	public void update(String[] update) {
+		if(update == null){
+			hotelNameField.setText("");
+			hotelCityField.setText("");
+			hotelAddressField.setText("");
+			nrSingleRoomsField.setText("");
+			prSingleRoomsField.setText("");
+			nrDoubleRoomsField.setText("");
+			prDoubleRoomsField.setText("");
+			nrTripleRoomsField.setText("");
+			prTripleRoomsField.setText("");
+			nrApartmentsField.setText("");
+			prApartmentsField.setText("");
+		}
 	}
 }

@@ -127,4 +127,10 @@ public class InterestPointsFrame extends JFrame implements View {
 		input[0] = String.valueOf(this.comboBox.getSelectedIndex());
 		return input;
 	}
+
+	@Override
+	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
 }

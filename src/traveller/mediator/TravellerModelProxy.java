@@ -41,8 +41,9 @@ public class TravellerModelProxy extends Thread {
 		return answer;
 	}
 
-	public void writeToServer(String[] input) {
+	public void addHotel(String[] input){
 		try {
+			outToServer.writeObject("2");
 			outToServer.writeObject(input);
 		} catch (Exception e) {
 			e.printStackTrace();

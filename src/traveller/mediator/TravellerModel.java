@@ -7,6 +7,7 @@ import traveller.model.*;
 public interface TravellerModel
 {
    public void addHotel(Hotel hotel);
+   public void addHotel(String[] hotel);
    public ArrayList<Hotel> searchHotelByName(String name);
    public ArrayList<Hotel> searchHotelByCity(String city);
    public ArrayList<Hotel> searchHotelByAddress(String address);

@@ -35,6 +35,10 @@ public class TravellerGUI {
 
 		return window.getInput();
 	}
+	public void update(String[] update) {
+		View window = (View) this.getActiveWindow();
+		window.update(update);
+	}
 
 	public void disposeActiveWindow() {
 		this.getActiveWindow().dispose();

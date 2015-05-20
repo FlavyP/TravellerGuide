@@ -146,4 +146,10 @@ public class RegisterFrame extends JDialog implements View {
 		input[4] = passField.getText();
 		return input;
 	}
+
+	@Override
+	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
 }

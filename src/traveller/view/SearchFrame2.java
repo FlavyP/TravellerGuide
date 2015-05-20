@@ -81,4 +81,10 @@ public class SearchFrame2 extends JFrame implements View {
 	public String[] getInput() {
 		return null;
 	}
+
+	@Override
+	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
 }
