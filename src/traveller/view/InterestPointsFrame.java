@@ -109,8 +109,8 @@ public class InterestPointsFrame extends JFrame implements View {
       comboBox.addActionListener(actionListener);
       /*registerButton.addActionListener(actionListener);
       logInButton.addActionListener(actionListener);*/
-      
-      
    }
+   
+   
 
 }
