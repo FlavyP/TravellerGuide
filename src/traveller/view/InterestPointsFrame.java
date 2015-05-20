@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -27,14 +28,6 @@ import javax.swing.JTextField;
 import javax.swing.event.CaretListener;
 
 public class InterestPointsFrame extends JFrame implements View {
-   private JButton registerButton;
-   private JButton logInButton;
-
-   private JLabel userLabel;
-   private JLabel passLabel;
-
-   private JTextField userField;
-   private JPasswordField passField;
 
    private JPanel contentPanel;
    private JPanel ipPanel;
@@ -43,7 +36,10 @@ public class InterestPointsFrame extends JFrame implements View {
    private JComboBox<String> comboBox;
    private String[] ip = {"CAFE","MUSEUM","NIGHT_CLUB","RESTAURANT","SHOPPING_MALL"};
    private JLabel iplabel;
-   private JButton getButton;
+   private JButton getBtn;
+   private JButton getDirectionsBtn;
+   private JList<String> list;
+   private JScrollPane scrollPane;
 
    private static InterestPointsFrame instance = null;
 
@@ -75,18 +71,22 @@ public class InterestPointsFrame extends JFrame implements View {
       
       iplabel = new JLabel("Type Of Interest Points: ");
       comboBox = new JComboBox<String>(ip);
-      getButton = new JButton("GET");
+      getBtn = new JButton("GET");
+      getDirectionsBtn = new JButton("GET DIRECTIONS");
       contentPanel = new JPanel(new BorderLayout());
       ipPanel = new JPanel(new FlowLayout());
       buttonsPanel = new JPanel(new FlowLayout());
+      String[] array = {"sfsdgsd", "sdgsdgsd", "gdgdf", "gdfgdfgdf", "sdgsdfgsdg", "gdsgdgdf", "gdfgdfgdf", "gsdfgdfdfg", "sdgsdgsdgsdgsdgsdgsdgsdgsdgsdg"};
+      list = new JList<String>(array);
+      scrollPane = new JScrollPane();
+      scrollPane.setViewportView(list);
    }
-
    @Override
    public void initializeComponents() {
       setSize(400, 200);
       setLocationRelativeTo(null); // center of the screen
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setName("LogInFrame");
+      this.setName("InterestPointsFrame");
    }
 
    @Override
@@ -95,19 +95,21 @@ public class InterestPointsFrame extends JFrame implements View {
       
       ipPanel.add(iplabel);
       ipPanel.add(comboBox);
-      buttonsPanel.add(getButton);
-      
+      ipPanel.add(scrollPane);
+      buttonsPanel.add(getBtn);
+      buttonsPanel.add(getDirectionsBtn);
       
       contentPanel.add(ipPanel, BorderLayout.NORTH);
+      contentPanel.add(scrollPane, BorderLayout.CENTER);
       contentPanel.add(buttonsPanel, BorderLayout.SOUTH);
    }
 
    @Override
    public void addActionListeners(ActionListener actionListener) {
       
-      getButton.addActionListener(actionListener);
+      /*getButton.addActionListener(actionListener);
       comboBox.addActionListener(actionListener);
-      /*registerButton.addActionListener(actionListener);
+      registerButton.addActionListener(actionListener);
       logInButton.addActionListener(actionListener);*/
    }
    
