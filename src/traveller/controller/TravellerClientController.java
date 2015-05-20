@@ -45,6 +45,8 @@ public class TravellerClientController {
 			this.controllerEditHotelFrame(command);
 		} else if (this.gui.getActiveWindow().getName().equals("GuestFrame")) {
 			this.controllerGuestFrame(command);
+		} else if (this.gui.getActiveWindow().getName().equals("SearchFrame1")) {
+			this.controllerSearchFrame1(command);
 		}
 	}
 
@@ -110,9 +112,14 @@ public class TravellerClientController {
 		}
 	}
 
-	public void controllerGuestFrame(String command){
-		if(command.equals("")){
-			
+	public void controllerGuestFrame(String command) {
+		if (command.equals("Search")) {
+			this.gui.display("SearchFrame1");
+		}
+	}
+	public void controllerSearchFrame1(String command){
+		if(command.equals("Search")){
+			this.gui.display("SearchFrame2");
 		}
 	}
 }

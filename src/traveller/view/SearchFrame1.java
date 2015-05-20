@@ -57,7 +57,7 @@ public class SearchFrame1 extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		this.setName("Search1");
+		this.setName("SearchFrame1");
 
 	}
 
