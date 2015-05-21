@@ -34,6 +34,19 @@ public class ReviewList
       return newRev;
    }
    
+   public ArrayList<Review> getReviewsByHotel(int hotelId)
+   {
+      ArrayList<Review> newRev = new ArrayList<Review>();
+      for(int i = 0; i < reviews.size(); i++)
+      {
+         if( reviews.get(i).getHotel().getHotelId() == hotelId)
+         {
+            newRev.add(reviews.get(i));
+         }
+      }
+      return newRev;
+   }
+   
    public double getAverage()
    {
       double average = 0;
