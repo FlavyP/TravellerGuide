@@ -51,6 +51,9 @@ public class TravellerClientController {
 			this.controllerSearchFrame2(command);
 		} else if (this.gui.getActiveWindow().getName().equals("ReserveFrame")) {
 			this.controllerReserveFrame(command);
+		} else if (this.gui.getActiveWindow().getName()
+				.equals("GiveReviewsFrame")) {
+			this.controllerGiveReviewsFrame(command);
 		}
 	}
 
@@ -75,10 +78,6 @@ public class TravellerClientController {
 			this.gui.disposeActiveWindow();
 			this.gui.display("LogInFrame");
 		}
-
-	}
-
-	public void controllerGiveReviewsFrame(String command) {
 
 	}
 
@@ -136,8 +135,7 @@ public class TravellerClientController {
 		} else if (command.equals("Reserve")) {
 			this.gui.copy(this.gui.getInput());
 			this.gui.display("ReserveFrame");
-		}
-		else if(command.equals("Give Reviews")){
+		} else if (command.equals("Give Reviews")) {
 			this.gui.display("GiveReviewsFrame");
 		}
 	}
@@ -149,6 +147,17 @@ public class TravellerClientController {
 			input[0] = "" + model.getUserId();
 			input[1] = hotelId[0];
 			model.reserve(input);
+		}
+	}
+
+	public void controllerGiveReviewsFrame(String command) {
+		String[][] hotelId = this.gui.getTableCopy();
+		if (command.equals("Submit")) {
+			String[] input = this.gui.getInput();
+			input[0] = "" + model.getUserId();
+			input[1] = hotelId[0][0];
+			model.addReview(input);
+			this.gui.disposeActiveWindow();
 		}
 	}
 }

@@ -57,6 +57,10 @@ public class ReviewList
       return average / reviews.size();
    }
    
+   public int size(){
+	   return reviews.size();
+   }
+   
    public String toString()
    {
       String msg = "";

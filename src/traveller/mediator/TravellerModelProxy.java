@@ -61,7 +61,8 @@ public class TravellerModelProxy extends Thread {
 		}
 		return answer;
 	}
-	public void editHotel(String[] input){
+
+	public void editHotel(String[] input) {
 		try {
 			outToServer.writeObject("4");
 			outToServer.writeObject(input);
@@ -69,7 +70,8 @@ public class TravellerModelProxy extends Thread {
 			e.printStackTrace();
 		}
 	}
-	public void deleteHotel(int hotelId){
+
+	public void deleteHotel(int hotelId) {
 		try {
 			outToServer.writeObject("5");
 			outToServer.writeObject(hotelId);
@@ -77,7 +79,8 @@ public class TravellerModelProxy extends Thread {
 			e.printStackTrace();
 		}
 	}
-	public String[][] searchHotel(String[] input){
+
+	public String[][] searchHotel(String[] input) {
 		String[][] answer = null;
 		try {
 			outToServer.writeObject("6");
@@ -88,9 +91,19 @@ public class TravellerModelProxy extends Thread {
 		}
 		return answer;
 	}
-	public void reserve(String[] input){
+
+	public void reserve(String[] input) {
 		try {
 			outToServer.writeObject("7");
+			outToServer.writeObject(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void addReview(String[] input) {
+		try {
+			outToServer.writeObject("8");
 			outToServer.writeObject(input);
 		} catch (Exception e) {
 			e.printStackTrace();

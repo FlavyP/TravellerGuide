@@ -11,6 +11,7 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	private ReservationList resList;
 	private HotelList hList;
 	private UserList userList;
+	private ReviewList reviewList;
 	private ServerConnectionThread server;
 	private TravellerPersistence database;
 
@@ -18,7 +19,8 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		database = new TravellerDatabaseAdapter();
 		resList = new ReservationList();
 		hList = new HotelList();
-		userList = null;
+		userList = new UserList();
+		reviewList = new ReviewList();
 		server = new ServerConnectionThread(this);
 		server.start();
 		try {
@@ -227,5 +229,14 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				+ resList.getReservation(0).getNumberOfDoubleRooms()
 				+ resList.getReservation(0).getNumberOfTripleRooms()
 				+ resList.getReservation(0).getNumberOfApartments());
+	}
+
+	public void addReview(String[] input) {
+		Review review = new Review(reviewList.size() + 1,
+				userList.getUser(Integer.parseInt(input[0]) - 1),
+				hList.getHotel(Integer.parseInt(input[1]) - 1),
+				Integer.parseInt(input[2]), input[3]);
+		reviewList.addReview(review);
+		System.out.println(reviewList.getReviews(2));
 	}
 }

@@ -60,6 +60,10 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					String[] input7 = (String[]) inFromClient.readObject();
 					model.reserve(input7);
 					break;
+				case 8:
+					String[] input8 = (String[]) inFromClient.readObject();
+					model.addReview(input8);
+					break;
 				default:
 					break;
 				}
@@ -81,6 +85,7 @@ public class ServerCommunicationThread extends Thread implements Observer {
 
 		}
 	}
+
 	public void send(Object message) {
 		try {
 			outToClient.writeObject(message);
