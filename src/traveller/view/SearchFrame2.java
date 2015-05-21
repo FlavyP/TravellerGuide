@@ -29,6 +29,7 @@ public class SearchFrame2 extends JDialog implements View {
 
 	private JButton reserve;
 	private JButton reviews;
+	private JButton getReviews;
 	private JButton interestPoints;
 
 	private JPanel contentPanel;
@@ -72,9 +73,10 @@ public class SearchFrame2 extends JDialog implements View {
 
 		reserve = new JButton("Reserve");
 		reviews = new JButton("Give Reviews");
+		getReviews = new JButton("Get Reviews");
 		interestPoints = new JButton("Find interest points");
 		contentPanel = new JPanel(new BorderLayout());
-		buttonsPanel = new JPanel(new GridLayout(3, 1));
+		buttonsPanel = new JPanel(new GridLayout(4, 1));
 		listPanel = new JPanel(new GridLayout(1, 1));
 		scrollPanel
 				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -97,6 +99,7 @@ public class SearchFrame2 extends JDialog implements View {
 		this.setContentPane(contentPanel);
 		buttonsPanel.add(reserve);
 		buttonsPanel.add(reviews);
+		buttonsPanel.add(getReviews);
 		buttonsPanel.add(interestPoints);
 		contentPanel.add(scrollPanel);
 		contentPanel.add(buttonsPanel, BorderLayout.EAST);
@@ -107,6 +110,7 @@ public class SearchFrame2 extends JDialog implements View {
 	public void addActionListeners(ActionListener actionListener) {
 		reserve.addActionListener(actionListener);
 		reviews.addActionListener(actionListener);
+		getReviews.addActionListener(actionListener);
 		interestPoints.addActionListener(actionListener);
 	}
 
