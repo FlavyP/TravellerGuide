@@ -98,18 +98,19 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		userList.addUser(user);
 	}
 
-	public boolean[] getUser(String email, String password) {
-		boolean[] b = new boolean[2];
+	public String[] getUser(String email, String password) {
+		String[] b = new String[3];
 		User user = userList.getUser(email, password);
 		if (user != null) {
-			b[0] = true;
+			b[0] = "" + user.getUserId();
+			b[1] = "1";
 			if (user.isGuest())
-				b[1] = true;
+				b[2] = "1";
 			else
-				b[1] = false;
+				b[2] = "0";
 		} else {
-			b[0] = false;
-			b[1] = false;
+			b[1] = "0";
+			b[2] = "0";
 		}
 		return b;
 	}

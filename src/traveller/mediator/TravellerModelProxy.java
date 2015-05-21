@@ -29,12 +29,12 @@ public class TravellerModelProxy extends Thread {
 		}
 	}
 
-	public boolean[] login(String[] input) {
-		boolean[] answer = null;
+	public String[] login(String[] input) {
+		String[] answer = null;
 		try {
 			outToServer.writeObject("1");
 			outToServer.writeObject(input);
-			answer = (boolean[]) inFromServer.readObject();
+			answer = (String[]) inFromServer.readObject();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

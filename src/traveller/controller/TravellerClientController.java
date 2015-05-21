@@ -55,11 +55,11 @@ public class TravellerClientController {
 			this.gui.display("RegisterFrame");
 		} else if (command.equals("Log in")) {
 			String[] input = this.gui.getInput();
-			boolean[] answer = model.login(input);
-			if (answer[0] == false && answer[1] == false) {
-			} else if (answer[0] == true && answer[1] == false) {
+			String[] answer = model.login(input);
+			if (answer[1].equals("0") && answer[2].equals("0")) {
+			} else if (answer[1].equals("1") && answer[2].equals("0")) {
 				this.gui.display("AdminFrame");
-			} else if (answer[0] == true && answer[1] == true) {
+			} else if (answer[1].equals("1") && answer[2].equals("1")) {
 				this.gui.display("GuestFrame");
 			}
 			this.gui.update(null);

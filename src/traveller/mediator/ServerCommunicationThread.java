@@ -33,7 +33,7 @@ public class ServerCommunicationThread extends Thread implements Observer {
 				switch (choice) {
 				case 1:
 					String[] input1 = (String[]) inFromClient.readObject();
-					boolean[] b = model.getUser(input1[0], input1[1]);
+					String[] b = model.getUser(input1[0], input1[1]);
 					send(b);
 					break;
 				case 2:

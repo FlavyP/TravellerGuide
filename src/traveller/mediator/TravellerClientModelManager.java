@@ -18,7 +18,7 @@ public class TravellerClientModelManager extends Observable implements Traveller
    private HotelList hList;
    private UserList userList;
    private TravellerModelProxy proxy;
-   private String[] answer;
+   private int userId;
    
    public TravellerClientModelManager()
    {
@@ -26,7 +26,7 @@ public class TravellerClientModelManager extends Observable implements Traveller
       hList = new HotelList();
       userList = new UserList();
       proxy = new TravellerModelProxy(this);
-      this.answer = null;
+      this.userId = -1;
    }
    @Override
    public void addHotel(Hotel hotel)
@@ -46,8 +46,11 @@ public class TravellerClientModelManager extends Observable implements Traveller
 //      proxy.searchHotelByCity();
       return null;
    }
-   public boolean[] login(String[] input){
-	   return proxy.login(input);
+   public String[] login(String[] input){
+	   String[] answer = proxy.login(input);
+	   this.userId = Integer.parseInt(answer[0]);
+	   System.out.println(userId);
+	   return answer;
    }
    public void addHotel(String[] input){
 	   proxy.addHotel(input);
@@ -99,5 +102,8 @@ public class TravellerClientModelManager extends Observable implements Traveller
    public void addUser(User user)
    {
       userList.addUser(user);
+   }
+   public int getUserId(){
+	   return this.userId;
    }
 }
