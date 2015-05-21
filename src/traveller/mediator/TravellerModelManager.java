@@ -237,6 +237,13 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				hList.getHotel(Integer.parseInt(input[1]) - 1),
 				Integer.parseInt(input[2]), input[3]);
 		reviewList.addReview(review);
-		System.out.println(reviewList.getReviews(2));
+	}
+	public String[] getReviews(int hotelId){
+		ArrayList<Review> a = reviewList.getReviewsByHotel(hotelId);
+		String[] answer = new String[a.size()];
+		for(int i=0;i<a.size();i++){
+			answer[i] = a.get(i).toString();
+		}
+		return answer;
 	}
 }

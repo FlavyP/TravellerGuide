@@ -28,8 +28,8 @@ public class TravellerClientController {
 	}
 
 	public void execute(String command) {
-		if (command.equals("Exit")) {
-			System.exit(0);
+		if (command.equals("Back")) {
+			this.gui.disposeActiveWindow();
 		} else if (command.equals("Cancel")) {
 			this.gui.disposeActiveWindow();
 		} else if (this.gui.getActiveWindow().getName().equals("LogInFrame")) {
@@ -54,6 +54,9 @@ public class TravellerClientController {
 		} else if (this.gui.getActiveWindow().getName()
 				.equals("GiveReviewsFrame")) {
 			this.controllerGiveReviewsFrame(command);
+		} else if (this.gui.getActiveWindow().getName()
+				.equals("GetReviewsFrame")) {
+			this.controllerGetReviewsFrame(command);
 		}
 	}
 
@@ -137,6 +140,8 @@ public class TravellerClientController {
 			this.gui.display("ReserveFrame");
 		} else if (command.equals("Give Reviews")) {
 			this.gui.display("GiveReviewsFrame");
+		} else if (command.equals("Get Reviews")) {
+			this.gui.display("GetReviewsFrame");
 		}
 	}
 
@@ -158,6 +163,13 @@ public class TravellerClientController {
 			input[1] = hotelId[0][0];
 			model.addReview(input);
 			this.gui.disposeActiveWindow();
+		}
+	}
+
+	public void controllerGetReviewsFrame(String command) {
+		if (command.equals("windowFocus")) {
+		String[][] hotelId = this.gui.getTableCopy();
+		this.gui.update(model.getReviews(Integer.parseInt(hotelId[0][0])));
 		}
 	}
 }

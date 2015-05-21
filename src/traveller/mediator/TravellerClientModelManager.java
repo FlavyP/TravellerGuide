@@ -77,7 +77,9 @@ public class TravellerClientModelManager extends Observable implements
 	public void addReview(String[] input) {
 		proxy.addReview(input);
 	}
-
+	public String[] getReviews(int input){
+		return proxy.getReviews(input);
+	}
 	@Override
 	public ArrayList<Hotel> searchHotelByAddress(String address) {
 		// TODO Auto-generated method stub
