@@ -206,17 +206,26 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 
 	public void reserve(String[] input) {
 		Reservation reservation = new Reservation(resList.size() + 1,
-				userList.getUser(Integer.parseInt(input[0])-1),
-				hList.getHotel(Integer.parseInt(input[1])-1), new MyDate(),
-				new MyDate(25, 5, 2015), Integer.parseInt(input[4]),
-				Integer.parseInt(input[5]), Integer.parseInt(input[6]),
-				Integer.parseInt(input[7]));
+				userList.getUser(Integer.parseInt(input[0]) - 1),
+				hList.getHotel(Integer.parseInt(input[1]) - 1), new MyDate(
+						Integer.parseInt(input[2]), Integer.parseInt(input[3]),
+						Integer.parseInt(input[4])), new MyDate(
+						Integer.parseInt(input[5]), Integer.parseInt(input[6]),
+						Integer.parseInt(input[7])),
+				Integer.parseInt(input[8]), Integer.parseInt(input[9]),
+				Integer.parseInt(input[10]), Integer.parseInt(input[11]));
 		resList.reserve(reservation);
 		try {
 			database.addReservation(reservation);
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		System.out.println(resList.getReservation(0).getResId() + " " + resList.getReservation(0).getNumberOfSingleRooms());
+		System.out.println(resList.getReservation(0).getResId() + " "
+				+ resList.getReservation(0).getCheckIn() + " "
+				+ resList.getReservation(0).getCheckOut()
+				+ resList.getReservation(0).getNumberOfSingleRooms()
+				+ resList.getReservation(0).getNumberOfDoubleRooms()
+				+ resList.getReservation(0).getNumberOfTripleRooms()
+				+ resList.getReservation(0).getNumberOfApartments());
 	}
 }

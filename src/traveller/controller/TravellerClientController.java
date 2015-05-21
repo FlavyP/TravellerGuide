@@ -141,7 +141,6 @@ public class TravellerClientController {
 
 	public void controllerReserveFrame(String command) {
 		String[] hotelId = this.gui.getDataCopy();
-		System.out.println(hotelId[0]);
 		if (command.equals("Reserve")) {
 			String[] input = this.gui.getInput();
 			input[0] = "" + model.getUserId();

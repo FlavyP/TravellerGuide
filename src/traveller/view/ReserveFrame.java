@@ -146,13 +146,17 @@ public class ReserveFrame extends JDialog implements View {
 
    @Override
    public String[] getInput() {
-      String[] input = new String[8];
-      input[2] = checkInField.getText();
-      input[3] = checkOutField.getText();
-      input[4] = sRnField.getText();
-      input[5] = dRnField.getText();
-      input[6] = tRnField.getText();
-      input[7] = anField.getText();
+      String[] input = new String[12];
+      input[2] = "" + datePicker.getModel().getDay();
+      input[3] = "" + datePicker.getModel().getMonth();
+      input[4] = "" + datePicker.getModel().getYear();
+      input[5] = "" + datePicker2.getModel().getDay();
+      input[6] = "" + datePicker2.getModel().getMonth();
+      input[7] = "" + datePicker2.getModel().getYear();
+      input[8] = sRnField.getText();
+      input[9] = dRnField.getText();
+      input[10] = tRnField.getText();
+      input[11] = anField.getText();
       return input;
    }
 
