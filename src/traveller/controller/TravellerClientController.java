@@ -137,6 +137,9 @@ public class TravellerClientController {
 			this.gui.copy(this.gui.getInput());
 			this.gui.display("ReserveFrame");
 		}
+		else if(command.equals("Give Reviews")){
+			this.gui.display("GiveReviewsFrame");
+		}
 	}
 
 	public void controllerReserveFrame(String command) {
