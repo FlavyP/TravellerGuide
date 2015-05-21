@@ -116,18 +116,24 @@ public class ReserveFrame extends JDialog implements View {
 
 	@Override
 	public String[] getInput() {
-		String[] input = new String[6];
-		input[0] = checkInField.getText();
-		input[1] = checkOutField.getText();
-		input[2] = sRnField.getText();
-		input[3] = dRnField.getText();
-		input[4] = tRnField.getText();
-		input[5] = anField.getText();
+		String[] input = new String[8];
+		input[2] = checkInField.getText();
+		input[3] = checkOutField.getText();
+		input[4] = sRnField.getText();
+		input[5] = dRnField.getText();
+		input[6] = tRnField.getText();
+		input[7] = anField.getText();
 		return input;
 	}
 
 	@Override
 	public void update(String[] update) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(String[][] update) {
 		// TODO Auto-generated method stub
 		
 	}

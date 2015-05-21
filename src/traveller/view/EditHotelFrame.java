@@ -185,7 +185,7 @@ public class EditHotelFrame extends JDialog implements View {
 
 	@Override
 	public void update(String[] update) {
-		if(update == null){
+		if(update[0].equals("clear")){
 			hotelInfoField.setText("");
 			hotelNameField.setText("");
 			hotelCityField.setText("");
@@ -212,6 +212,12 @@ public class EditHotelFrame extends JDialog implements View {
 			nrApartmentsField.setText(update[9]);
 			prApartmentsField.setText(update[10]);
 		}
+	}
+
+	@Override
+	public void update(String[][] update) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

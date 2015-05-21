@@ -14,4 +14,6 @@ public interface View {
 	public String[] getInput();
 	
 	public void update(String[] update);
+	
+	public void update(String[][] update);
 }

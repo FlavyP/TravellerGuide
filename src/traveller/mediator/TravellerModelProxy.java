@@ -77,4 +77,23 @@ public class TravellerModelProxy extends Thread {
 			e.printStackTrace();
 		}
 	}
+	public String[][] searchHotel(String[] input){
+		String[][] answer = null;
+		try {
+			outToServer.writeObject("6");
+			outToServer.writeObject(input);
+			answer = (String[][]) inFromServer.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return answer;
+	}
+	public void reserve(String[] input){
+		try {
+			outToServer.writeObject("7");
+			outToServer.writeObject(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

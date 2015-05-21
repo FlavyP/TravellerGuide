@@ -49,7 +49,6 @@ public class TravellerClientModelManager extends Observable implements Traveller
    public String[] login(String[] input){
 	   String[] answer = proxy.login(input);
 	   this.userId = Integer.parseInt(answer[0]);
-	   System.out.println(userId);
 	   return answer;
    }
    public void addHotel(String[] input){
@@ -63,6 +62,12 @@ public class TravellerClientModelManager extends Observable implements Traveller
    }
    public void deleteHotel(int hotelId){
 	   proxy.deleteHotel(hotelId);
+   }
+   public String[][] searchHotel(String[] input){
+	   return proxy.searchHotel(input);
+   }
+   public void reserve(String[] input){
+	   proxy.reserve(input);
    }
    @Override
    public ArrayList<Hotel> searchHotelByAddress(String address)

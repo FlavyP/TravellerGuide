@@ -53,7 +53,12 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					model.deleteHotel(input5);
 					break;
 				case 6:
-					System.exit(0);
+					String[] input6 = (String[]) inFromClient.readObject();
+					send(model.searchHotel(input6));
+					break;
+				case 7:
+					String[] input7 = (String[]) inFromClient.readObject();
+					model.reserve(input7);
 					break;
 				default:
 					break;

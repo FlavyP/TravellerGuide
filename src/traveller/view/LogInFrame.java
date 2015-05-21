@@ -119,10 +119,16 @@ public class LogInFrame extends JFrame implements View {
 
 	@Override
 	public void update(String[] update) {
-		if(update == null){
+		if(update[0].equals("clear")){
 			userField.setText("");
 			passField.setText("");
 		}
+	}
+
+	@Override
+	public void update(String[][] update) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

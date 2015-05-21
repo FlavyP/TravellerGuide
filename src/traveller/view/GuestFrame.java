@@ -100,4 +100,10 @@ public class GuestFrame extends JDialog implements View {
 
 	}
 
+	@Override
+	public void update(String[][] update) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

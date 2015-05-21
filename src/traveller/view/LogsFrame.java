@@ -79,4 +79,11 @@ public class LogsFrame extends JFrame implements View {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public void update(String[][] update) {
+		// TODO Auto-generated method stub
+		
+	}
 }

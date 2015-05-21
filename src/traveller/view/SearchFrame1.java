@@ -84,7 +84,7 @@ public class SearchFrame1 extends JDialog implements View {
 	@Override
 	public String[] getInput() {
 		String[] input = new String[2];
-		input[0] = String.valueOf(this.comboList.getSelectedIndex());
+		input[0] = this.comboList.getSelectedItem().toString();
 		input[1] = searchName.getText();
 		return input;
 	}
@@ -93,6 +93,12 @@ public class SearchFrame1 extends JDialog implements View {
 	public void update(String[] update) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void update(String[][] update) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
