@@ -16,6 +16,24 @@ public class ReviewList
       reviews.add(r);
    }
    
+   public void deleteReview(int index)
+   {
+      reviews.remove(index);
+   }
+   
+   public ArrayList<Review> getReviews(int userId)
+   {
+      ArrayList<Review> newRev = new ArrayList<Review>();
+      for(int i = 0; i < reviews.size(); i++)
+      {
+         if( reviews.get(i).getUser().getUserId() == userId)
+         {
+            newRev.add(reviews.get(i));
+         }
+      }
+      return newRev;
+   }
+   
    public double getAverage()
    {
       double average = 0;
