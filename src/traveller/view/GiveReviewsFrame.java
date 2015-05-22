@@ -32,7 +32,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 	private JComboBox<String> comboBox;
 	private String[] review = { "5", "4", "3", "2", "1" };
 
-	public GiveReviewsFrame(Window owner, ActionListener actionListener,
+	private GiveReviewsFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Give a review");
 		createComponents();

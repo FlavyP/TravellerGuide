@@ -18,7 +18,7 @@ public class LogsFrame extends JFrame implements View {
 	private JPanel panel1;
 	
 	
-	 public LogsFrame() {
+	 private LogsFrame() {
 		 super("Logs");
 			createComponents();
 			initializeComponents();

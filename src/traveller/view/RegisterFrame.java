@@ -43,7 +43,7 @@ public class RegisterFrame extends JDialog implements View {
 	private JButton cancelButton;
 	private JButton registerButton;
 
-	public RegisterFrame(Window owner, ActionListener actionListener,
+	private RegisterFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Register");
 		// super(owner, "Register", JDialog.DEFAULT_MODALITY_TYPE);

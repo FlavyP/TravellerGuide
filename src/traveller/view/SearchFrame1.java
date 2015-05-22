@@ -24,7 +24,7 @@ public class SearchFrame1 extends JDialog implements View {
 
 	private static SearchFrame1 instance = null;
 
-	public SearchFrame1(Window owner, ActionListener actionListener,
+	private SearchFrame1(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Search");
 		createComponents();
