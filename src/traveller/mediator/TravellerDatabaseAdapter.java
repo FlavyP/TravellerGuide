@@ -151,12 +151,16 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 	}
 
 	@Override
-	public int addReservation(Reservation reservation) throws IOException {
+	public int addReservation(Reservation reservation, int userId, int hotelId) throws IOException {
 		int sum = 0;
+		int resId = reservation.getResId();
 		MyDate checkIn = reservation.getCheckIn();
 		MyDate checkOut = reservation.getCheckOut();
-//		User user = reservation.getUser();
-//		Hotel hotel = reservation.getHotel();
+		
+		//System.out.println(checkIn);
+		//System.out.println(checkOut);
+		
+		
 		int nSr = reservation.getNumberOfSingleRooms();
 		int nDr = reservation.getNumberOfDoubleRooms();
 		int nTr = reservation.getNumberOfTripleRooms();
@@ -164,16 +168,17 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 		int status = reservation.getStatus();
 		double totalPrice = reservation.getTotalPrice();
 
-		String sql = "INSERT INTO RESERVATIONS (checkInDate, checkOutDate,"
-				+ " singleRoomNumber, doubleRoomNumber," + " tripleRoomNumber, apartmentsNumber, status, totalPrice"
-				+ ") Values (?, ?, ? ,?, ?, ?, ?, ?, ?, ?)";
-
+		String sql = "INSERT INTO RESERVATIONS (reservationID, userID, hOTELID, checkInDate, checkOutDate,"
+				+ " singleRoomNumber, doubleRoomNumber, tripleRoomNumber, apartmentsNumber, totalPrice)"
+				+ " VALUES (?, ?, ?, ? ,?, ?, ?, ?, ?,?)";
+		
 		try {
-			sum += db.update(sql, checkIn, checkOut, nSr, nDr,
-					nTr, nAp, status, totalPrice);
-		} catch (Exception e) {
-			throw new IOException(e.getMessage());
-		}
+         sum += db.update(sql, resId, userId, hotelId, checkIn.toString(), checkOut.toString(), nSr, nDr, nTr, nAp, totalPrice);
+      } catch (Exception e) {
+         throw new IOException(e.getMessage());
+      }
+
+		
 		return sum;
 	}
 

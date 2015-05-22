@@ -218,7 +218,7 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				Integer.parseInt(input[10]), Integer.parseInt(input[11]));
 		resList.reserve(reservation);
 		try {
-			database.addReservation(reservation);
+			//database.addReservation(reservation);
 		} catch (Exception e) {
 			e.getMessage();
 		}
