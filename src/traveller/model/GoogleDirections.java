@@ -71,7 +71,7 @@ public class GoogleDirections
       BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
       String output = "", full = "";
       while ((output = br.readLine()) != null) {
-          System.out.println(output);
+//          System.out.println(output);
           full += output;
       }
       JSONObject obj2 = new JSONObject(full);
@@ -81,7 +81,7 @@ public class GoogleDirections
       JSONObject location = geometry.getJSONObject("location");
       double placeLat =location.getDouble("lat");
       double placeLng = location.getDouble("lng");
-      System.out.println(placeLat + " " + placeLng);
+//      System.out.println(placeLat + " " + placeLng);
       
       
       
@@ -111,7 +111,7 @@ public class GoogleDirections
       BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
       String output = "", full = "";
       while ((output = br.readLine()) != null) {
-          System.out.println(output);
+//          System.out.println(output);
           full += output;
       }
       JSONObject obj2 = new JSONObject(full);
@@ -121,9 +121,9 @@ public class GoogleDirections
       JSONObject location = geometry.getJSONObject("location");
       double placeLat =location.getDouble("lat");
       double placeLng = location.getDouble("lng");
-      System.out.println(placeLat + " " + placeLng);
-      placeLatLng[1] = placeLat;
-      placeLatLng[2] = placeLng;
+//      System.out.println(placeLat + " " + placeLng);
+      placeLatLng[0] = placeLat;
+      placeLatLng[1] = placeLng;
    }
    
    public double[] getPlaceLatAndLng()

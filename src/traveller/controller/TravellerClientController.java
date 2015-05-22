@@ -197,8 +197,8 @@ public class TravellerClientController {
 			System.out.println("hotelId: " + hotelId + " intr selec: "
 					+ input[0]);
 			String[] inform = new String[2];
-			inform[0] = input[0];
-			inform[1] = "" + hotelId;
+			inform[0] = "" + hotelId;
+			inform[1] = input[0];
 			this.gui.update(model.getInterestPoints(inform));
 		}
 	}

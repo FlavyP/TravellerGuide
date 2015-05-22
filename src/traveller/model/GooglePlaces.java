@@ -112,10 +112,10 @@ public class GooglePlaces
       String[][] res = new String[results.length()][4];
       for(int i = 0; i < results.length(); i++)
       {
-         res[i][0] = "ID: " + (i+1);
-         res[i][1] = "Name: " + getPlaceName(i);
-         res[i][2] = "Address: " + getAddress(i);
-         res[i][3] = "Rating: " + getRating(i);
+         res[i][0] = "" + (i+1);
+         res[i][1] = getPlaceName(i);
+         res[i][2] = getAddress(i);
+         res[i][3] = "" + getRating(i);
       }
       return res;
    }

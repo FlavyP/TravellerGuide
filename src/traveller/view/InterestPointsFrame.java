@@ -38,8 +38,8 @@ public class InterestPointsFrame extends JDialog implements View {
 	private JPanel buttonsPanel;
 
 	private JComboBox<String> comboBox;
-	private String[] ip = { "CAFE", "MUSEUM", "NIGHT_CLUB", "RESTAURANT",
-			"SHOPPING_MALL" };
+	private String[] ip = { "cafe", "museum", "night_club", "restaurant",
+			"shopping_mall" };
 	private JLabel iplabel;
 	private JButton getBtn;
 	private JButton getDirectionsBtn;

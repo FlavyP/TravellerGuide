@@ -263,8 +263,20 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	}
 
 	public String[][] getInterestPoints(String[] input) {
+//		System.out.println(input[1]);
 		int hotelId = Integer.parseInt(input[0]);
-		
-		return null;
+		Hotel hotel = hList.getHotel(hotelId - 1);
+		double[] latLng = null;
+		GooglePlaces places = null;
+		try {
+			latLng = new GoogleDirections(hotel.getAddress(), hotel.getCity())
+					.getPlaceLatAndLng();
+			places = new GooglePlaces(latLng[0], latLng[1], 500, input[1]);
+		} catch (IOException e) {
+
+		}
+		String[][] answer = places.getInformation();
+		System.out.println(answer[0][0]);
+		return answer;
 	}
 }
