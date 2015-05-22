@@ -210,15 +210,17 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		Reservation reservation = new Reservation(resList.size() + 1,
 				userList.getUser(Integer.parseInt(input[0]) - 1),
 				hList.getHotel(Integer.parseInt(input[1]) - 1), new MyDate(
-						Integer.parseInt(input[2]), Integer.parseInt(input[3]),
-						Integer.parseInt(input[4])), new MyDate(
-						Integer.parseInt(input[5]), Integer.parseInt(input[6]),
-						Integer.parseInt(input[7])),
+						Integer.parseInt(input[4]), Integer.parseInt(input[3]),
+						Integer.parseInt(input[2])), new MyDate(
+						Integer.parseInt(input[7]), Integer.parseInt(input[6]),
+						Integer.parseInt(input[5])),
 				Integer.parseInt(input[8]), Integer.parseInt(input[9]),
 				Integer.parseInt(input[10]), Integer.parseInt(input[11]));
 		resList.reserve(reservation);
 		try {
-			//database.addReservation(reservation);
+			System.out.println(reservation.getCheckIn().toString() + " " + reservation.getCheckOut());
+			database.addReservation(reservation, Integer.parseInt(input[0]),
+					Integer.parseInt(input[1]));
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -263,7 +265,7 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	}
 
 	public String[][] getInterestPoints(String[] input) {
-//		System.out.println(input[1]);
+		// System.out.println(input[1]);
 		int hotelId = Integer.parseInt(input[0]);
 		Hotel hotel = hList.getHotel(hotelId - 1);
 		double[] latLng = null;

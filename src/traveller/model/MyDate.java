@@ -74,7 +74,8 @@ public class MyDate implements Serializable
       currentMonth = currentDate.get(GregorianCalendar.MONTH) + 1;
       currentYear = currentDate.get(GregorianCalendar.YEAR);
 
-      return new MyDate(currentDay, currentMonth, currentYear);
+//      return new MyDate(currentDay, currentMonth, currentYear);
+      return new MyDate(currentYear, currentMonth, currentDay);
    }
 
  
