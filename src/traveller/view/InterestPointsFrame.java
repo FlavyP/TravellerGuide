@@ -31,6 +31,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.event.CaretListener;
+import javax.swing.table.TableColumn;
 
 public class InterestPointsFrame extends JDialog implements View {
 	private JPanel contentPanel;
@@ -165,5 +166,7 @@ public class InterestPointsFrame extends JDialog implements View {
 	public void update(String[][] update) {
 		this.tableModel = new GUITableModel(update, this.tableLabels);
 		this.table.setModel(this.tableModel);
+		table.getColumnModel().getColumn(0).setMaxWidth(20);
+		table.getColumnModel().getColumn(3).setMaxWidth(50);
 	}
 }
