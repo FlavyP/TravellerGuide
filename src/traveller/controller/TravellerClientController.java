@@ -157,6 +157,8 @@ public class TravellerClientController {
 			this.gui.display("GiveReviewsFrame");
 		} else if (command.equals("Get Reviews")) {
 			this.gui.display("GetReviewsFrame");
+		} else if (command.equals("Find interest points")) {
+		   this.gui.display("InterestPointsFrame");
 		}
 	}
 

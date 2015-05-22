@@ -81,9 +81,9 @@ public class InterestPointsFrame extends JDialog implements View {
 
 		iplabel = new JLabel("Type Of Interest Points: ");
 		comboBox = new JComboBox<String>(ip);
-		getBtn = new JButton("GET");
+		getBtn = new JButton("Get interest points");
 		backButton = new JButton("Back");
-		getDirectionsBtn = new JButton("GET DIRECTIONS");
+		getDirectionsBtn = new JButton("Get directions");
 		contentPanel = new JPanel(new BorderLayout());
 		ipPanel = new JPanel(new FlowLayout());
 		buttonsPanel = new JPanel(new FlowLayout());
