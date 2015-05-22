@@ -227,4 +227,22 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 
 	}
 
+   @Override
+   public int deleteReservation(int rsrvId) throws IOException
+   {
+      int sum = 0;
+      
+      String sql = "DELETE FROM reservations WHERE reservationID=?";
+      
+      try {
+         sum += db.update(sql, rsrvId);
+      } catch (Exception e) {
+         throw new IOException(e.getMessage());
+      }
+
+      return sum;
+   }
+	
+	
+
 }

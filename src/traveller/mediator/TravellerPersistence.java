@@ -20,6 +20,7 @@ public interface TravellerPersistence
    public int editHotel(Hotel hotel, int pid) throws IOException;
    public int deleteHotel(int hotelId) throws IOException;
    public int addReservation(Reservation rsrv, int userId, int hotelId) throws IOException;
+   public int deleteReservation(int rsrvId) throws IOException;
    
 
 }
