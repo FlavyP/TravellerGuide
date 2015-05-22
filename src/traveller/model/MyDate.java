@@ -1,28 +1,29 @@
 package traveller.model;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 
 
-public class MyDate 
+public class MyDate implements Serializable
 {
-   private int day;
-   private int month;
    private int year;
+   private int month;
+   private int day;
 
   
-   public MyDate(int day, int month, int year)
+   public MyDate(int year, int month, int day)
    {
-      this.day = day;
-      this.month = month;
       this.year = year;
+      this.month = month;
+      this.day = day;
    }
 
    public MyDate()
    {
-      day = today().getDay();
-      month = today().getMonth();
       year = today().getYear();
+      month = today().getMonth();
+      day = today().getDay();
    }
 
   
@@ -204,13 +205,32 @@ public class MyDate
    
    public MyDate copy()
    {
-      return new MyDate(day, month, year);
+      return new MyDate(year, month, day);
    }
 
    
    public String toString()
    {
-      return day + "/" + month + "/" + year;
+      
+      if(month < 10 && day < 10)
+      {
+         return year + "-0" + month + "-0" + day;
+      }
+      
+      else if(month < 10)
+      {
+         return year + "-0" + month + "-" + day;
+      }
+      
+      else if(day < 10)
+      {
+         return year + "-" + month + "-0" + day;
+      }
+      
+      else
+      {
+         return year + "-" + month + "-" + day;
+      }
    }
    
    public static int numberOfDays(MyDate date1, MyDate date2)
