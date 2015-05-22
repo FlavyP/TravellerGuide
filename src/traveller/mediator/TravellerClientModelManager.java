@@ -19,6 +19,8 @@ public class TravellerClientModelManager extends Observable implements
 	private UserList userList;
 	private TravellerModelProxy proxy;
 	private int userId;
+	private String[] dataCopy;
+	private String[][] tableCopy;
 
 	public TravellerClientModelManager() {
 		resList = new ReservationList();
@@ -26,6 +28,34 @@ public class TravellerClientModelManager extends Observable implements
 		userList = new UserList();
 		proxy = new TravellerModelProxy(this);
 		this.userId = -1;
+		this.dataCopy = null;
+		this.tableCopy = null;
+	}
+
+	public void copy(String[] data) {
+		this.dataCopy = data;
+	}
+
+	public void copy(String[][] table) {
+		this.tableCopy = table;
+	}
+
+	public void copy(String[] data, String[][] table) {
+		this.dataCopy = data;
+		this.tableCopy = table;
+	}
+
+	public String[] getDataCopy() {
+		return dataCopy;
+	}
+
+	public String[][] getTableCopy() {
+		return tableCopy;
+	}
+
+	public void clearCopies() {
+		this.dataCopy = null;
+		this.tableCopy = null;
 	}
 
 	@Override
@@ -77,8 +107,21 @@ public class TravellerClientModelManager extends Observable implements
 	public void addReview(String[] input) {
 		proxy.addReview(input);
 	}
-	public String[] getReviews(int input){
+
+	public String[] getReviews(int input) {
 		return proxy.getReviews(input);
+	}
+
+	public String[][] getReservations(int input) {
+		return proxy.getReservations(input);
+	}
+
+	public void cancelReservation(int input) {
+		proxy.cancelReservation(input);
+	}
+	
+	public String[][] getInterestPoints(String[] input){
+		return proxy.getInterestPoints(input);
 	}
 	@Override
 	public ArrayList<Hotel> searchHotelByAddress(String address) {

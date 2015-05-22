@@ -121,4 +121,37 @@ public class TravellerModelProxy extends Thread {
 		}
 		return answer;
 	}
+
+	public String[][] getReservations(int input) {
+		String[][] answer = null;
+		try {
+			outToServer.writeObject("10");
+			outToServer.writeObject(input);
+			answer = (String[][]) inFromServer.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return answer;
+	}
+
+	public void cancelReservation(int input) {
+		try {
+			outToServer.writeObject("11");
+			outToServer.writeObject(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String[][] getInterestPoints(String[] input) {
+		String[][] answer = null;
+		try {
+			outToServer.writeObject("12");
+			outToServer.writeObject(input);
+			answer = (String[][]) inFromServer.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return answer;
+	}
 }

@@ -16,8 +16,8 @@ public class ServerCommunicationThread extends Thread implements Observer {
 	private ObjectOutputStream outToClient;
 	private TravellerModelManager model;
 
-	public ServerCommunicationThread(Socket clientSocket, TravellerModelManager model)
-			throws IOException {
+	public ServerCommunicationThread(Socket clientSocket,
+			TravellerModelManager model) throws IOException {
 		inFromClient = new ObjectInputStream(clientSocket.getInputStream());
 		outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
 		this.model = model;
@@ -42,7 +42,7 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					break;
 				case 3:
 					int input3 = (int) inFromClient.readObject();
-					send(model.getHotelInfo(input3-1));
+					send(model.getHotelInfo(input3 - 1));
 					break;
 				case 4:
 					String[] input4 = (String[]) inFromClient.readObject();
@@ -67,6 +67,18 @@ public class ServerCommunicationThread extends Thread implements Observer {
 				case 9:
 					int input9 = (int) inFromClient.readObject();
 					send(model.getReviews(input9));
+					break;
+				case 10:
+					int input10 = (int) inFromClient.readObject();
+					send(model.getReservations(input10));
+					break;
+				case 11:
+					int input11 = (int) inFromClient.readObject();
+					model.cancelReservation(input11);
+					break;
+				case 12:
+					String[] input12 = (String[]) inFromClient.readObject();
+					send(model.getInterestPoints(input12));
 					break;
 				default:
 					break;

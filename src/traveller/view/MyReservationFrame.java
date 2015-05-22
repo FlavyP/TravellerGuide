@@ -56,7 +56,7 @@ public class MyReservationFrame extends JDialog implements View
 
    public void createComponents()
    {
-      tableLabels = new String[] { "Id", "Name", "City", "Address", "sRooms",
+      tableLabels = new String[] { "Id", "Hotel", "CheckIn", "CheckOut", "sRooms",
             "dRooms", "tRooms","Apartments",
             "totalPrice" };
       this.tableModel = new GUITableModel(this.tableLabels, 0);
