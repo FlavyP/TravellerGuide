@@ -54,7 +54,7 @@ public class InterestPointsFrame extends JDialog implements View {
 
 	private static InterestPointsFrame instance = null;
 
-	public InterestPointsFrame(Window owner, ActionListener actionListener,
+	private InterestPointsFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Interest Points");
 		createComponents();
@@ -62,16 +62,6 @@ public class InterestPointsFrame extends JDialog implements View {
 		addComponentsToFrame();
 		addActionListeners(actionListener);
 		addWindowFocusListener(focusListener);
-		setVisible(true);
-	}
-
-	public InterestPointsFrame() {
-		// super(owner, "Interest Points");
-		createComponents();
-		initializeComponents();
-		addComponentsToFrame();
-		// addActionListeners(actionListener);
-		// addWindowFocusListener(focusListener);
 		setVisible(true);
 	}
 
@@ -147,8 +137,14 @@ public class InterestPointsFrame extends JDialog implements View {
 
 	@Override
 	public String[] getInput() {
-		String[] input = new String[1];
+		String[] input = new String[2];
 		input[0] = this.comboBox.getSelectedItem().toString();
+		try {
+			input[1] = (String) this.tableModel.getValueAt(
+					this.table.getSelectedRow(), 0);
+		} catch (ArrayIndexOutOfBoundsException e) {
+
+		}
 		return input;
 	}
 
@@ -156,10 +152,6 @@ public class InterestPointsFrame extends JDialog implements View {
 	public void update(String[] update) {
 		// TODO Auto-generated method stub
 
-	}
-
-	public static void main(String[] args) {
-		InterestPointsFrame frame = new InterestPointsFrame();
 	}
 
 	@Override

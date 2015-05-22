@@ -119,10 +119,15 @@ public class TravellerClientModelManager extends Observable implements
 	public void cancelReservation(int input) {
 		proxy.cancelReservation(input);
 	}
-	
-	public String[][] getInterestPoints(String[] input){
+
+	public String[][] getInterestPoints(String[] input) {
 		return proxy.getInterestPoints(input);
 	}
+
+	public String getDirections(String[] input) {
+		return proxy.getDirections(input);
+	}
+
 	@Override
 	public ArrayList<Hotel> searchHotelByAddress(String address) {
 		// TODO Auto-generated method stub

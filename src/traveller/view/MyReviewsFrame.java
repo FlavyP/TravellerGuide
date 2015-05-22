@@ -67,7 +67,7 @@ public class MyReviewsFrame extends JDialog implements View
       buttonsPanel = new JPanel(new FlowLayout());
 
       this.backButton = new JButton("Back");
-      this.cancelResButton = new JButton("Cancel Reservation");
+      this.cancelResButton = new JButton("Cancel Review");
 
       scrollPanel
             .setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);

@@ -8,7 +8,7 @@ import traveller.controller.TravellerClientController;
 public class TravellerGUI {
 	private TravellerGUIHandler handler;
 	private View active;
-	
+
 	public TravellerGUI() {
 		this.handler = null;
 		this.active = null;
@@ -86,19 +86,19 @@ public class TravellerGUI {
 		} else if (frame.equals("GetReviewsFrame")) {
 			GetReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
 					this.handler);
+		} else if (frame.equals("MyReservationFrame")) {
+			MyReservationFrame.getInstance(this.getActiveWindow(),
+					this.handler, this.handler);
+		} else if (frame.equals("MyReviewsFrame")) {
+			MyReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
+		} else if (frame.equals("InterestPointsFrame")) {
+			InterestPointsFrame.getInstance(this.getActiveWindow(),
+					this.handler, this.handler);
+		} else if (frame.equals("DirectionsFrame")) {
+			DirectionsFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
 		}
-		else if (frame.equals("MyReservationFrame")) {
-         MyReservationFrame.getInstance(this.getActiveWindow(), this.handler,
-               this.handler);
-      }
-		else if (frame.equals("MyReviewsFrame")) {
-		   MyReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
-               this.handler);
-      }
-		else if (frame.equals("InterestPointsFrame")) {
-		   InterestPointsFrame.getInstance(this.getActiveWindow(), this.handler,
-               this.handler);
-      }
 	}
 
 }

@@ -218,7 +218,8 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				Integer.parseInt(input[10]), Integer.parseInt(input[11]));
 		resList.reserve(reservation);
 		try {
-			System.out.println(reservation.getCheckIn().toString() + " " + reservation.getCheckOut());
+			System.out.println(reservation.getCheckIn().toString() + " "
+					+ reservation.getCheckOut());
 			database.addReservation(reservation, Integer.parseInt(input[0]),
 					Integer.parseInt(input[1]));
 		} catch (Exception e) {
@@ -278,7 +279,30 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 
 		}
 		String[][] answer = places.getInformation();
-		System.out.println(answer[0][0]);
+		// System.out.println(answer[0][0]);
+		return answer;
+	}
+
+	public String getDirections(String[] input) {
+		System.out.println(input[0] + " " + input[1]);
+		int hotelId = Integer.parseInt(input[0]);
+		Hotel hotel = hList.getHotel(hotelId - 1);
+		double[] latLng = null;
+		double pLat = 0, pLng = 0;
+		GooglePlaces places = null;
+		String answer = null;
+		try {
+			latLng = new GoogleDirections(hotel.getAddress(), hotel.getCity())
+					.getPlaceLatAndLng();
+			places = new GooglePlaces(latLng[0], latLng[1], 500, input[2]);
+			pLat = places.getPlaceLat(Integer.parseInt(input[1]) - 1);
+			pLng = places.getPlaceLng(Integer.parseInt(input[1]) - 1);
+			answer = new GoogleDirections(latLng[0], latLng[1], pLat, pLng)
+					.getInformation();
+			System.out.println(answer);
+		} catch (IOException e) {
+
+		}
 		return answer;
 	}
 }

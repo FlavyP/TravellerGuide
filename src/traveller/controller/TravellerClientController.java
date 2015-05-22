@@ -65,6 +65,9 @@ public class TravellerClientController {
 		} else if (this.gui.getActiveWindow().getName()
 				.equals("InterestPointsFrame")) {
 			this.controllerInterestPointsFrame(command);
+		} else if (this.gui.getActiveWindow().getName()
+				.equals("DirectionsFrame")) {
+			this.controllerDirectionsFrame(command);
 		}
 	}
 
@@ -192,14 +195,24 @@ public class TravellerClientController {
 	public void controllerInterestPointsFrame(String command) {
 		String[][] hotel = model.getTableCopy();
 		int hotelId = Integer.parseInt(hotel[0][0]);
+		String[] comboBoxSelection = this.gui.getInput();
 		if (command.equals("Get interest points")) {
 			String[] input = this.gui.getInput();
-			System.out.println("hotelId: " + hotelId + " intr selec: "
-					+ input[0]);
 			String[] inform = new String[2];
 			inform[0] = "" + hotelId;
 			inform[1] = input[0];
 			this.gui.update(model.getInterestPoints(inform));
+		} else if (command.equals("Get directions")) {
+			String[] index = this.gui.getInput();
+			String[] inform = new String[3];
+			inform[0] = "" + hotelId;
+			inform[1] = index[1];
+			inform[2] = comboBoxSelection[0];
+			String[] answer = new String[1];
+			answer[0] = model.getDirections(inform);
+			model.copy(answer);
+			System.out.println(answer[0]);
+			this.gui.display("DirectionsFrame");
 		}
 	}
 
@@ -210,6 +223,12 @@ public class TravellerClientController {
 			String[] reservationId = this.gui.getInput();
 			model.cancelReservation(Integer.parseInt(reservationId[0]));
 			this.gui.update(model.getReservations(model.getUserId()));
+		}
+	}
+
+	public void controllerDirectionsFrame(String command) {
+		if (command.equals("windowFocus")) {
+			this.gui.update(model.getDataCopy());
 		}
 	}
 

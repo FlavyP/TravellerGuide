@@ -80,6 +80,10 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					String[] input12 = (String[]) inFromClient.readObject();
 					send(model.getInterestPoints(input12));
 					break;
+				case 13:
+					String[] input13 = (String[]) inFromClient.readObject();
+					send(model.getDirections(input13));
+					break;
 				default:
 					break;
 				}

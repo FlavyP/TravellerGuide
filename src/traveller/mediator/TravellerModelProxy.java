@@ -154,4 +154,16 @@ public class TravellerModelProxy extends Thread {
 		}
 		return answer;
 	}
+
+	public String getDirections(String[] input) {
+		String answer = null;
+		try {
+			outToServer.writeObject("13");
+			outToServer.writeObject(input);
+			answer = (String) inFromServer.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return answer;
+	}
 }
