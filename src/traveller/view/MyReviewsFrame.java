@@ -22,7 +22,7 @@ public class MyReviewsFrame extends JDialog implements View
    private String[] tableLabels;
 
    private JButton backButton;
-   private JButton cancelResButton;
+   private JButton cancelRevButton;
 
    private JPanel contentPanel;
    private JPanel buttonsPanel;
@@ -67,7 +67,7 @@ public class MyReviewsFrame extends JDialog implements View
       buttonsPanel = new JPanel(new FlowLayout());
 
       this.backButton = new JButton("Back");
-      this.cancelResButton = new JButton("Cancel Review");
+      this.cancelRevButton = new JButton("Cancel Review");
 
       scrollPanel
             .setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -91,7 +91,7 @@ public class MyReviewsFrame extends JDialog implements View
    {
       this.setContentPane(contentPanel);
       buttonsPanel.add(backButton);
-      buttonsPanel.add(cancelResButton);
+      buttonsPanel.add(cancelRevButton);
       contentPanel.add(scrollPanel);
       contentPanel.add(buttonsPanel, BorderLayout.SOUTH);
 
@@ -101,7 +101,7 @@ public class MyReviewsFrame extends JDialog implements View
    public void addActionListeners(ActionListener actionListener)
    {
       backButton.addActionListener(actionListener);
-      cancelResButton.addActionListener(actionListener);
+      cancelRevButton.addActionListener(actionListener);
 
    }
    

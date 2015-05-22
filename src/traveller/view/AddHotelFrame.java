@@ -43,7 +43,7 @@ public class AddHotelFrame extends JDialog implements View {
 
 	private static AddHotelFrame instance = null;
 
-	public AddHotelFrame(Window owner, ActionListener actionListener,
+	private AddHotelFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Add hotel");
 		// super(owner, "Register", JDialog.DEFAULT_MODALITY_TYPE);

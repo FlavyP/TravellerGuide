@@ -52,7 +52,7 @@ public class EditHotelFrame extends JDialog implements View {
 
 	private static EditHotelFrame instance = null;
 
-	public EditHotelFrame(Window owner, ActionListener actionListener,
+	private EditHotelFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Edit hotel");
 		createComponents();

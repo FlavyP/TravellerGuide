@@ -42,7 +42,7 @@ public class LogInFrame extends JFrame implements View {
 
 	private static LogInFrame instance = null;
 
-	public LogInFrame(ActionListener actionListener, WindowFocusListener focusListener) {
+	private LogInFrame(ActionListener actionListener, WindowFocusListener focusListener) {
 		super("Traveller Guide");
 		createComponents();
 		initializeComponents();

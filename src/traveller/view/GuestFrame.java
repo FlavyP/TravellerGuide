@@ -23,7 +23,7 @@ public class GuestFrame extends JDialog implements View {
 
 	private static GuestFrame instance = null;
 
-	public GuestFrame(Window owner, ActionListener actionListener,
+	private GuestFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Guest");
 		createComponents();

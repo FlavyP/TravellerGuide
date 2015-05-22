@@ -49,7 +49,7 @@ public class ReserveFrame extends JDialog implements View {
    private JDatePanelImpl datePanel2;
    private JDatePickerImpl datePicker2;
 
-   public ReserveFrame(Window owner, ActionListener actionListener,
+   private ReserveFrame(Window owner, ActionListener actionListener,
          WindowFocusListener focusListener) {
       super(owner, "Reserve");
       createComponents();
