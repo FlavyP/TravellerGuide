@@ -68,6 +68,9 @@ public class TravellerClientController {
 		} else if (this.gui.getActiveWindow().getName()
 				.equals("DirectionsFrame")) {
 			this.controllerDirectionsFrame(command);
+		} else if (this.gui.getActiveWindow().getName()
+				.equals("MyReviewsFrame")) {
+			this.controllerMyReviewsFrame(command);
 		}
 	}
 
@@ -230,6 +233,9 @@ public class TravellerClientController {
 		if (command.equals("windowFocus")) {
 			this.gui.update(model.getDataCopy());
 		}
+	}
+	public void controllerMyReviewsFrame(String command){
+		model.getUserReviews(model.getUserId());
 	}
 
 }

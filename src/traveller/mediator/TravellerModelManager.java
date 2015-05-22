@@ -218,8 +218,6 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				Integer.parseInt(input[10]), Integer.parseInt(input[11]));
 		resList.reserve(reservation);
 		try {
-			System.out.println(reservation.getCheckIn().toString() + " "
-					+ reservation.getCheckOut());
 			database.addReservation(reservation, Integer.parseInt(input[0]),
 					Integer.parseInt(input[1]));
 		} catch (Exception e) {
@@ -263,6 +261,11 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 
 	public void cancelReservation(int resId) {
 		resList.cancelReservation(resId);
+		try {
+			database.deleteReservation(resId);
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	public String[][] getInterestPoints(String[] input) {
@@ -304,5 +307,8 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 
 		}
 		return answer;
+	}
+	public String[][] getUserReviews(int input){
+		return null;
 	}
 }

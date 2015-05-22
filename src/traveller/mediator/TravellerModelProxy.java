@@ -166,4 +166,16 @@ public class TravellerModelProxy extends Thread {
 		}
 		return answer;
 	}
+
+	public String[][] getUserReviews(int input) {
+		String[][] answer = null;
+		try {
+			outToServer.writeObject("14");
+			outToServer.writeObject(input);
+			answer = (String[][]) inFromServer.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return answer;
+	}
 }

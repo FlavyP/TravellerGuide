@@ -127,7 +127,9 @@ public class TravellerClientModelManager extends Observable implements
 	public String getDirections(String[] input) {
 		return proxy.getDirections(input);
 	}
-
+	public String[][] getUserReviews(int input){
+		return proxy.getUserReviews(input);
+	}
 	@Override
 	public ArrayList<Hotel> searchHotelByAddress(String address) {
 		// TODO Auto-generated method stub
