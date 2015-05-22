@@ -164,7 +164,8 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 		int status = reservation.getStatus();
 		double totalPrice = reservation.getTotalPrice();
 
-		String sql = "INSERT INTO RESERVATIONS (checkInDate, checkOutDate, user, hotel, singleRoomNumber, doubleRoomNumber, tripleRoomNumber, apartmentsNumber, status, totalPrice"
+		String sql = "INSERT INTO RESERVATIONS (checkInDate, checkOutDate, user, hotel,"
+				+ " singleRoomNumber, doubleRoomNumber," + " tripleRoomNumber, apartmentsNumber, status, totalPrice"
 				+ ") Values (?, ?, ? ,?, ?, ?, ?, ?, ?, ?)";
 
 		try {
@@ -207,7 +208,7 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 
 	@Override
 	public int deleteHotel(int hotelId) throws IOException {
-		int sum = 0;	
+		int sum = 0;
 
 		String sql = "DELETE FROM Hotel WHERE hotelID=?";
 
