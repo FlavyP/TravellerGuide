@@ -59,4 +59,17 @@ public class ReservationList
       }
       //SQL Code for removing
    }
+   
+   public ArrayList<Reservation> getReservationsByUser(int userId)
+   {
+      ArrayList<Reservation> res = new ArrayList<Reservation>();
+      for(int i = 0; i < resList.size(); i++)
+      {
+         if( resList.get(i).getUser().getUserId() == userId)
+         {
+            res.add(resList.get(i));
+         }
+      }
+      return res;
+   }
 }
