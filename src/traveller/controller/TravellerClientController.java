@@ -62,6 +62,9 @@ public class TravellerClientController {
 		} else if (this.gui.getActiveWindow().getName()
 				.equals("MyReservationFrame")) {
 			this.controllerMyReservationFrame(command);
+		} else if (this.gui.getActiveWindow().getName()
+				.equals("InterestPointsFrame")) {
+			this.controllerInterestPointsFrame(command);
 		}
 	}
 
@@ -152,6 +155,7 @@ public class TravellerClientController {
 		} else if (command.equals("Get Reviews")) {
 			this.gui.display("GetReviewsFrame");
 		} else if (command.equals("Find interest points")) {
+			model.copy(this.gui.getInput());
 			this.gui.display("InterestPointsFrame");
 		}
 	}
@@ -185,14 +189,28 @@ public class TravellerClientController {
 		}
 	}
 
+	public void controllerInterestPointsFrame(String command) {
+		String[][] hotel = model.getTableCopy();
+		int hotelId = Integer.parseInt(hotel[0][0]);
+		if (command.equals("Get interest points")) {
+			String[] input = this.gui.getInput();
+			System.out.println("hotelId: " + hotelId + " intr selec: "
+					+ input[0]);
+			String[] inform = new String[2];
+			inform[0] = input[0];
+			inform[1] = "" + hotelId;
+			this.gui.update(model.getInterestPoints(inform));
+		}
+	}
+
 	public void controllerMyReservationFrame(String command) {
 		if (command.equals("windowFocus")) {
 			this.gui.update(model.getReservations(model.getUserId()));
-		}
-		else if(command.equals("Cancel Reservation")){
+		} else if (command.equals("Cancel Reservation")) {
 			String[] reservationId = this.gui.getInput();
 			model.cancelReservation(Integer.parseInt(reservationId[0]));
 			this.gui.update(model.getReservations(model.getUserId()));
 		}
 	}
+
 }

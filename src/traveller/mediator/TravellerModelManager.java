@@ -257,7 +257,14 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		}
 		return list;
 	}
-	public void cancelReservation(int resId){
+
+	public void cancelReservation(int resId) {
 		resList.cancelReservation(resId);
+	}
+
+	public String[][] getInterestPoints(String[] input) {
+		int hotelId = Integer.parseInt(input[0]);
+		
+		return null;
 	}
 }

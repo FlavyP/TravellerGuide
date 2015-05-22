@@ -25,8 +25,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.event.CaretListener;
 
 public class InterestPointsFrame extends JDialog implements View {
@@ -44,6 +47,10 @@ public class InterestPointsFrame extends JDialog implements View {
 	private JList<String> list;
 	private JScrollPane scrollPane;
 
+	private GUITableModel tableModel;
+	private JTable table;
+	private String[] tableLabels;
+
 	private static InterestPointsFrame instance = null;
 
 	public InterestPointsFrame(Window owner, ActionListener actionListener,
@@ -56,13 +63,14 @@ public class InterestPointsFrame extends JDialog implements View {
 		addWindowFocusListener(focusListener);
 		setVisible(true);
 	}
+
 	public InterestPointsFrame() {
-//		super(owner, "Interest Points");
+		// super(owner, "Interest Points");
 		createComponents();
 		initializeComponents();
 		addComponentsToFrame();
-//		addActionListeners(actionListener);
-//		addWindowFocusListener(focusListener);
+		// addActionListeners(actionListener);
+		// addWindowFocusListener(focusListener);
 		setVisible(true);
 	}
 
@@ -87,12 +95,16 @@ public class InterestPointsFrame extends JDialog implements View {
 		contentPanel = new JPanel(new BorderLayout());
 		ipPanel = new JPanel(new FlowLayout());
 		buttonsPanel = new JPanel(new FlowLayout());
-		String[] array = { "sfsdgsd", "sdgsdgsd", "gdgdf", "gdfgdfgdf",
-				"sdgsdfgsdg", "gdsgdgdf", "gdfgdfgdf", "gsdfgdfdfg",
-				"sdgsdgsdgsdgsdgsdgsdgsdgsdgsdg" };
-		list = new JList<String>(array);
-		scrollPane = new JScrollPane();
-		scrollPane.setViewportView(list);
+		tableLabels = new String[] { "ID", "Name", "Address", "Rating" };
+		this.tableModel = new GUITableModel(this.tableLabels, 0);
+		this.table = new JTable(this.tableModel);
+		this.table.setFillsViewportHeight(true);
+		this.table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.scrollPane = new JScrollPane(this.table);
+		scrollPane
+				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane
+				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 	}
 
 	@Override
@@ -135,7 +147,7 @@ public class InterestPointsFrame extends JDialog implements View {
 	@Override
 	public String[] getInput() {
 		String[] input = new String[1];
-		input[0] = String.valueOf(this.comboBox.getSelectedIndex());
+		input[0] = this.comboBox.getSelectedItem().toString();
 		return input;
 	}
 
@@ -144,12 +156,14 @@ public class InterestPointsFrame extends JDialog implements View {
 		// TODO Auto-generated method stub
 
 	}
+
 	public static void main(String[] args) {
 		InterestPointsFrame frame = new InterestPointsFrame();
 	}
+
 	@Override
 	public void update(String[][] update) {
-		// TODO Auto-generated method stub
-		
+		this.tableModel = new GUITableModel(update, this.tableLabels);
+		this.table.setModel(this.tableModel);
 	}
 }

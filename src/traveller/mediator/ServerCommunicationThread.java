@@ -76,6 +76,10 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					int input11 = (int) inFromClient.readObject();
 					model.cancelReservation(input11);
 					break;
+				case 12:
+					String[] input12 = (String[]) inFromClient.readObject();
+					send(model.getInterestPoints(input12));
+					break;
 				default:
 					break;
 				}
