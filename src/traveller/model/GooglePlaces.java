@@ -106,4 +106,17 @@ public class GooglePlaces
          
       }
    }
+   
+   public String[][] getInformation()
+   {
+      String[][] res = new String[results.length()][4];
+      for(int i = 0; i < results.length(); i++)
+      {
+         res[i][0] = "ID: " + (i+1);
+         res[i][1] = "Name: " + getPlaceName(i);
+         res[i][2] = "Address: " + getAddress(i);
+         res[i][3] = "Rating: " + getRating(i);
+      }
+      return res;
+   }
 }
