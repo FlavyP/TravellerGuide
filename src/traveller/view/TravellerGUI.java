@@ -125,6 +125,10 @@ public class TravellerGUI {
 		   MyReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
                this.handler);
       }
+		else if (frame.equals("InterestPointsFrame")) {
+		   InterestPointsFrame.getInstance(this.getActiveWindow(), this.handler,
+               this.handler);
+      }
 	}
 
 }

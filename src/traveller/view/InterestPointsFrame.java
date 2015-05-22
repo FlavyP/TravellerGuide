@@ -40,6 +40,7 @@ public class InterestPointsFrame extends JDialog implements View {
 	private JLabel iplabel;
 	private JButton getBtn;
 	private JButton getDirectionsBtn;
+	private JButton backButton;
 	private JList<String> list;
 	private JScrollPane scrollPane;
 
@@ -80,8 +81,9 @@ public class InterestPointsFrame extends JDialog implements View {
 
 		iplabel = new JLabel("Type Of Interest Points: ");
 		comboBox = new JComboBox<String>(ip);
-		getBtn = new JButton("GET");
-		getDirectionsBtn = new JButton("GET DIRECTIONS");
+		getBtn = new JButton("Get interest points");
+		backButton = new JButton("Back");
+		getDirectionsBtn = new JButton("Get directions");
 		contentPanel = new JPanel(new BorderLayout());
 		ipPanel = new JPanel(new FlowLayout());
 		buttonsPanel = new JPanel(new FlowLayout());
@@ -110,6 +112,7 @@ public class InterestPointsFrame extends JDialog implements View {
 		ipPanel.add(scrollPane);
 		buttonsPanel.add(getBtn);
 		buttonsPanel.add(getDirectionsBtn);
+		buttonsPanel.add(backButton);
 
 		contentPanel.add(ipPanel, BorderLayout.NORTH);
 		contentPanel.add(scrollPane, BorderLayout.CENTER);
@@ -121,6 +124,7 @@ public class InterestPointsFrame extends JDialog implements View {
 
 		getBtn.addActionListener(actionListener);
 		getDirectionsBtn.addActionListener(actionListener);
+		backButton.addActionListener(actionListener);
 	}
 
 	public void dispose() {
