@@ -19,6 +19,7 @@ public class SearchFrame1 extends JDialog implements View {
 	private JComboBox<String> comboList;
 	private JTextField searchName;
 	private JButton searchButton;
+	private JButton backButton;
 	private JPanel contentPanel;
 
 	private static SearchFrame1 instance = null;
@@ -49,6 +50,7 @@ public class SearchFrame1 extends JDialog implements View {
 		comboList = new JComboBox<String>(comboStrings);
 		searchName = new JTextField(20);
 		searchButton = new JButton("Search");
+		backButton = new JButton("Back");
 		contentPanel = new JPanel(new FlowLayout());
 	}
 
@@ -67,12 +69,14 @@ public class SearchFrame1 extends JDialog implements View {
 		contentPanel.add(comboList, BorderLayout.PAGE_START);
 		contentPanel.add(searchName, BorderLayout.CENTER);
 		contentPanel.add(searchButton, BorderLayout.PAGE_END);
+		contentPanel.add(backButton);
 
 	}
 
 	@Override
 	public void addActionListeners(ActionListener actionListener) {
 		searchButton.addActionListener(actionListener);
+		backButton.addActionListener(actionListener);
 
 	}
 

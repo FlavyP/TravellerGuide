@@ -32,7 +32,11 @@ public class TravellerClientController {
 			this.gui.disposeActiveWindow();
 		} else if (command.equals("Cancel")) {
 			this.gui.disposeActiveWindow();
-		} else if (this.gui.getActiveWindow().getName().equals("LogInFrame")) {
+		} 
+		else if (command.equals("Log Out")) {
+         this.gui.disposeActiveWindow();
+      }
+		else if (this.gui.getActiveWindow().getName().equals("LogInFrame")) {
 			this.controllerLogInFrame(command);
 		} else if (this.gui.getActiveWindow().getName().equals("RegisterFrame")) {
 			this.controllerRegisterFrame(command);
