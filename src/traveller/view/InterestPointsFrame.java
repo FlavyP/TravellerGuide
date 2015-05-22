@@ -45,7 +45,6 @@ public class InterestPointsFrame extends JDialog implements View {
 	private JButton getBtn;
 	private JButton getDirectionsBtn;
 	private JButton backButton;
-	private JList<String> list;
 	private JScrollPane scrollPane;
 
 	private GUITableModel tableModel;

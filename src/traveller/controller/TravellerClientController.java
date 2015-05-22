@@ -234,8 +234,11 @@ public class TravellerClientController {
 			this.gui.update(model.getDataCopy());
 		}
 	}
-	public void controllerMyReviewsFrame(String command){
-		model.getUserReviews(model.getUserId());
+
+	public void controllerMyReviewsFrame(String command) {
+		if (command.equals("windowFocus")) {
+			this.gui.update(model.getUserReviews(model.getUserId()));
+		}
 	}
 
 }
