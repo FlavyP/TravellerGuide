@@ -117,6 +117,10 @@ public class TravellerGUI {
 			GetReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
 					this.handler);
 		}
+		else if (frame.equals("MyReservationFrame")) {
+         MyReservationFrame.getInstance(this.getActiveWindow(), this.handler,
+               this.handler);
+      }
 	}
 
 }

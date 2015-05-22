@@ -126,6 +126,10 @@ public class TravellerClientController {
 		if (command.equals("Search")) {
 			this.gui.display("SearchFrame1");
 		}
+		else if (command.equals("My reservations"))
+		{
+		   this.gui.display("MyReservationFrame");
+		}
 	}
 
 	public void controllerSearchFrame1(String command) {
