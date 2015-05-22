@@ -8,10 +8,14 @@ import traveller.controller.TravellerClientController;
 public class TravellerGUI {
 	private TravellerGUIHandler handler;
 	private View active;
+	private String[] dataCopy;
+	private String[][] tableCopy;
 
 	public TravellerGUI() {
 		this.handler = null;
 		this.active = null;
+		this.dataCopy = null;
+		this.tableCopy = null;
 	}
 
 	public void startGUI(TravellerClientController controller) {
@@ -41,6 +45,37 @@ public class TravellerGUI {
 		window.update(update);
 	}
 
+	public void update(String[][] update) {
+		View window = (View) this.getActiveWindow();
+		window.update(update);
+	}
+
+	public void copy(String[] data) {
+		this.dataCopy = data;
+	}
+
+	public void copy(String[][] table) {
+		this.tableCopy = table;
+	}
+
+	public void copy(String[] data, String[][] table) {
+		this.dataCopy = data;
+		this.tableCopy = table;
+	}
+
+	public String[] getDataCopy() {
+		return dataCopy;
+	}
+
+	public String[][] getTableCopy() {
+		return tableCopy;
+	}
+
+	public void clearCopies() {
+		this.dataCopy = null;
+		this.tableCopy = null;
+	}
+
 	public void disposeActiveWindow() {
 		this.getActiveWindow().dispose();
 	}
@@ -50,9 +85,6 @@ public class TravellerGUI {
 			LogInFrame.getInstance(this.handler, this.handler);
 		} else if (frame.equals("RegisterFrame")) {
 			RegisterFrame.getInstance(this.getActiveWindow(), this.handler,
-					this.handler);
-		} else if (frame.equals("ReserveFrame")) {
-			ReserveFrame.getInstance(this.getActiveWindow(), this.handler,
 					this.handler);
 		} else if (frame.equals("GiveReviewsFrame")) {
 			GiveReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
@@ -75,7 +107,20 @@ public class TravellerGUI {
 		} else if (frame.equals("SearchFrame2")) {
 			SearchFrame2.getInstance(this.getActiveWindow(), this.handler,
 					this.handler);
+		} else if (frame.equals("ReserveFrame")) {
+			ReserveFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
+		} else if (frame.equals("GiveReviewsFrame")) {
+			GiveReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
+		} else if (frame.equals("GetReviewsFrame")) {
+			GetReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
 		}
+		else if (frame.equals("MyReservationFrame")) {
+         MyReservationFrame.getInstance(this.getActiveWindow(), this.handler,
+               this.handler);
+      }
 	}
 
 }

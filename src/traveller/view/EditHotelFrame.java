@@ -19,6 +19,7 @@ public class EditHotelFrame extends JDialog implements View {
 	private JButton editHotelButton;
 	private JButton clearButton;
 	private JButton deleteButton;
+	private JButton backButton;
 
 	private JLabel hotelName;
 	private JLabel hotelCity;
@@ -77,6 +78,7 @@ public class EditHotelFrame extends JDialog implements View {
 		editHotelButton = new JButton("Edit hotel");
 		clearButton = new JButton("Clear");
 		deleteButton = new JButton("Delete");
+		backButton = new JButton("Back");
 		hotelName = new JLabel("Name: ");
 		hotelCity = new JLabel("City: ");
 		hotelAddress = new JLabel("Address: ");
@@ -150,6 +152,7 @@ public class EditHotelFrame extends JDialog implements View {
 		contentPanel.add(editHotelButton);
 		contentPanel.add(clearButton);
 		contentPanel.add(deleteButton);
+		contentPanel.add(backButton);
 	}
 
 	@Override
@@ -158,6 +161,7 @@ public class EditHotelFrame extends JDialog implements View {
 		editHotelButton.addActionListener(actionListener);
 		clearButton.addActionListener(actionListener);
 		deleteButton.addActionListener(actionListener);
+		backButton.addActionListener(actionListener);
 	}
 
 	public void dispose() {
@@ -185,7 +189,7 @@ public class EditHotelFrame extends JDialog implements View {
 
 	@Override
 	public void update(String[] update) {
-		if(update == null){
+		if(update[0].equals("clear")){
 			hotelInfoField.setText("");
 			hotelNameField.setText("");
 			hotelCityField.setText("");
@@ -212,6 +216,12 @@ public class EditHotelFrame extends JDialog implements View {
 			nrApartmentsField.setText(update[9]);
 			prApartmentsField.setText(update[10]);
 		}
+	}
+
+	@Override
+	public void update(String[][] update) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

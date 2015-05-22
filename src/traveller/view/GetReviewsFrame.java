@@ -2,31 +2,29 @@ package traveller.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Window;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowFocusListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
 
-public class SearchFrame1 extends JDialog implements View {
+public class GetReviewsFrame extends JDialog implements View {
+	private static GetReviewsFrame instance = null;
 
-	private JComboBox<String> comboList;
-	private JTextField searchName;
-	private JButton searchButton;
-	private JButton backButton;
 	private JPanel contentPanel;
 
-	private static SearchFrame1 instance = null;
+	private JList<String> list;
 
-	public SearchFrame1(Window owner, ActionListener actionListener,
+	private JButton backButton;
+
+	private GetReviewsFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
-		super(owner, "Search");
+		super(owner, "Get reviews");
 		createComponents();
 		initializeComponents();
 		addComponentsToFrame();
@@ -35,49 +33,13 @@ public class SearchFrame1 extends JDialog implements View {
 		setVisible(true);
 	}
 
-	public static SearchFrame1 getInstance(Window owner,
+	public static GetReviewsFrame getInstance(Window owner,
 			ActionListener actionListener, WindowFocusListener focusListener) {
 		if (instance == null) {
-			instance = new SearchFrame1(owner, actionListener, focusListener);
+			instance = new GetReviewsFrame(owner, actionListener, focusListener);
 			instance.setVisible(true);
 		}
 		return instance;
-	}
-
-	@Override
-	public void createComponents() {
-		String[] comboStrings = { "City", "Hotel", "Address" };
-		comboList = new JComboBox<String>(comboStrings);
-		searchName = new JTextField(20);
-		searchButton = new JButton("Search");
-		backButton = new JButton("Back");
-		contentPanel = new JPanel(new FlowLayout());
-	}
-
-	@Override
-	public void initializeComponents() {
-		setSize(new Dimension(500, 500));
-		setLocationRelativeTo(null); // center of the screen
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		this.setName("SearchFrame1");
-
-	}
-
-	@Override
-	public void addComponentsToFrame() {
-		this.setContentPane(contentPanel);
-		contentPanel.add(comboList, BorderLayout.PAGE_START);
-		contentPanel.add(searchName, BorderLayout.CENTER);
-		contentPanel.add(searchButton, BorderLayout.PAGE_END);
-		contentPanel.add(backButton);
-
-	}
-
-	@Override
-	public void addActionListeners(ActionListener actionListener) {
-		searchButton.addActionListener(actionListener);
-		backButton.addActionListener(actionListener);
-
 	}
 
 	public void dispose() {
@@ -86,23 +48,46 @@ public class SearchFrame1 extends JDialog implements View {
 	}
 
 	@Override
+	public void createComponents() {
+		contentPanel = new JPanel(new BorderLayout());
+		list = new JList<String>();
+		backButton = new JButton("Back");
+	}
+
+	@Override
+	public void initializeComponents() {
+		setSize(new Dimension(500, 500));
+		setLocationRelativeTo(null); // center of the screen
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setName("GetReviewsFrame");
+	}
+
+	@Override
+	public void addComponentsToFrame() {
+		this.setContentPane(contentPanel);
+		contentPanel.add(list, BorderLayout.CENTER);
+		contentPanel.add(backButton, BorderLayout.SOUTH);
+	}
+
+	@Override
+	public void addActionListeners(ActionListener actionListener) {
+		backButton.addActionListener(actionListener);
+	}
+
+	@Override
 	public String[] getInput() {
-		String[] input = new String[2];
-		input[0] = this.comboList.getSelectedItem().toString();
-		input[1] = searchName.getText();
-		return input;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void update(String[] update) {
-		// TODO Auto-generated method stub
-
+		this.list.setListData(update);
 	}
 
 	@Override
 	public void update(String[][] update) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 }

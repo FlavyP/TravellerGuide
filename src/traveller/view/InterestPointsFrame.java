@@ -55,6 +55,15 @@ public class InterestPointsFrame extends JDialog implements View {
 		addWindowFocusListener(focusListener);
 		setVisible(true);
 	}
+	public InterestPointsFrame() {
+//		super(owner, "Interest Points");
+		createComponents();
+		initializeComponents();
+		addComponentsToFrame();
+//		addActionListeners(actionListener);
+//		addWindowFocusListener(focusListener);
+		setVisible(true);
+	}
 
 	public static InterestPointsFrame getInstance(Window owner,
 			ActionListener actionListener, WindowFocusListener focusListener) {
@@ -130,5 +139,13 @@ public class InterestPointsFrame extends JDialog implements View {
 	public void update(String[] update) {
 		// TODO Auto-generated method stub
 
+	}
+	public static void main(String[] args) {
+		InterestPointsFrame frame = new InterestPointsFrame();
+	}
+	@Override
+	public void update(String[][] update) {
+		// TODO Auto-generated method stub
+		
 	}
 }

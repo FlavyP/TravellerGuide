@@ -38,7 +38,14 @@ public class ReservationList
       
       //SQL Code for insert into 'Reservation'
    }
+   public int size()
+   {
+      return resList.size();
+   }
    
+   public Reservation getReservation(int index){
+	   return resList.get(index);
+   }
    public void cancelReservation(int resId)
    {
       //Not sure = when you delete a reservation from DB, index is lost, when you delete a reservation from ArrayList
@@ -51,5 +58,18 @@ public class ReservationList
          }
       }
       //SQL Code for removing
+   }
+   
+   public ArrayList<Reservation> getReservationsByUser(int userId)
+   {
+      ArrayList<Reservation> res = new ArrayList<Reservation>();
+      for(int i = 0; i < resList.size(); i++)
+      {
+         if( resList.get(i).getUser().getUserId() == userId)
+         {
+            res.add(resList.get(i));
+         }
+      }
+      return res;
    }
 }

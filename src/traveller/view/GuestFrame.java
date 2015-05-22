@@ -2,6 +2,7 @@ package traveller.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Window;
 import java.awt.event.ActionListener;
@@ -17,10 +18,8 @@ public class GuestFrame extends JDialog implements View {
 	private JButton searchButton;
 	private JButton myResButton;
 	private JButton myRevButton;
+	private JButton logOutButton;
 	private JPanel panel;
-	private JPanel panel1;
-	private JPanel panel2;
-	private JPanel panel3;
 
 	private static GuestFrame instance = null;
 
@@ -49,10 +48,13 @@ public class GuestFrame extends JDialog implements View {
 		searchButton = new JButton("Search");
 		myResButton = new JButton("My reservations");
 		myRevButton = new JButton("My reviews");
-		panel = new JPanel(new GridLayout(3, 1));
-		panel1 = new JPanel();
-		panel2 = new JPanel();
-		panel3 = new JPanel();
+		logOutButton = new JButton("Log Out");
+		panel = new JPanel(new GridLayout(4, 1));
+		
+		searchButton.setFont(new Font("serif", Font.PLAIN, 24));
+		myResButton.setFont(new Font("serif", Font.PLAIN, 24));
+		myRevButton.setFont(new Font("serif", Font.PLAIN, 24));
+		logOutButton.setFont(new Font("serif", Font.PLAIN, 24));
 
 	}
 
@@ -67,12 +69,10 @@ public class GuestFrame extends JDialog implements View {
 
 	@Override
 	public void addComponentsToFrame() {
-		panel1.add(searchButton, BorderLayout.CENTER);
-		panel2.add(myResButton, BorderLayout.CENTER);
-		panel3.add(myRevButton, BorderLayout.CENTER);
-		panel.add(panel1);
-		panel.add(panel2);
-		panel.add(panel3);
+		panel.add(searchButton);
+		panel.add(myResButton);
+		panel.add(myRevButton);
+		panel.add(logOutButton);
 		this.setContentPane(panel);
 	}
 
@@ -81,6 +81,7 @@ public class GuestFrame extends JDialog implements View {
 		searchButton.addActionListener(actionListener);
 		myResButton.addActionListener(actionListener);
 		myRevButton.addActionListener(actionListener);
+		logOutButton.addActionListener(actionListener);
 	}
 
 	public void dispose() {
@@ -98,6 +99,12 @@ public class GuestFrame extends JDialog implements View {
 	public void update(String[] update) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void update(String[][] update) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

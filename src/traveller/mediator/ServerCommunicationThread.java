@@ -53,7 +53,20 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					model.deleteHotel(input5);
 					break;
 				case 6:
-					System.exit(0);
+					String[] input6 = (String[]) inFromClient.readObject();
+					send(model.searchHotel(input6));
+					break;
+				case 7:
+					String[] input7 = (String[]) inFromClient.readObject();
+					model.reserve(input7);
+					break;
+				case 8:
+					String[] input8 = (String[]) inFromClient.readObject();
+					model.addReview(input8);
+					break;
+				case 9:
+					int input9 = (int) inFromClient.readObject();
+					send(model.getReviews(input9));
 					break;
 				default:
 					break;
@@ -76,6 +89,7 @@ public class ServerCommunicationThread extends Thread implements Observer {
 
 		}
 	}
+
 	public void send(Object message) {
 		try {
 			outToClient.writeObject(message);
