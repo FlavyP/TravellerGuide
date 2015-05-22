@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 import org.json.JSONArray;
@@ -18,6 +20,7 @@ public class GoogleDirections
    private BufferedReader reader;
    private JSONObject obj, route, legs, totalDistance, totalDuration;
    private JSONArray steps;
+   private double[] placeLatLng = new double[2];
    
    public GoogleDirections(double lat, double lng, String dest) throws IOException
    {
@@ -95,6 +98,37 @@ public class GoogleDirections
       legs = route.getJSONArray("legs").getJSONObject(0);
       steps = legs.getJSONArray("steps");
       totalDistance = legs.getJSONObject("distance");
+   }
+   
+   public GoogleDirections(String origAddess, String origCity) throws IOException
+   {
+      origAddess = origAddess.replaceAll(", ", "|");
+      origAddess = origAddess.replaceAll(" ", "+");
+      URL url2 = new URL(
+            "http://maps.googleapis.com/maps/api/geocode/json?address=" + origAddess +"," +origCity + "&sensor=true");
+      HttpURLConnection conn = (HttpURLConnection) url2.openConnection();
+      conn.setRequestMethod("GET");
+      BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+      String output = "", full = "";
+      while ((output = br.readLine()) != null) {
+          System.out.println(output);
+          full += output;
+      }
+      JSONObject obj2 = new JSONObject(full);
+      JSONArray results2 = obj2.getJSONArray("results");
+      JSONObject place = results2.getJSONObject(0);
+      JSONObject geometry = place.getJSONObject("geometry");
+      JSONObject location = geometry.getJSONObject("location");
+      double placeLat =location.getDouble("lat");
+      double placeLng = location.getDouble("lng");
+      System.out.println(placeLat + " " + placeLng);
+      placeLatLng[1] = placeLat;
+      placeLatLng[2] = placeLng;
+   }
+   
+   public double[] getPlaceLatAndLng()
+   {
+      return placeLatLng;
    }
    
    public String getTotalDistance()
