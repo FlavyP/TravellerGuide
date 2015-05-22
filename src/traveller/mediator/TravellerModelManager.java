@@ -222,13 +222,6 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		System.out.println(resList.getReservation(0).getResId() + " "
-				+ resList.getReservation(0).getCheckIn() + " "
-				+ resList.getReservation(0).getCheckOut()
-				+ resList.getReservation(0).getNumberOfSingleRooms()
-				+ resList.getReservation(0).getNumberOfDoubleRooms()
-				+ resList.getReservation(0).getNumberOfTripleRooms()
-				+ resList.getReservation(0).getNumberOfApartments());
 	}
 
 	public void addReview(String[] input) {
@@ -238,12 +231,33 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				Integer.parseInt(input[2]), input[3]);
 		reviewList.addReview(review);
 	}
-	public String[] getReviews(int hotelId){
+
+	public String[] getReviews(int hotelId) {
 		ArrayList<Review> a = reviewList.getReviewsByHotel(hotelId);
 		String[] answer = new String[a.size()];
-		for(int i=0;i<a.size();i++){
+		for (int i = 0; i < a.size(); i++) {
 			answer[i] = a.get(i).toString();
 		}
 		return answer;
+	}
+
+	public String[][] getReservations(int input) {
+		ArrayList<Reservation> a = resList.getReservationsByUser(input);
+		String[][] list = new String[a.size()][9];
+		for (int i = 0; i < a.size(); i++) {
+			list[i][0] = "" + a.get(i).getResId();
+			list[i][1] = a.get(i).getHotel().getName();
+			list[i][2] = a.get(i).getCheckIn().toString();
+			list[i][3] = a.get(i).getCheckOut().toString();
+			list[i][4] = "" + a.get(i).getNumberOfSingleRooms();
+			list[i][5] = "" + a.get(i).getNumberOfDoubleRooms();
+			list[i][6] = "" + a.get(i).getNumberOfTripleRooms();
+			list[i][7] = "" + a.get(i).getNumberOfApartments();
+			list[i][8] = "" + a.get(i).getTotalPrice();
+		}
+		return list;
+	}
+	public void cancelReservation(int resId){
+		resList.cancelReservation(resId);
 	}
 }
