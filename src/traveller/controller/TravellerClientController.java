@@ -61,7 +61,10 @@ public class TravellerClientController {
 		} else if (this.gui.getActiveWindow().getName()
 				.equals("GetReviewsFrame")) {
 			this.controllerGetReviewsFrame(command);
-		}
+		} else if (this.gui.getActiveWindow().getName()
+            .equals("MyReviewsFrame")) {
+         this.controllerGuestFrame(command);
+      }
 	}
 
 	public void controllerLogInFrame(String command) {
@@ -130,6 +133,10 @@ public class TravellerClientController {
 		{
 		   this.gui.display("MyReservationFrame");
 		}
+		else if (command.equals("My reviews"))
+      {
+         this.gui.display("MyReviewsFrame");
+      }
 	}
 
 	public void controllerSearchFrame1(String command) {
