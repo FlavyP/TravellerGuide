@@ -57,13 +57,32 @@ public class GoogleDirections
       totalDistance = legs.getJSONObject("distance");
    }
    
-   public GoogleDirections(String orig, String dest) throws IOException
+   public GoogleDirections(String origAddess, String origCity, double dstLat, double dstLng) throws IOException
    {
-      dest = dest.replaceAll(", ", "|");
-      dest = dest.replaceAll(" ", "+");
-      orig = orig.replaceAll(", ", "|");
-      orig = orig.replaceAll(" ", "+");
-      url = new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + orig + "&destination=" + dest + "&mode=walking");
+      origAddess = origAddess.replaceAll(", ", "|");
+      origAddess = origAddess.replaceAll(" ", "+");
+      URL url2 = new URL(
+            "http://maps.googleapis.com/maps/api/geocode/json?address=" + origAddess +"," +origCity + "&sensor=true");
+      HttpURLConnection conn = (HttpURLConnection) url2.openConnection();
+      conn.setRequestMethod("GET");
+      BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+      String output = "", full = "";
+      while ((output = br.readLine()) != null) {
+          System.out.println(output);
+          full += output;
+      }
+      JSONObject obj2 = new JSONObject(full);
+      JSONArray results2 = obj2.getJSONArray("results");
+      JSONObject place = results2.getJSONObject(0);
+      JSONObject geometry = place.getJSONObject("geometry");
+      JSONObject location = geometry.getJSONObject("location");
+      double placeLat =location.getDouble("lat");
+      double placeLng = location.getDouble("lng");
+      System.out.println(placeLat + " " + placeLng);
+      
+      
+      
+      url = new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + placeLat +"," +placeLng + "&destination=" + dstLat + dstLng + "&mode=walking");
       conn = (HttpURLConnection) url.openConnection();
       conn.setRequestMethod("GET");
       reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
