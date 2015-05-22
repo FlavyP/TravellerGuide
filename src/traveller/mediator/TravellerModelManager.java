@@ -210,25 +210,20 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		Reservation reservation = new Reservation(resList.size() + 1,
 				userList.getUser(Integer.parseInt(input[0]) - 1),
 				hList.getHotel(Integer.parseInt(input[1]) - 1), new MyDate(
-						Integer.parseInt(input[2]), Integer.parseInt(input[3]),
-						Integer.parseInt(input[4])), new MyDate(
-						Integer.parseInt(input[5]), Integer.parseInt(input[6]),
-						Integer.parseInt(input[7])),
+						Integer.parseInt(input[4]), Integer.parseInt(input[3]),
+						Integer.parseInt(input[2])), new MyDate(
+						Integer.parseInt(input[7]), Integer.parseInt(input[6]),
+						Integer.parseInt(input[5])),
 				Integer.parseInt(input[8]), Integer.parseInt(input[9]),
 				Integer.parseInt(input[10]), Integer.parseInt(input[11]));
 		resList.reserve(reservation);
 		try {
-			database.addReservation(reservation);
+			System.out.println(reservation.getCheckIn().toString() + " " + reservation.getCheckOut());
+			database.addReservation(reservation, Integer.parseInt(input[0]),
+					Integer.parseInt(input[1]));
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		System.out.println(resList.getReservation(0).getResId() + " "
-				+ resList.getReservation(0).getCheckIn() + " "
-				+ resList.getReservation(0).getCheckOut()
-				+ resList.getReservation(0).getNumberOfSingleRooms()
-				+ resList.getReservation(0).getNumberOfDoubleRooms()
-				+ resList.getReservation(0).getNumberOfTripleRooms()
-				+ resList.getReservation(0).getNumberOfApartments());
 	}
 
 	public void addReview(String[] input) {
@@ -238,12 +233,52 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				Integer.parseInt(input[2]), input[3]);
 		reviewList.addReview(review);
 	}
-	public String[] getReviews(int hotelId){
+
+	public String[] getReviews(int hotelId) {
 		ArrayList<Review> a = reviewList.getReviewsByHotel(hotelId);
 		String[] answer = new String[a.size()];
-		for(int i=0;i<a.size();i++){
+		for (int i = 0; i < a.size(); i++) {
 			answer[i] = a.get(i).toString();
 		}
+		return answer;
+	}
+
+	public String[][] getReservations(int input) {
+		ArrayList<Reservation> a = resList.getReservationsByUser(input);
+		String[][] list = new String[a.size()][9];
+		for (int i = 0; i < a.size(); i++) {
+			list[i][0] = "" + a.get(i).getResId();
+			list[i][1] = a.get(i).getHotel().getName();
+			list[i][2] = a.get(i).getCheckIn().toString();
+			list[i][3] = a.get(i).getCheckOut().toString();
+			list[i][4] = "" + a.get(i).getNumberOfSingleRooms();
+			list[i][5] = "" + a.get(i).getNumberOfDoubleRooms();
+			list[i][6] = "" + a.get(i).getNumberOfTripleRooms();
+			list[i][7] = "" + a.get(i).getNumberOfApartments();
+			list[i][8] = "" + a.get(i).getTotalPrice();
+		}
+		return list;
+	}
+
+	public void cancelReservation(int resId) {
+		resList.cancelReservation(resId);
+	}
+
+	public String[][] getInterestPoints(String[] input) {
+		// System.out.println(input[1]);
+		int hotelId = Integer.parseInt(input[0]);
+		Hotel hotel = hList.getHotel(hotelId - 1);
+		double[] latLng = null;
+		GooglePlaces places = null;
+		try {
+			latLng = new GoogleDirections(hotel.getAddress(), hotel.getCity())
+					.getPlaceLatAndLng();
+			places = new GooglePlaces(latLng[0], latLng[1], 500, input[1]);
+		} catch (IOException e) {
+
+		}
+		String[][] answer = places.getInformation();
+		System.out.println(answer[0][0]);
 		return answer;
 	}
 }
