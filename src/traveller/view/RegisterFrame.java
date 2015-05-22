@@ -14,6 +14,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class RegisterFrame extends JDialog implements View {
@@ -28,7 +29,7 @@ public class RegisterFrame extends JDialog implements View {
 	private JTextField emailField;
 	private JTextField phoneNumberField;
 	private JTextField addressField;
-	private JTextField passField;
+	private JPasswordField passField;
 
 	private JPanel contentPanel;
 	private JPanel buttonsPanel;
@@ -81,7 +82,7 @@ public class RegisterFrame extends JDialog implements View {
 		emailField = new JTextField(10);
 		phoneNumberField = new JTextField(10);
 		addressField = new JTextField(10);
-		passField = new JTextField(10);
+		passField = new JPasswordField(10);
 
 		contentPanel = new JPanel(new GridLayout(6, 1));
 		namePanel = new JPanel(new FlowLayout());
@@ -143,7 +144,7 @@ public class RegisterFrame extends JDialog implements View {
 		input[1] = emailField.getText();
 		input[2] = phoneNumberField.getText();
 		input[3] = addressField.getText();
-		input[4] = passField.getText();
+		input[4] = new String(passField.getPassword());
 		return input;
 	}
 
