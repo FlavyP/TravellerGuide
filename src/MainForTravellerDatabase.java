@@ -8,12 +8,16 @@ public class MainForTravellerDatabase
    private TravellerPersistence database;
    private HotelList hotellist;
    private UserList userlist;
+   private ReservationList reservationlist;
+   
 
    public MainForTravellerDatabase() throws ClassNotFoundException, IOException
    {
       database = new TravellerDatabaseAdapter();
       hotellist = database.loadHotels();
       userlist = database.loadUsers();
+      reservationlist = database.loadReservations();
+     
    }
 
    public static void main(String[] args) throws IOException,
@@ -29,6 +33,8 @@ public class MainForTravellerDatabase
    {
       System.out.println(hotellist);
       System.out.println(userlist);
+      System.out.println(reservationlist);
+      
    }
 
 }
