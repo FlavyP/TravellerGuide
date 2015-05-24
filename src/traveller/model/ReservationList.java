@@ -84,7 +84,8 @@ public class ReservationList
                + " Single rooms:" + resList.get(i).getNumberOfSingleRooms() + "\n" 
                + " Double rooms: " + resList.get(i).getNumberOfDoubleRooms() + "\n"
                + " Triple rooms: " + resList.get(i).getNumberOfTripleRooms() + "\n"
-               + " Apartments: " + resList.get(i).getNumberOfApartments();
+               + " Apartments: " + resList.get(i).getNumberOfApartments() + "\n"
+               + "Total Price: " + resList.get(i).getTotalPrice();
       }
       
       return msg;
