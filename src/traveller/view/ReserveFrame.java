@@ -1,5 +1,6 @@
 package traveller.view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Window;
@@ -11,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -27,18 +29,20 @@ public class ReserveFrame extends JDialog implements TravellerView {
    private JLabel dRnLabel;
    private JLabel tRnLabel;
    private JLabel anLabel;
+   private JLabel totalPriceLabel;
 
-   private JTextField checkInField;
-   private JTextField checkOutField;
    private JTextField sRnField;
    private JTextField dRnField;
    private JTextField tRnField;
    private JTextField anField;
+   private JTextArea totalPriceArea;
 
+   private JPanel infoPanel;
    private JPanel contentPanel;
    private JPanel buttonsPanel;
 
    private JButton reserveButton;
+   private JButton totalPriceButton;
    private JButton cancelButton;
    
    private UtilDateModel model;
@@ -82,18 +86,23 @@ public class ReserveFrame extends JDialog implements TravellerView {
       dRnLabel = new JLabel("Number of double rooms: ");
       tRnLabel = new JLabel("Number of triple rooms: ");
       anLabel = new JLabel("Number of apartments: ");
+      totalPriceLabel = new JLabel("Total price: ");
 
-      checkInField = new JTextField(10);
-      checkOutField = new JTextField(10);
       sRnField = new JTextField(10);
       dRnField = new JTextField(10);
       tRnField = new JTextField(10);
       anField = new JTextField(10);
+      
+      totalPriceArea = new JTextArea();
+      totalPriceArea.setEditable(false);
 
       cancelButton = new JButton("Cancel");
       reserveButton = new JButton("Reserve");
+      totalPriceButton = new JButton("Get total");
       
-      contentPanel = new JPanel(new GridLayout(7, 2));
+      infoPanel = new JPanel(new GridLayout(7, 2));
+      contentPanel = new JPanel(new BorderLayout());
+      buttonsPanel = new JPanel(new GridLayout(1, 3));
       
       model = new UtilDateModel();
       model.setDay(MyDate.today().getDay());
@@ -123,26 +132,32 @@ public class ReserveFrame extends JDialog implements TravellerView {
    @Override
    public void addComponentsToFrame() {
       this.setContentPane(contentPanel);
-      contentPanel.add(checkInLabel);
-      contentPanel.add(datePicker);
-      contentPanel.add(checkOutLabel);
-      contentPanel.add(datePicker2);
-      contentPanel.add(sRnLabel);
-      contentPanel.add(sRnField);
-      contentPanel.add(dRnLabel);
-      contentPanel.add(dRnField);
-      contentPanel.add(tRnLabel);
-      contentPanel.add(tRnField);
-      contentPanel.add(anLabel);
-      contentPanel.add(anField);
-      contentPanel.add(cancelButton);
-      contentPanel.add(reserveButton);
+      infoPanel.add(checkInLabel);
+      infoPanel.add(datePicker);
+      infoPanel.add(checkOutLabel);
+      infoPanel.add(datePicker2);
+      infoPanel.add(sRnLabel);
+      infoPanel.add(sRnField);
+      infoPanel.add(dRnLabel);
+      infoPanel.add(dRnField);
+      infoPanel.add(tRnLabel);
+      infoPanel.add(tRnField);
+      infoPanel.add(anLabel);
+      infoPanel.add(anField);
+      infoPanel.add(totalPriceLabel);
+      infoPanel.add(totalPriceArea);
+      buttonsPanel.add(cancelButton);
+      buttonsPanel.add(totalPriceButton);
+      buttonsPanel.add(reserveButton);
+      contentPanel.add(infoPanel, BorderLayout.CENTER);
+      contentPanel.add(buttonsPanel, BorderLayout.SOUTH);
    }
 
    @Override
    public void addActionListeners(ActionListener actionListener) {
       reserveButton.addActionListener(actionListener);
       cancelButton.addActionListener(actionListener);
+      totalPriceButton.addActionListener(actionListener);
    }
 
    @Override

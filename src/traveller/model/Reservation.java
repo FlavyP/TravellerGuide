@@ -123,6 +123,17 @@ public class Reservation
    {
       this.totalPrice = totalPrice;
    }
+   
+   public double totalPrice(Hotel h, MyDate checkIn, MyDate checkOut, int sR, int dR, int tR, int aP)
+   {
+      double totalSr = h.getPriceOfRooms(0) * sR * MyDate.numberOfDays(checkIn, checkOut);
+      double totalDr = h.getPriceOfRooms(1) * dR * MyDate.numberOfDays(checkIn, checkOut);
+      double totalTr = h.getPriceOfRooms(2) * tR * MyDate.numberOfDays(checkIn, checkOut);
+      double totalAp = h.getPriceOfRooms(3) * aP * MyDate.numberOfDays(checkIn, checkOut);
+      
+      this.totalPrice = totalSr + totalDr + totalTr + totalAp;
+      return totalPrice;
+   }
 
    public double getTotalPrice()
    {
