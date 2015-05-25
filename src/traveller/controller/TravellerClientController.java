@@ -3,6 +3,8 @@ package traveller.controller;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
 import traveller.mediator.TravellerClientModelManager;
 import traveller.mediator.TravellerModel;
 import traveller.model.Hotel;
@@ -320,10 +322,33 @@ public class TravellerClientController {
 				else if (input[11].isEmpty())
 					throw new Exception(
 							"Error: no number of apartments entered");
-				else {
-					model.reserve(input);
-					this.gui.disposeActiveWindow();
-				}
+				model.reserve(input);
+				this.gui.disposeActiveWindow();
+
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
+		}
+		else if (command.equals("Get total")) {
+			String[] input = this.gui.getInput();
+			input[0] = "" + model.getUserId();
+			input[1] = hotelId[0];
+			try {
+				if (input[8].isEmpty())
+					throw new Exception(
+							"Error: no number of single rooms entered");
+				else if (input[9].isEmpty())
+					throw new Exception(
+							"Error: no number of double rooms entered");
+				else if (input[10].isEmpty())
+					throw new Exception(
+							"Error: no number of triple rooms entered");
+				else if (input[11].isEmpty())
+					throw new Exception(
+							"Error: no number of apartments entered");
+				String[] answer = new String[1];
+				answer[0] = "" + model.totalPrice(input);
+				this.gui.update(answer);
 			} catch (Exception e) {
 				this.gui.displayErrorMessage(e.getMessage());
 			}

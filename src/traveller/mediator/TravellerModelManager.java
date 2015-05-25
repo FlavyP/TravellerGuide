@@ -68,21 +68,20 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 
 	public String[] getHotelInfo(int input) {
 		String[] a = new String[11];
-		try{
-		Hotel hotel = hList.getHotel(input);
-		a[0] = hotel.getName();
-		a[1] = hotel.getCity();
-		a[2] = hotel.getAddress();
-		a[3] = "" + hotel.getNumberOfRooms(0);
-		a[4] = "" + hotel.getPriceOfRooms(0);
-		a[5] = "" + hotel.getNumberOfRooms(1);
-		a[6] = "" + hotel.getPriceOfRooms(1);
-		a[7] = "" + hotel.getNumberOfRooms(2);
-		a[8] = "" + hotel.getPriceOfRooms(2);
-		a[9] = "" + hotel.getNumberOfRooms(3);
-		a[10] = "" + hotel.getPriceOfRooms(3);
-		}
-		catch(Exception e){
+		try {
+			Hotel hotel = hList.getHotel(input);
+			a[0] = hotel.getName();
+			a[1] = hotel.getCity();
+			a[2] = hotel.getAddress();
+			a[3] = "" + hotel.getNumberOfRooms(0);
+			a[4] = "" + hotel.getPriceOfRooms(0);
+			a[5] = "" + hotel.getNumberOfRooms(1);
+			a[6] = "" + hotel.getPriceOfRooms(1);
+			a[7] = "" + hotel.getNumberOfRooms(2);
+			a[8] = "" + hotel.getPriceOfRooms(2);
+			a[9] = "" + hotel.getNumberOfRooms(3);
+			a[10] = "" + hotel.getPriceOfRooms(3);
+		} catch (Exception e) {
 			a[0] = "";
 		}
 		return a;
@@ -195,13 +194,11 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				hList.getHotel(Integer.parseInt(input[1]) - 1),
 				Integer.parseInt(input[2]), input[3]);
 		reviewList.addReview(review);
-		try
-      {
-         database.addReview(review);
-      }
-		 catch (Exception e) {
-	         e.getMessage();
-	      }
+		try {
+			database.addReview(review);
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	public String[] getReviews(int hotelId) {
@@ -287,18 +284,16 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		}
 		return list;
 	}
-	
+
 	public void cancelReview(int input) {
 		reviewList.deleteReview(input - 1);
-		try
-      {
-         database.deleteReview(input);
-      }
-		catch (Exception e) {
-         e.getMessage();
-      }
+		try {
+			database.deleteReview(input);
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
-	
+
 	public void addUser(String[] input) {
 		User user = new User(userList.size() + 1, input[0], input[1], input[2],
 				input[3], true, input[4]);
@@ -308,6 +303,17 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		} catch (Exception e) {
 			e.getMessage();
 		}
+	}
+
+	public double totalPrice(String[] input) {
+		return Reservation.totalPrice(
+				hList.getHotel(Integer.parseInt(input[1]) - 1),
+				new MyDate(Integer.parseInt(input[4]), Integer
+						.parseInt(input[3]), Integer.parseInt(input[2])),
+				new MyDate(Integer.parseInt(input[7]), Integer
+						.parseInt(input[6]), Integer.parseInt(input[5])),
+				Integer.parseInt(input[8]), Integer.parseInt(input[9]), Integer
+						.parseInt(input[10]), Integer.parseInt(input[11]));
 	}
 
 }
