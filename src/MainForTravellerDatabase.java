@@ -31,9 +31,15 @@ public class MainForTravellerDatabase
 
    public void test() throws IOException
    {
-      System.out.println(hotellist);
+      System.out.println(hotellist); 
       System.out.println(userlist);
       System.out.println(reservationlist);
+      
+      Hotel hotel = new Hotel(1, "KamjatkaSucks", "Horsens", "Kamjatka", 0, 0, 0, 0, 0, 0, 0, 0);
+      User user = new User(1, "John", "John@gmail.com", "5615656", "Balbieriskis", true, "dfgdfgdfdf");
+      Review review = new Review(1, user, hotel, 4, "Kamjatka sucks rlly bad");
+      
+      database.addReview(review);
       
    }
 
