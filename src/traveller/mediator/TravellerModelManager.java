@@ -190,6 +190,13 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				hList.getHotel(Integer.parseInt(input[1]) - 1),
 				Integer.parseInt(input[2]), input[3]);
 		reviewList.addReview(review);
+		try
+      {
+         database.addReview(review);
+      }
+		 catch (Exception e) {
+	         e.getMessage();
+	      }
 	}
 
 	public String[] getReviews(int hotelId) {
@@ -278,6 +285,13 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	
 	public void cancelReview(int input) {
 		reviewList.deleteReview(input - 1);
+		try
+      {
+         database.deleteReview(input-1);
+      }
+		catch (Exception e) {
+         e.getMessage();
+      }
 	}
 	
 	public void addUser(String[] input) {
