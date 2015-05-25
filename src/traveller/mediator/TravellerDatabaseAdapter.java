@@ -356,5 +356,21 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
       
       return sum;
    }
+
+   @Override
+   public int deleteReview(int reviewId) throws IOException
+   {
+      int sum = 0;
+      
+      String sql = "DELETE FROM reviews WHERE reviewsID=?";
+      
+      try {
+         sum += db.update(sql, reviewId);
+      } catch (Exception e) {
+         throw new IOException(e.getMessage());
+      }
+
+      return sum;
+   }
    
 }

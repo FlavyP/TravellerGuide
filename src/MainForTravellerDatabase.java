@@ -40,6 +40,7 @@ public class MainForTravellerDatabase
       Review review = new Review(1, user, hotel, 4, "Kamjatka sucks rlly bad");
       
       database.addReview(review);
+      //database.deleteReview(1);
       
    }
 
