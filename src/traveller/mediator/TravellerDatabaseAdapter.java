@@ -167,7 +167,7 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
             MyDate checkOut = new MyDate(checkOutYear, checkOutMonth, checkOutDay);
             
             Reservation reservation = new Reservation(rsrvId, user, hotel, checkIn, checkOut, sRn, dRn, tRn, aN);
-            
+            reservation.setTotalPrice(totalPrice);
 	         reservations.reserve(reservation);
             
 	         
@@ -319,7 +319,6 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 		int nDr = reservation.getNumberOfDoubleRooms();
 		int nTr = reservation.getNumberOfTripleRooms();
 		int nAp = reservation.getNumberOfApartments();
-		int status = reservation.getStatus();
 		double totalPrice = reservation.getTotalPrice();
 
 		String sql = "INSERT INTO RESERVATIONS (reservationID, userID, hOTELID, checkInDate, checkOutDate,"
