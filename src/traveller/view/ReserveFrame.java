@@ -178,8 +178,7 @@ public class ReserveFrame extends JDialog implements TravellerView {
 
    @Override
    public void update(String[] update) {
-      // TODO Auto-generated method stub
-      
+	   this.totalPriceArea.setText(update[0]);
    }
 
    @Override

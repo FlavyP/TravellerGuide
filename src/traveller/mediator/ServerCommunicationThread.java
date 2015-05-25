@@ -96,6 +96,10 @@ public class ServerCommunicationThread extends Thread implements Observer {
 					int input16 = (int) inFromClient.readObject();
 					model.cancelReview(input16);
 					break;
+				case 17:
+					String[] input17 = (String[]) inFromClient.readObject();
+					send(model.totalPrice(input17));
+					break;
 				default:
 					break;
 				}

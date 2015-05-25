@@ -187,11 +187,23 @@ public class TravellerModelProxy extends Thread {
 		}
 	}
 	public void cancelReview(int input){
+
 		try {
 			outToServer.writeObject("16");
 			outToServer.writeObject(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public double totalPrice(String[] input){
+		double answer = 0;
+		try {
+			outToServer.writeObject("17");
+			outToServer.writeObject(input);
+			answer = (double) inFromServer.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return answer;
 	}
 }

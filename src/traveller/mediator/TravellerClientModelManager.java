@@ -131,4 +131,7 @@ public class TravellerClientModelManager extends Observable implements
 	public int getUserId() {
 		return this.userId;
 	}
+	public double totalPrice(String[] input){
+		return proxy.totalPrice(input);
+	}
 }

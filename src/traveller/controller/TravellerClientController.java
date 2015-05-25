@@ -329,6 +329,30 @@ public class TravellerClientController {
 				this.gui.displayErrorMessage(e.getMessage());
 			}
 		}
+		else if (command.equals("Get total")) {
+			String[] input = this.gui.getInput();
+			input[0] = "" + model.getUserId();
+			input[1] = hotelId[0];
+			try {
+				if (input[8].isEmpty())
+					throw new Exception(
+							"Error: no number of single rooms entered");
+				else if (input[9].isEmpty())
+					throw new Exception(
+							"Error: no number of double rooms entered");
+				else if (input[10].isEmpty())
+					throw new Exception(
+							"Error: no number of triple rooms entered");
+				else if (input[11].isEmpty())
+					throw new Exception(
+							"Error: no number of apartments entered");
+				String[] answer = new String[1];
+				answer[0] = "" + model.totalPrice(input);
+				this.gui.update(answer);
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
+		}
 	}
 
 	public void controllerGiveReviewsFrame(String command) {
