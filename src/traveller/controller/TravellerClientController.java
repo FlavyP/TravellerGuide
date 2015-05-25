@@ -183,35 +183,35 @@ public class TravellerClientController {
 				this.gui.update(model.getTableCopy());
 			} else if (command.equals("Reserve")) {
 				String[] input = this.gui.getInput();
-				if(input[0].isEmpty())
+				if (input[0].isEmpty())
 					throw new Exception("Error: no hotel selected");
-				else{
-				model.copy(input);
-				this.gui.display("ReserveFrame");
+				else {
+					model.copy(input);
+					this.gui.display("ReserveFrame");
 				}
 			} else if (command.equals("Give Reviews")) {
 				String[] input = this.gui.getInput();
-				if(input[0].isEmpty())
+				if (input[0].isEmpty())
 					throw new Exception("Error: no hotel selected");
-				else{
-				model.copy(input);
-				this.gui.display("GiveReviewsFrame");
+				else {
+					model.copy(input);
+					this.gui.display("GiveReviewsFrame");
 				}
 			} else if (command.equals("Get Reviews")) {
 				String[] input = this.gui.getInput();
-				if(input[0].isEmpty())
+				if (input[0].isEmpty())
 					throw new Exception("Error: no hotel selected");
-				else{
-				model.copy(input);
-				this.gui.display("GetReviewsFrame");
+				else {
+					model.copy(input);
+					this.gui.display("GetReviewsFrame");
 				}
 			} else if (command.equals("Find interest points")) {
 				String[] input = this.gui.getInput();
-				if(input[0].isEmpty())
+				if (input[0].isEmpty())
 					throw new Exception("Error: no hotel selected");
-				else{
-				model.copy(input);
-				this.gui.display("InterestPointsFrame");
+				else {
+					model.copy(input);
+					this.gui.display("InterestPointsFrame");
 				}
 			}
 		} catch (Exception e) {
@@ -225,8 +225,26 @@ public class TravellerClientController {
 			String[] input = this.gui.getInput();
 			input[0] = "" + model.getUserId();
 			input[1] = hotelId[0];
-			model.reserve(input);
-			this.gui.disposeActiveWindow();
+			try {
+				if (input[8].isEmpty())
+					throw new Exception(
+							"Error: no number of single rooms entered");
+				else if (input[9].isEmpty())
+					throw new Exception(
+							"Error: no number of double rooms entered");
+				else if (input[10].isEmpty())
+					throw new Exception(
+							"Error: no number of triple rooms entered");
+				else if (input[11].isEmpty())
+					throw new Exception(
+							"Error: no number of apartments entered");
+				else {
+					model.reserve(input);
+					this.gui.disposeActiveWindow();
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
 		}
 	}
 

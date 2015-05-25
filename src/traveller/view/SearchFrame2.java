@@ -126,7 +126,12 @@ public class SearchFrame2 extends JDialog implements View {
 	@Override
 	public String[] getInput() {
 		String[] input = new String[1];
-		input[0] = (String) this.tableModel.getValueAt(this.table.getSelectedRow(), 0);
+		try {
+			input[0] = (String) this.tableModel.getValueAt(
+					this.table.getSelectedRow(), 0);
+		} catch (Exception e) {
+			input[0] = "";
+		}
 		return input;
 	}
 
