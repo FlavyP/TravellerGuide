@@ -60,7 +60,12 @@ public class TravellerClientModelManager extends Observable implements
 
 	public String[] login(String[] input) {
 		String[] answer = proxy.login(input);
+		if(answer[0] == null){
+			this.userId = -1;
+		}
+		else{
 		this.userId = Integer.parseInt(answer[0]);
+		}
 		return answer;
 	}
 
