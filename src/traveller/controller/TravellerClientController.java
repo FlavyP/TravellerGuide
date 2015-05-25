@@ -178,7 +178,8 @@ public class TravellerClientController {
 				String[] answer = model
 						.getHotelInfo(Integer.parseInt(input[0]));
 				if (answer[0].isEmpty()) {
-					throw new Exception("Error: hotel with id " + input[0] + " does not exist");
+					throw new Exception("Error: hotel with id " + input[0]
+							+ " does not exist");
 				} else {
 					this.gui.update(answer);
 				}
@@ -219,7 +220,11 @@ public class TravellerClientController {
 				}
 			} else if (command.equals("Delete")) {
 				String[] input = this.gui.getInput();
-				model.deleteHotel(Integer.parseInt(input[0]));
+				if (input[0].isEmpty()) {
+					throw new Exception("Error: hotel does not exist");
+				} else {
+					model.deleteHotel(Integer.parseInt(input[0]));
+				}
 			}
 		} catch (Exception e) {
 			this.gui.displayErrorMessage(e.getMessage());
