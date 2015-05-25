@@ -1,6 +1,9 @@
 package traveller.view;
 
 import java.awt.Window;
+
+import javax.swing.JOptionPane;
+
 import traveller.controller.TravellerClientController;
 
 public class TravellerGUI {
@@ -98,5 +101,8 @@ public class TravellerGUI {
 					this.handler);
 		}
 	}
+	   public void displayErrorMessage(String message){
+		      JOptionPane.showMessageDialog(this.getActiveWindow(), message, "Error", JOptionPane.ERROR_MESSAGE);
+		   }
 
 }

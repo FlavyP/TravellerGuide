@@ -22,8 +22,6 @@ public class TravellerClientController {
 		this.model = model;
 		this.gui = gui;
 		this.clear = new String[] { "clear" };
-		// Observable obs = (Observable) model;
-		// obs.addObserver(view);
 	}
 
 	public void execute(String command) {
@@ -75,21 +73,46 @@ public class TravellerClientController {
 			this.gui.display("RegisterFrame");
 		} else if (command.equals("Log in")) {
 			String[] input = this.gui.getInput();
-			String[] answer = model.login(input);
-			if (answer[1].equals("0") && answer[2].equals("0")) {
-			} else if (answer[1].equals("1") && answer[2].equals("0")) {
-				this.gui.display("AdminFrame");
-			} else if (answer[1].equals("1") && answer[2].equals("1")) {
-				this.gui.display("GuestFrame");
+			try {
+				String[] answer = model.login(input);
+				if (answer[0] == null)
+					throw new Exception("Error: incorrect username or password");
+				else {
+					if (answer[1].equals("0") && answer[2].equals("0")) {
+					} else if (answer[1].equals("1") && answer[2].equals("0")) {
+						this.gui.display("AdminFrame");
+					} else if (answer[1].equals("1") && answer[2].equals("1")) {
+						this.gui.display("GuestFrame");
+					}
+					this.gui.update(this.clear);
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
 			}
-			this.gui.update(this.clear);
 		}
 	}
 
 	public void controllerRegisterFrame(String command) {
 		if (command.equals("Register")) {
-			model.addUser(this.gui.getInput());
-			this.gui.disposeActiveWindow();
+			try {
+				String[] input = this.gui.getInput();
+				if (input[0].isEmpty())
+					throw new Exception("Error: no name entered");
+				else if (input[1].isEmpty())
+					throw new Exception("Error: no email entered");
+				else if (input[2].isEmpty())
+					throw new Exception("Error: no phone number entered");
+				else if (input[3].isEmpty())
+					throw new Exception("Error: no address entered");
+				else if (input[4].isEmpty())
+					throw new Exception("Error: no password entered");
+				else {
+					model.addUser(input);
+					this.gui.disposeActiveWindow();
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
 		}
 
 	}
@@ -139,25 +162,60 @@ public class TravellerClientController {
 
 	public void controllerSearchFrame1(String command) {
 		if (command.equals("Search")) {
-			String[] input = this.gui.getInput();
-			model.copy(model.searchHotel(input));
-			this.gui.display("SearchFrame2");
+			try {
+				String[] input = this.gui.getInput();
+				if (input[1].isEmpty())
+					throw new Exception("Error: no text entered");
+				else {
+					model.copy(model.searchHotel(input));
+					this.gui.display("SearchFrame2");
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
+
 		}
 	}
 
 	public void controllerSearchFrame2(String command) {
-		if (command.equals("windowFocus")) {
-			this.gui.update(model.getTableCopy());
-		} else if (command.equals("Reserve")) {
-			model.copy(this.gui.getInput());
-			this.gui.display("ReserveFrame");
-		} else if (command.equals("Give Reviews")) {
-			this.gui.display("GiveReviewsFrame");
-		} else if (command.equals("Get Reviews")) {
-			this.gui.display("GetReviewsFrame");
-		} else if (command.equals("Find interest points")) {
-			model.copy(this.gui.getInput());
-			this.gui.display("InterestPointsFrame");
+		try {
+			if (command.equals("windowFocus")) {
+				this.gui.update(model.getTableCopy());
+			} else if (command.equals("Reserve")) {
+				String[] input = this.gui.getInput();
+				if(input[0].isEmpty())
+					throw new Exception("Error: no hotel selected");
+				else{
+				model.copy(input);
+				this.gui.display("ReserveFrame");
+				}
+			} else if (command.equals("Give Reviews")) {
+				String[] input = this.gui.getInput();
+				if(input[0].isEmpty())
+					throw new Exception("Error: no hotel selected");
+				else{
+				model.copy(input);
+				this.gui.display("GiveReviewsFrame");
+				}
+			} else if (command.equals("Get Reviews")) {
+				String[] input = this.gui.getInput();
+				if(input[0].isEmpty())
+					throw new Exception("Error: no hotel selected");
+				else{
+				model.copy(input);
+				this.gui.display("GetReviewsFrame");
+				}
+			} else if (command.equals("Find interest points")) {
+				String[] input = this.gui.getInput();
+				if(input[0].isEmpty())
+					throw new Exception("Error: no hotel selected");
+				else{
+				model.copy(input);
+				this.gui.display("InterestPointsFrame");
+				}
+			}
+		} catch (Exception e) {
+			this.gui.displayErrorMessage(e.getMessage());
 		}
 	}
 
