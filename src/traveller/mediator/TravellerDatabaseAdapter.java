@@ -8,6 +8,7 @@ import traveller.model.HotelList;
 import traveller.model.MyDate;
 import traveller.model.Reservation;
 import traveller.model.ReservationList;
+import traveller.model.Review;
 import traveller.model.User;
 import traveller.model.UserList;
 import utility.persistence.MyDatabase;
@@ -332,6 +333,27 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
          throw new IOException(e.getMessage());
       }
 
+      return sum;
+   }
+
+   @Override
+   public int addReview(Review review) throws IOException
+   {
+      int sum = 0;
+      String sql = "INSERT INTO REVIEWS(reviewsID, userID, hotelID, grade, comments) VALUES(?,?,?,?,?)";
+      
+      int revId = review.getRevId();
+      int userId = review.getUser().getUserId();
+      int hotelId = review.getHotel().getHotelId();
+      int grade = review.getGrade();
+      String comments = review.getComment();
+      
+      try {
+         sum += db.update(sql, revId, userId, hotelId, grade, comments);
+      } catch (Exception e) {
+         throw new IOException(e.getMessage());
+      }
+      
       return sum;
    }
    

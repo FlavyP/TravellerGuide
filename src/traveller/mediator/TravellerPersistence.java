@@ -6,6 +6,7 @@ import traveller.model.Hotel;
 import traveller.model.HotelList;
 import traveller.model.Reservation;
 import traveller.model.ReservationList;
+import traveller.model.Review;
 import traveller.model.User;
 import traveller.model.UserList;
 
@@ -23,6 +24,7 @@ public interface TravellerPersistence
    public int deleteHotel(int hotelId) throws IOException;
    public int addReservation(Reservation rsrv, int userId, int hotelId) throws IOException;
    public int deleteReservation(int rsrvId) throws IOException;
+   public int addReview(Review review) throws IOException;
    
 
 }
