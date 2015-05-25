@@ -9,6 +9,7 @@ import traveller.model.MyDate;
 import traveller.model.Reservation;
 import traveller.model.ReservationList;
 import traveller.model.Review;
+import traveller.model.ReviewList;
 import traveller.model.User;
 import traveller.model.UserList;
 import utility.persistence.MyDatabase;
@@ -180,6 +181,70 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 	   return reservations;
 	   
 	   
+   }
+	
+	@Override
+   public ReviewList loadReviews() throws IOException
+   {
+      ReviewList reviews = new ReviewList();
+      
+      String sql = "SELECT r.*, u.*, h.*"
+            + " FROM reviews as r"
+            + " LEFT JOIN user as u ON r.userID=u.userID"
+            + " LEFT JOIN hotel as h ON r.hotelID=h.hotelID";
+      
+      try {
+         ArrayList<Object[]> results = db.query(sql);
+         for (int i = 0; i < results.size(); i++) {
+            Object[] row = results.get(i);
+            int reviewId = Integer.parseInt(row[0].toString());
+            int userId = Integer.parseInt(row[1].toString());
+            int hotelId = Integer.parseInt(row[2].toString());
+            int grade = Integer.parseInt(row[3].toString());
+            String comment = row[4].toString();
+            String uName = row[6].toString();
+            String uEmail = row[7].toString();
+            String uPhone = row[8].toString();
+            String uAddress = row[9].toString();
+            int uGuest = Integer.parseInt(row[10].toString());
+            boolean isGuest;
+            if (uGuest == 1) {
+               isGuest = true;
+            } else {
+               isGuest = false;
+            }
+            String uPassword = row[11].toString();
+            String hName = row[13].toString();
+            String hCity = row[14].toString();
+            String hAddress = row[15].toString();
+            int nSr = Integer.parseInt(row[16].toString());
+            double pSr = Double.parseDouble(row[17].toString());
+            int nDr = Integer.parseInt(row[18].toString());
+            double pDr = Double.parseDouble(row[19].toString());
+            int nTr = Integer.parseInt(row[20].toString());
+            double pTr = Double.parseDouble(row[21].toString());
+            int nA = Integer.parseInt(row[22].toString());
+            double pA = Double.parseDouble(row[23].toString());
+            
+            User user = new User(userId, uName, uEmail, uPhone, uAddress,
+                  isGuest, uPassword);
+            
+            Hotel hotel = new Hotel(hotelId, hName, hCity, hAddress, nSr, pSr,
+                  nDr, pDr, nTr, pTr, nA, pA);
+            
+            Review review = new Review(reviewId, user, hotel, grade, comment);
+            
+            reviews.addReview(review);
+         }
+         
+      }
+      
+      catch (Exception e) {
+         throw new IOException(e.getMessage());
+      }
+      
+      
+      return reviews;
    }
 
 	@Override
@@ -371,6 +436,5 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
       }
 
       return sum;
-   }
-   
+   }   
 }
