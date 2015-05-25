@@ -101,8 +101,10 @@ public class TravellerGUI {
 					this.handler);
 		}
 	}
-	   public void displayErrorMessage(String message){
-		      JOptionPane.showMessageDialog(this.getActiveWindow(), message, "Error", JOptionPane.ERROR_MESSAGE);
-		   }
+
+	public void displayErrorMessage(String message) {
+		JOptionPane.showMessageDialog(this.getActiveWindow(), message, "Error",
+				JOptionPane.ERROR_MESSAGE);
+	}
 
 }
