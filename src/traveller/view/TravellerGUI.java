@@ -2,13 +2,14 @@ package traveller.view;
 
 import java.awt.Window;
 
-import traveller.controller.Controller;
+import javax.swing.JOptionPane;
+
 import traveller.controller.TravellerClientController;
 
 public class TravellerGUI {
 	private TravellerGUIHandler handler;
-	private View active;
-	
+	private TravellerView active;
+
 	public TravellerGUI() {
 		this.handler = null;
 		this.active = null;
@@ -31,18 +32,18 @@ public class TravellerGUI {
 	}
 
 	public String[] getInput() {
-		View window = (View) this.getActiveWindow();
+		TravellerView window = (TravellerView) this.getActiveWindow();
 
 		return window.getInput();
 	}
 
 	public void update(String[] update) {
-		View window = (View) this.getActiveWindow();
+		TravellerView window = (TravellerView) this.getActiveWindow();
 		window.update(update);
 	}
 
 	public void update(String[][] update) {
-		View window = (View) this.getActiveWindow();
+		TravellerView window = (TravellerView) this.getActiveWindow();
 		window.update(update);
 	}
 
@@ -86,19 +87,22 @@ public class TravellerGUI {
 		} else if (frame.equals("GetReviewsFrame")) {
 			GetReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
 					this.handler);
+		} else if (frame.equals("MyReservationFrame")) {
+			MyReservationFrame.getInstance(this.getActiveWindow(),
+					this.handler, this.handler);
+		} else if (frame.equals("MyReviewsFrame")) {
+			MyReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
+		} else if (frame.equals("InterestPointsFrame")) {
+			InterestPointsFrame.getInstance(this.getActiveWindow(),
+					this.handler, this.handler);
+		} else if (frame.equals("DirectionsFrame")) {
+			DirectionsFrame.getInstance(this.getActiveWindow(), this.handler,
+					this.handler);
 		}
-		else if (frame.equals("MyReservationFrame")) {
-         MyReservationFrame.getInstance(this.getActiveWindow(), this.handler,
-               this.handler);
-      }
-		else if (frame.equals("MyReviewsFrame")) {
-		   MyReviewsFrame.getInstance(this.getActiveWindow(), this.handler,
-               this.handler);
-      }
-		else if (frame.equals("InterestPointsFrame")) {
-		   InterestPointsFrame.getInstance(this.getActiveWindow(), this.handler,
-               this.handler);
-      }
 	}
+	   public void displayErrorMessage(String message){
+		      JOptionPane.showMessageDialog(this.getActiveWindow(), message, "Error", JOptionPane.ERROR_MESSAGE);
+		   }
 
 }

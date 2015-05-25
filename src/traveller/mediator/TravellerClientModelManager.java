@@ -58,25 +58,14 @@ public class TravellerClientModelManager extends Observable implements
 		this.tableCopy = null;
 	}
 
-	@Override
-	public void addHotel(Hotel hotel) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public ArrayList<Hotel> searchHotelByName(String name) {
-		return null;
-	}
-
-	@Override
-	public ArrayList<Hotel> searchHotelByCity(String city) {
-		// proxy.searchHotelByCity();
-		return null;
-	}
-
 	public String[] login(String[] input) {
 		String[] answer = proxy.login(input);
+		if(answer[0] == null){
+			this.userId = -1;
+		}
+		else{
 		this.userId = Integer.parseInt(answer[0]);
+		}
 		return answer;
 	}
 
@@ -84,8 +73,8 @@ public class TravellerClientModelManager extends Observable implements
 		proxy.addHotel(input);
 	}
 
-	public String[] editHotelGetInfo(int input) {
-		return proxy.editHotelGetInfo(input);
+	public String[] getHotelInfo(int input) {
+		return proxy.getHotelInfo(input);
 	}
 
 	public void editHotel(String[] input) {
@@ -119,42 +108,24 @@ public class TravellerClientModelManager extends Observable implements
 	public void cancelReservation(int input) {
 		proxy.cancelReservation(input);
 	}
-	
-	public String[][] getInterestPoints(String[] input){
+
+	public String[][] getInterestPoints(String[] input) {
 		return proxy.getInterestPoints(input);
 	}
-	@Override
-	public ArrayList<Hotel> searchHotelByAddress(String address) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public String getDirections(String[] input) {
+		return proxy.getDirections(input);
 	}
 
-	@Override
-	public double reserve(Reservation res) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String[][] getUserReviews(int input) {
+		return proxy.getUserReviews(input);
+	}
+	public void cancelReview(int input){
+		proxy.cancelReview(input);
 	}
 
-	@Override
-	public String getHotels() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Hotel getHotel(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void showAnswer(String answer) {
-		setChanged();
-		notifyObservers(answer);
-	}
-
-	public void addUser(User user) {
-		userList.addUser(user);
+	public void addUser(String[] input) {
+		proxy.addUser(input);
 	}
 
 	public int getUserId() {

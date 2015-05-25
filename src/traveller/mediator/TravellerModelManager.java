@@ -26,14 +26,28 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		try {
 			this.userList = database.loadUsers();
 			this.hList = database.loadHotels();
+			this.resList = database.loadReservations();
+			this.reviewList = database.loadReviews();
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
 
-	@Override
-	public void addHotel(Hotel hotel) {
-		hList.addHotel(hotel);
+	public String[] login(String[] input) {
+		String[] b = new String[3];
+		User user = userList.getUser(input[0], input[1]);
+		if (user != null) {
+			b[0] = "" + user.getUserId();
+			b[1] = "1";
+			if (user.isGuest())
+				b[2] = "1";
+			else
+				b[2] = "0";
+		} else {
+			b[1] = "0";
+			b[2] = "0";
+		}
+		return b;
 	}
 
 	@Override
@@ -52,34 +66,10 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		}
 	}
 
-	@Override
-	public ArrayList<Hotel> searchHotelByCity(String city) {
-		return hList.getHotelsInCity(city);
-	}
-
-	public ArrayList<Hotel> searchHotelByName(String name) {
-		return hList.getHotelsByName(name);
-	}
-
-	@Override
-	public ArrayList<Hotel> searchHotelByAddress(String address) {
-		return hList.getHotelsInAddress(address);
-	}
-
-	@Override
-	public double reserve(Reservation res) {
-		super.setChanged();
-		super.notifyObservers("Reservation added");
-		return resList.reserve(res);
-	}
-
-	public Hotel getHotel(int index) {
-		return hList.getHotel(index);
-	}
-
-	public String[] getHotelInfo(int index) {
-		Hotel hotel = hList.getHotel(index);
+	public String[] getHotelInfo(int input) {
 		String[] a = new String[11];
+		try{
+		Hotel hotel = hList.getHotel(input);
 		a[0] = hotel.getName();
 		a[1] = hotel.getCity();
 		a[2] = hotel.getAddress();
@@ -91,44 +81,23 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		a[8] = "" + hotel.getPriceOfRooms(2);
 		a[9] = "" + hotel.getNumberOfRooms(3);
 		a[10] = "" + hotel.getPriceOfRooms(3);
+		}
+		catch(Exception e){
+			a[0] = "";
+		}
 		return a;
 	}
 
-	public String getHotels() {
-		return hList.toString();
-	}
-
-	public void addUser(User user) {
-		userList.addUser(user);
-	}
-
-	public String[] getUser(String email, String password) {
-		String[] b = new String[3];
-		User user = userList.getUser(email, password);
-		if (user != null) {
-			b[0] = "" + user.getUserId();
-			b[1] = "1";
-			if (user.isGuest())
-				b[2] = "1";
-			else
-				b[2] = "0";
-		} else {
-			b[1] = "0";
-			b[2] = "0";
-		}
-		return b;
-	}
-
-	public void editHotel(String[] hotel) {
-		Hotel hotel2 = new Hotel(Integer.parseInt(hotel[0]), hotel[1],
-				hotel[2], hotel[3], Integer.parseInt(hotel[4]),
-				Double.parseDouble(hotel[5]), Integer.parseInt(hotel[6]),
-				Double.parseDouble(hotel[7]), Integer.parseInt(hotel[8]),
-				Double.parseDouble(hotel[9]), Integer.parseInt(hotel[10]),
-				Double.parseDouble(hotel[11]));
-		hList.editHotel(Integer.parseInt(hotel[0]), hotel2);
+	public void editHotel(String[] input) {
+		Hotel hotel2 = new Hotel(Integer.parseInt(input[0]), input[1],
+				input[2], input[3], Integer.parseInt(input[4]),
+				Double.parseDouble(input[5]), Integer.parseInt(input[6]),
+				Double.parseDouble(input[7]), Integer.parseInt(input[8]),
+				Double.parseDouble(input[9]), Integer.parseInt(input[10]),
+				Double.parseDouble(input[11]));
+		hList.editHotel(Integer.parseInt(input[0]), hotel2);
 		try {
-			database.editHotel(hotel2, Integer.parseInt(hotel[0]));
+			database.editHotel(hotel2, Integer.parseInt(input[0]));
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -141,11 +110,6 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		} catch (Exception e) {
 			e.getMessage();
 		}
-	}
-
-	public void showAnswer(String answer) {
-		setChanged();
-		notifyObservers(answer);
 	}
 
 	public String[][] searchHotel(String[] input) {
@@ -218,7 +182,6 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				Integer.parseInt(input[10]), Integer.parseInt(input[11]));
 		resList.reserve(reservation);
 		try {
-			System.out.println(reservation.getCheckIn().toString() + " " + reservation.getCheckOut());
 			database.addReservation(reservation, Integer.parseInt(input[0]),
 					Integer.parseInt(input[1]));
 		} catch (Exception e) {
@@ -232,6 +195,13 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				hList.getHotel(Integer.parseInt(input[1]) - 1),
 				Integer.parseInt(input[2]), input[3]);
 		reviewList.addReview(review);
+		try
+      {
+         database.addReview(review);
+      }
+		 catch (Exception e) {
+	         e.getMessage();
+	      }
 	}
 
 	public String[] getReviews(int hotelId) {
@@ -262,10 +232,14 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 
 	public void cancelReservation(int resId) {
 		resList.cancelReservation(resId);
+		try {
+			database.deleteReservation(resId);
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	public String[][] getInterestPoints(String[] input) {
-		// System.out.println(input[1]);
 		int hotelId = Integer.parseInt(input[0]);
 		Hotel hotel = hList.getHotel(hotelId - 1);
 		double[] latLng = null;
@@ -278,7 +252,62 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 
 		}
 		String[][] answer = places.getInformation();
-		System.out.println(answer[0][0]);
 		return answer;
 	}
+
+	public String getDirections(String[] input) {
+		int hotelId = Integer.parseInt(input[0]);
+		Hotel hotel = hList.getHotel(hotelId - 1);
+		double[] latLng = null;
+		double pLat = 0, pLng = 0;
+		GooglePlaces places = null;
+		String answer = null;
+		try {
+			latLng = new GoogleDirections(hotel.getAddress(), hotel.getCity())
+					.getPlaceLatAndLng();
+			places = new GooglePlaces(latLng[0], latLng[1], 500, input[2]);
+			pLat = places.getPlaceLat(Integer.parseInt(input[1]) - 1);
+			pLng = places.getPlaceLng(Integer.parseInt(input[1]) - 1);
+			answer = new GoogleDirections(latLng[0], latLng[1], pLat, pLng)
+					.getInformation();
+		} catch (IOException e) {
+
+		}
+		return answer;
+	}
+
+	public String[][] getUserReviews(int input) {
+		ArrayList<Review> a = reviewList.getReviews(input);
+		String[][] list = new String[a.size()][4];
+		for (int i = 0; i < a.size(); i++) {
+			list[i][0] = "" + a.get(i).getRevId();
+			list[i][1] = a.get(i).getHotel().getName();
+			list[i][2] = "" + a.get(i).getGrade();
+			list[i][3] = a.get(i).getComment();
+		}
+		return list;
+	}
+	
+	public void cancelReview(int input) {
+		reviewList.deleteReview(input - 1);
+		try
+      {
+         database.deleteReview(input);
+      }
+		catch (Exception e) {
+         e.getMessage();
+      }
+	}
+	
+	public void addUser(String[] input) {
+		User user = new User(userList.size() + 1, input[0], input[1], input[2],
+				input[3], true, input[4]);
+		userList.addUser(user);
+		try {
+			database.addUser(user);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+
 }

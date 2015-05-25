@@ -31,8 +31,9 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.event.CaretListener;
+import javax.swing.table.TableColumn;
 
-public class InterestPointsFrame extends JDialog implements View {
+public class InterestPointsFrame extends JDialog implements TravellerView {
 	private JPanel contentPanel;
 	private JPanel ipPanel;
 	private JPanel buttonsPanel;
@@ -44,7 +45,6 @@ public class InterestPointsFrame extends JDialog implements View {
 	private JButton getBtn;
 	private JButton getDirectionsBtn;
 	private JButton backButton;
-	private JList<String> list;
 	private JScrollPane scrollPane;
 
 	private GUITableModel tableModel;
@@ -53,7 +53,7 @@ public class InterestPointsFrame extends JDialog implements View {
 
 	private static InterestPointsFrame instance = null;
 
-	public InterestPointsFrame(Window owner, ActionListener actionListener,
+	private InterestPointsFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Interest Points");
 		createComponents();
@@ -61,16 +61,6 @@ public class InterestPointsFrame extends JDialog implements View {
 		addComponentsToFrame();
 		addActionListeners(actionListener);
 		addWindowFocusListener(focusListener);
-		setVisible(true);
-	}
-
-	public InterestPointsFrame() {
-		// super(owner, "Interest Points");
-		createComponents();
-		initializeComponents();
-		addComponentsToFrame();
-		// addActionListeners(actionListener);
-		// addWindowFocusListener(focusListener);
 		setVisible(true);
 	}
 
@@ -112,6 +102,7 @@ public class InterestPointsFrame extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("InterestPointsFrame");
 	}
 
@@ -146,8 +137,14 @@ public class InterestPointsFrame extends JDialog implements View {
 
 	@Override
 	public String[] getInput() {
-		String[] input = new String[1];
+		String[] input = new String[2];
 		input[0] = this.comboBox.getSelectedItem().toString();
+		try {
+			input[1] = (String) this.tableModel.getValueAt(
+					this.table.getSelectedRow(), 0);
+		} catch (Exception e) {
+			input[1] = "";
+		}
 		return input;
 	}
 
@@ -157,13 +154,11 @@ public class InterestPointsFrame extends JDialog implements View {
 
 	}
 
-	public static void main(String[] args) {
-		InterestPointsFrame frame = new InterestPointsFrame();
-	}
-
 	@Override
 	public void update(String[][] update) {
 		this.tableModel = new GUITableModel(update, this.tableLabels);
 		this.table.setModel(this.tableModel);
+		table.getColumnModel().getColumn(0).setMaxWidth(20);
+		table.getColumnModel().getColumn(3).setMaxWidth(50);
 	}
 }

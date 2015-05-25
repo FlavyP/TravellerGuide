@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class SearchFrame1 extends JDialog implements View {
+public class SearchFrame1 extends JDialog implements TravellerView {
 
 	private JComboBox<String> comboList;
 	private JTextField searchName;
@@ -24,7 +24,7 @@ public class SearchFrame1 extends JDialog implements View {
 
 	private static SearchFrame1 instance = null;
 
-	public SearchFrame1(Window owner, ActionListener actionListener,
+	private SearchFrame1(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Search");
 		createComponents();
@@ -59,6 +59,7 @@ public class SearchFrame1 extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("SearchFrame1");
 
 	}

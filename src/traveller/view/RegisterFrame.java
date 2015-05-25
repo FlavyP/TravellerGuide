@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class RegisterFrame extends JDialog implements View {
+public class RegisterFrame extends JDialog implements TravellerView {
 	private static RegisterFrame instance = null;
 	private JLabel nameLabel;
 	private JLabel emailLabel;
@@ -32,21 +32,13 @@ public class RegisterFrame extends JDialog implements View {
 	private JPasswordField passField;
 
 	private JPanel contentPanel;
-	private JPanel buttonsPanel;
-	private JPanel namePanel;
-	private JPanel emailPanel;
-	private JPanel phoneNumberPanel;
-	private JPanel addressPanel;
-	private JPanel passPanel;
-	private JPanel all;
 
 	private JButton cancelButton;
 	private JButton registerButton;
 
-	public RegisterFrame(Window owner, ActionListener actionListener,
+	private RegisterFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Register");
-		// super(owner, "Register", JDialog.DEFAULT_MODALITY_TYPE);
 		createComponents();
 		initializeComponents();
 		addComponentsToFrame();
@@ -54,10 +46,6 @@ public class RegisterFrame extends JDialog implements View {
 		addWindowFocusListener(focusListener);
 		setVisible(true);
 	}
-
-	// public static RegisterFrame getInstance() {
-	// return instance;
-	// }
 
 	public static RegisterFrame getInstance(Window owner,
 			ActionListener actionListener, WindowFocusListener focusListener) {
@@ -84,46 +72,33 @@ public class RegisterFrame extends JDialog implements View {
 		addressField = new JTextField(10);
 		passField = new JPasswordField(10);
 
-		contentPanel = new JPanel(new GridLayout(6, 1));
-		namePanel = new JPanel(new FlowLayout());
-		emailPanel = new JPanel(new FlowLayout());
-		phoneNumberPanel = new JPanel(new FlowLayout());
-		addressPanel = new JPanel(new FlowLayout());
-		passPanel = new JPanel(new FlowLayout());
-		buttonsPanel = new JPanel(new FlowLayout());
+		contentPanel = new JPanel(new GridLayout(6, 2));
 	}
 
 	@Override
 	public void initializeComponents() {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("RegisterFrame");
 	}
 
 	@Override
 	public void addComponentsToFrame() {
 		this.setContentPane(contentPanel);
-		namePanel.add(nameLabel);
-		namePanel.add(nameField);
-		emailPanel.add(emailLabel);
-		emailPanel.add(emailField);
-		phoneNumberPanel.add(phoneNumberLabel);
-		phoneNumberPanel.add(phoneNumberField);
-		addressPanel.add(addressLabel);
-		addressPanel.add(addressField);
-		passPanel.add(passLabel);
-		passPanel.add(passField);
-		buttonsPanel.add(cancelButton);
-		buttonsPanel.add(registerButton);
-
-		contentPanel.add(namePanel);
-		contentPanel.add(emailPanel);
-		contentPanel.add(phoneNumberPanel);
-		contentPanel.add(addressPanel);
-		contentPanel.add(passPanel);
-		contentPanel.add(buttonsPanel);
+		contentPanel.add(nameLabel);
+		contentPanel.add(nameField);
+		contentPanel.add(emailLabel);
+		contentPanel.add(emailField);
+		contentPanel.add(phoneNumberLabel);
+		contentPanel.add(phoneNumberField);
+		contentPanel.add(addressLabel);
+		contentPanel.add(addressField);
+		contentPanel.add(passLabel);
+		contentPanel.add(passField);
+		contentPanel.add(cancelButton);
+		contentPanel.add(registerButton);
 	}
 
 	public void dispose() {
@@ -151,12 +126,12 @@ public class RegisterFrame extends JDialog implements View {
 	@Override
 	public void update(String[] update) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(String[][] update) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

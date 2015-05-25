@@ -19,7 +19,7 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import traveller.model.MyDate;
 
-public class ReserveFrame extends JDialog implements View {
+public class ReserveFrame extends JDialog implements TravellerView {
    private static ReserveFrame instance = null;
    private JLabel checkInLabel;
    private JLabel checkOutLabel;
@@ -49,7 +49,7 @@ public class ReserveFrame extends JDialog implements View {
    private JDatePanelImpl datePanel2;
    private JDatePickerImpl datePicker2;
 
-   public ReserveFrame(Window owner, ActionListener actionListener,
+   private ReserveFrame(Window owner, ActionListener actionListener,
          WindowFocusListener focusListener) {
       super(owner, "Reserve");
       createComponents();
@@ -116,6 +116,7 @@ public class ReserveFrame extends JDialog implements View {
       setSize(new Dimension(500, 500));
       setLocationRelativeTo(null); // center of the screen
       setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+      setResizable(false);
       this.setName("ReserveFrame");
    }
 

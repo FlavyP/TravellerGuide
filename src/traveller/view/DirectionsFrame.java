@@ -12,9 +12,10 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
-public class DirectionsFrame extends JDialog implements View
+public class DirectionsFrame extends JDialog implements TravellerView
 {
    private JPanel contentPanel;
    
@@ -55,7 +56,6 @@ public class DirectionsFrame extends JDialog implements View
       textArea = new JTextArea();
       textArea.setEditable(false);
       scrollPane = new JScrollPane(textArea);
-      scrollPane.setViewportView(textArea);
       scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
       scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
    }
@@ -66,6 +66,7 @@ public class DirectionsFrame extends JDialog implements View
       setSize(new Dimension(500, 500));
       setLocationRelativeTo(null); // center of the screen
       setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+      setResizable(false);
       this.setName("DirectionsFrame");
       
    }
@@ -99,8 +100,7 @@ public class DirectionsFrame extends JDialog implements View
    @Override
    public void update(String[] update)
    {
-      // TODO Auto-generated method stub
-      
+	   textArea.setText(update[0]);
    }
 
    @Override

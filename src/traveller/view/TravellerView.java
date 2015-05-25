@@ -1,12 +1,19 @@
 package traveller.view;
 
-import java.util.Observer;
+import java.awt.event.ActionListener;
 
-import traveller.controller.TravellerController;
+public interface TravellerView {
+	public void createComponents();
 
-public interface TravellerView extends Observer
-{
-   public void start(TravellerController controller);
-   public void show(String value);
-   public String get(String what);
+	public void initializeComponents();
+
+	public void addComponentsToFrame();
+
+	public void addActionListeners(ActionListener actionListener);
+	
+	public String[] getInput();
+	
+	public void update(String[] update);
+	
+	public void update(String[][] update);
 }

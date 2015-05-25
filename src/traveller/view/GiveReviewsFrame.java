@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class GiveReviewsFrame extends JDialog implements View {
+public class GiveReviewsFrame extends JDialog implements TravellerView {
 	private static GiveReviewsFrame instance = null;
 
 	private JLabel commentLabel;
@@ -32,7 +32,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 	private JComboBox<String> comboBox;
 	private String[] review = { "5", "4", "3", "2", "1" };
 
-	public GiveReviewsFrame(Window owner, ActionListener actionListener,
+	private GiveReviewsFrame(Window owner, ActionListener actionListener,
 			WindowFocusListener focusListener) {
 		super(owner, "Give a review");
 		createComponents();
@@ -76,6 +76,7 @@ public class GiveReviewsFrame extends JDialog implements View {
 		setSize(new Dimension(500, 250));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("GiveReviewsFrame");
 	}
 

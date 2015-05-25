@@ -24,9 +24,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.CaretListener;
 
-public class LogInFrame extends JFrame implements View {
+public class LogInFrame extends JFrame implements TravellerView {
 	private JButton registerButton;
 	private JButton logInButton;
+	private JButton exitButton;
 
 	private JLabel userLabel;
 	private JLabel passLabel;
@@ -42,7 +43,7 @@ public class LogInFrame extends JFrame implements View {
 
 	private static LogInFrame instance = null;
 
-	public LogInFrame(ActionListener actionListener, WindowFocusListener focusListener) {
+	private LogInFrame(ActionListener actionListener, WindowFocusListener focusListener) {
 		super("Traveller Guide");
 		createComponents();
 		initializeComponents();
@@ -52,10 +53,6 @@ public class LogInFrame extends JFrame implements View {
 		setVisible(true);
 	}
 
-//	public static LogInFrame getInstance() {
-//		return instance;
-//	}
-
 	public static LogInFrame getInstance(ActionListener actionListener, WindowFocusListener focusListener) {
 		if (instance == null) {
 			instance = new LogInFrame(actionListener, focusListener);
@@ -63,7 +60,7 @@ public class LogInFrame extends JFrame implements View {
 		}
 		return instance;
 	}
-
+	
 	public void showInUserField(String value) {
 		userField.setText(value);
 	}
@@ -87,6 +84,7 @@ public class LogInFrame extends JFrame implements View {
 		setSize(500, 500);
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		this.setName("LogInFrame");
 	}
 	

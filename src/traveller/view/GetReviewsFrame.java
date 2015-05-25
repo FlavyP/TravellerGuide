@@ -13,7 +13,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class GetReviewsFrame extends JDialog implements View {
+public class GetReviewsFrame extends JDialog implements TravellerView {
 	private static GetReviewsFrame instance = null;
 
 	private JPanel contentPanel;
@@ -59,6 +59,7 @@ public class GetReviewsFrame extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("GetReviewsFrame");
 	}
 

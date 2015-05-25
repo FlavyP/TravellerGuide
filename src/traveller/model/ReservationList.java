@@ -72,4 +72,22 @@ public class ReservationList
       }
       return res;
    }
+   
+   public String toString()
+   {
+      String msg = "";
+      for(int i = 0; i < resList.size(); i++)
+      {
+         msg+="Reservation ID: " + resList.get(i).getResId() + " User ID:" + resList.get(i).getUser().getUserId() 
+               + " Hotel ID:" + resList.get(i).getHotel().getHotelId() + "\n" 
+               + " Check In Date: " + resList.get(i).getCheckIn().toString() + " Check out Date: " + resList.get(i).getCheckOut().toString() + "\n" 
+               + " Single rooms:" + resList.get(i).getNumberOfSingleRooms() + "\n" 
+               + " Double rooms: " + resList.get(i).getNumberOfDoubleRooms() + "\n"
+               + " Triple rooms: " + resList.get(i).getNumberOfTripleRooms() + "\n"
+               + " Apartments: " + resList.get(i).getNumberOfApartments() + "\n"
+               + "Total Price: " + resList.get(i).getTotalPrice();
+      }
+      
+      return msg;
+   }
 }

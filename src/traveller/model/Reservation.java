@@ -11,7 +11,6 @@ public class Reservation
    private int numberOfDoubleRooms;
    private int numberOfTripleRooms;
    private int numberOfApartments;
-   private int status;
    private double totalPrice;
    private int resId;
 
@@ -89,17 +88,7 @@ public class Reservation
    {
       this.numberOfApartments = numberOfApartments;
    }
-
-   public int getStatus()
-   {
-      return status;
-   }
-
-   public void setStatus(int status)
-   {
-      this.status = status;
-   }
-
+   
    public User getUser()
    {
       return user;
@@ -128,6 +117,11 @@ public class Reservation
    public void setResId(int resId)
    {
       this.resId = resId;
+   }
+   
+   public void setTotalPrice(double totalPrice)
+   {
+      this.totalPrice = totalPrice;
    }
 
    public double getTotalPrice()

@@ -10,7 +10,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class LogsFrame extends JFrame implements View {
+public class LogsFrame extends JFrame implements TravellerView {
 
 	private JList<String> list;
 	private JButton backButton;
@@ -18,7 +18,7 @@ public class LogsFrame extends JFrame implements View {
 	private JPanel panel1;
 	
 	
-	 public LogsFrame() {
+	 private LogsFrame() {
 		 super("Logs");
 			createComponents();
 			initializeComponents();
@@ -43,6 +43,7 @@ public class LogsFrame extends JFrame implements View {
 		setSize(500, 500);
 		setLocationRelativeTo(null); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		this.setName("Logs");
 		
 	}
