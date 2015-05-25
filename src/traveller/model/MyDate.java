@@ -1,11 +1,8 @@
 package traveller.model;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-
-
-public class MyDate implements Serializable
+public class MyDate
 {
    private int year;
    private int month;
