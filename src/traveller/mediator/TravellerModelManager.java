@@ -26,6 +26,7 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		try {
 			this.userList = database.loadUsers();
 			this.hList = database.loadHotels();
+			this.resList = database.loadReservations();
 		} catch (Exception e) {
 			e.getMessage();
 		}
