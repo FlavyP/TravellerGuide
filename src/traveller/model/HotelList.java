@@ -53,7 +53,7 @@ public class HotelList
       
       for(int i = 0; i < hotelList.size(); i++)
       {
-         if(hotelList.get(i).getCity().equals(city))
+         if(hotelList.get(i).getCity().equalsIgnoreCase(city.toLowerCase()))
          {
             hotels.add(hotelList.get(i));
          }
@@ -83,7 +83,7 @@ public class HotelList
       
       for(int i = 0; i < hotelList.size(); i++)
       {
-         if(hotelList.get(i).getAddress().equals(address))
+         if(hotelList.get(i).getAddress().equalsIgnoreCase(address))
          {
             hotels.add(hotelList.get(i));
          }
