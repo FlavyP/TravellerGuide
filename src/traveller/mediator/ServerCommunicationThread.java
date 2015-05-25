@@ -33,7 +33,7 @@ public class ServerCommunicationThread extends Thread implements Observer {
 				switch (choice) {
 				case 1:
 					String[] input1 = (String[]) inFromClient.readObject();
-					String[] b = model.getUser(input1[0], input1[1]);
+					String[] b = model.login(input1);
 					send(b);
 					break;
 				case 2:
@@ -87,6 +87,14 @@ public class ServerCommunicationThread extends Thread implements Observer {
 				case 14:
 					int input14 = (int) inFromClient.readObject();
 					send(model.getUserReviews(input14));
+					break;
+				case 15:
+					String[] input15 = (String[]) inFromClient.readObject();
+					model.addUser(input15);
+					break;
+				case 16:
+					int input16 = (int) inFromClient.readObject();
+					model.cancelReview(input16);
 					break;
 				default:
 					break;

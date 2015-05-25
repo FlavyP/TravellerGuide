@@ -27,6 +27,7 @@ import javax.swing.event.CaretListener;
 public class LogInFrame extends JFrame implements View {
 	private JButton registerButton;
 	private JButton logInButton;
+	private JButton exitButton;
 
 	private JLabel userLabel;
 	private JLabel passLabel;
@@ -52,10 +53,6 @@ public class LogInFrame extends JFrame implements View {
 		setVisible(true);
 	}
 
-//	public static LogInFrame getInstance() {
-//		return instance;
-//	}
-
 	public static LogInFrame getInstance(ActionListener actionListener, WindowFocusListener focusListener) {
 		if (instance == null) {
 			instance = new LogInFrame(actionListener, focusListener);
@@ -63,7 +60,7 @@ public class LogInFrame extends JFrame implements View {
 		}
 		return instance;
 	}
-
+	
 	public void showInUserField(String value) {
 		userField.setText(value);
 	}

@@ -20,7 +20,9 @@ public class UserList
    {
       return userList.get(index);
    }
-
+   public int size(){
+	   return userList.size();
+   }
    public String toString()
    {
       String msg = "";

@@ -58,22 +58,6 @@ public class TravellerClientModelManager extends Observable implements
 		this.tableCopy = null;
 	}
 
-	@Override
-	public void addHotel(Hotel hotel) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public ArrayList<Hotel> searchHotelByName(String name) {
-		return null;
-	}
-
-	@Override
-	public ArrayList<Hotel> searchHotelByCity(String city) {
-		// proxy.searchHotelByCity();
-		return null;
-	}
-
 	public String[] login(String[] input) {
 		String[] answer = proxy.login(input);
 		this.userId = Integer.parseInt(answer[0]);
@@ -84,8 +68,8 @@ public class TravellerClientModelManager extends Observable implements
 		proxy.addHotel(input);
 	}
 
-	public String[] editHotelGetInfo(int input) {
-		return proxy.editHotelGetInfo(input);
+	public String[] getHotelInfo(int input) {
+		return proxy.getHotelInfo(input);
 	}
 
 	public void editHotel(String[] input) {
@@ -127,41 +111,16 @@ public class TravellerClientModelManager extends Observable implements
 	public String getDirections(String[] input) {
 		return proxy.getDirections(input);
 	}
-	public String[][] getUserReviews(int input){
+
+	public String[][] getUserReviews(int input) {
 		return proxy.getUserReviews(input);
 	}
-	@Override
-	public ArrayList<Hotel> searchHotelByAddress(String address) {
-		// TODO Auto-generated method stub
-		return null;
+	public void cancelReview(int input){
+		proxy.cancelReview(input);
 	}
 
-	@Override
-	public double reserve(Reservation res) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String getHotels() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Hotel getHotel(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void showAnswer(String answer) {
-		setChanged();
-		notifyObservers(answer);
-	}
-
-	public void addUser(User user) {
-		userList.addUser(user);
+	public void addUser(String[] input) {
+		proxy.addUser(input);
 	}
 
 	public int getUserId() {

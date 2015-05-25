@@ -28,11 +28,8 @@ public class TravellerClientController {
 	}
 
 	public void execute(String command) {
-		if (command.equals("Back")) {
-			this.gui.disposeActiveWindow();
-		} else if (command.equals("Cancel")) {
-			this.gui.disposeActiveWindow();
-		} else if (command.equals("Log Out")) {
+		if (command.equals("Back") || command.equals("Cancel")
+				|| command.equals("Log Out")) {
 			this.gui.disposeActiveWindow();
 		} else if (this.gui.getActiveWindow().getName().equals("LogInFrame")) {
 			this.controllerLogInFrame(command);
@@ -92,8 +89,8 @@ public class TravellerClientController {
 
 	public void controllerRegisterFrame(String command) {
 		if (command.equals("Register")) {
+			model.addUser(this.gui.getInput());
 			this.gui.disposeActiveWindow();
-			this.gui.display("LogInFrame");
 		}
 
 	}
@@ -118,8 +115,7 @@ public class TravellerClientController {
 	public void controllerEditHotelFrame(String command) {
 		if (command.equals("Get info")) {
 			String[] input = this.gui.getInput();
-			String[] answer = model
-					.editHotelGetInfo(Integer.parseInt(input[0]));
+			String[] answer = model.getHotelInfo(Integer.parseInt(input[0]));
 			this.gui.update(answer);
 		} else if (command.equals("Clear")) {
 			this.gui.update(this.clear);
@@ -237,6 +233,10 @@ public class TravellerClientController {
 
 	public void controllerMyReviewsFrame(String command) {
 		if (command.equals("windowFocus")) {
+			this.gui.update(model.getUserReviews(model.getUserId()));
+		} else if (command.equals("Cancel review")) {
+			String[] reviewId = this.gui.getInput();
+			model.cancelReview(Integer.parseInt(reviewId[0]));
 			this.gui.update(model.getUserReviews(model.getUserId()));
 		}
 	}
