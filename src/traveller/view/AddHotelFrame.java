@@ -8,7 +8,7 @@ import java.awt.event.WindowFocusListener;
 
 import javax.swing.*;
 
-public class AddHotelFrame extends JDialog implements View {
+public class AddHotelFrame extends JDialog implements TravellerView {
 	private JButton addHotelButton;
 	private JButton clearButton;
 	private JButton cancelButton;
@@ -102,6 +102,7 @@ public class AddHotelFrame extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("AddHotelFrame");
 	}
 

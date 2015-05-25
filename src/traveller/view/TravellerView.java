@@ -2,7 +2,7 @@ package traveller.view;
 
 import java.awt.event.ActionListener;
 
-public interface View {
+public interface TravellerView {
 	public void createComponents();
 
 	public void initializeComponents();

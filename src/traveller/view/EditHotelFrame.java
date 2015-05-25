@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class EditHotelFrame extends JDialog implements View {
+public class EditHotelFrame extends JDialog implements TravellerView {
 	private JButton hotelInfoButton;
 	private JButton editHotelButton;
 	private JButton clearButton;
@@ -112,6 +112,7 @@ public class EditHotelFrame extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("EditHotelFrame");
 	}
 

@@ -313,11 +313,7 @@ public class TravellerDatabaseAdapter implements TravellerPersistence {
 		int sum = 0;
 		int resId = reservation.getResId();
 		MyDate checkIn = reservation.getCheckIn();
-		MyDate checkOut = reservation.getCheckOut();
-		
-		System.out.println(checkIn);
-		System.out.println(checkOut);
-		
+		MyDate checkOut = reservation.getCheckOut();		
 		
 		int nSr = reservation.getNumberOfSingleRooms();
 		int nDr = reservation.getNumberOfDoubleRooms();

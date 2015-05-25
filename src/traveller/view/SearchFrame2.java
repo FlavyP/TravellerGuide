@@ -21,7 +21,7 @@ import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-public class SearchFrame2 extends JDialog implements View {
+public class SearchFrame2 extends JDialog implements TravellerView {
 
 	private GUITableModel tableModel;
 	private JTable table;
@@ -92,6 +92,7 @@ public class SearchFrame2 extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("SearchFrame2");
 
 	}
@@ -145,5 +146,14 @@ public class SearchFrame2 extends JDialog implements View {
 	public void update(String[][] update) {
 		this.tableModel = new GUITableModel(update, this.tableLabels);
 		this.table.setModel(this.tableModel);
+		table.getColumnModel().getColumn(0).setMaxWidth(20);
+		table.getColumnModel().getColumn(4).setMaxWidth(50);
+		table.getColumnModel().getColumn(5).setMaxWidth(40);
+		table.getColumnModel().getColumn(6).setMaxWidth(50);
+		table.getColumnModel().getColumn(7).setMaxWidth(40);
+		table.getColumnModel().getColumn(8).setMaxWidth(50);
+		table.getColumnModel().getColumn(9).setMaxWidth(40);
+		table.getColumnModel().getColumn(10).setMaxWidth(50);
+		table.getColumnModel().getColumn(11).setMaxWidth(40);
 	}
 }

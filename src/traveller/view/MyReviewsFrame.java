@@ -15,7 +15,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 
-public class MyReviewsFrame extends JDialog implements View {
+public class MyReviewsFrame extends JDialog implements TravellerView {
 	private GUITableModel tableModel;
 	private JTable table;
 	private String[] tableLabels;
@@ -79,6 +79,7 @@ public class MyReviewsFrame extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("MyReviewsFrame");
 	}
 
@@ -107,8 +108,12 @@ public class MyReviewsFrame extends JDialog implements View {
 	@Override
 	public String[] getInput() {
 		String[] input = new String[1];
-		input[0] = (String) this.tableModel.getValueAt(
-				this.table.getSelectedRow(), 0);
+		try {
+			input[0] = (String) this.tableModel.getValueAt(
+					this.table.getSelectedRow(), 0);
+		} catch (Exception e) {
+			input[0] = "";
+		}
 		return input;
 	}
 

@@ -33,7 +33,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.event.CaretListener;
 import javax.swing.table.TableColumn;
 
-public class InterestPointsFrame extends JDialog implements View {
+public class InterestPointsFrame extends JDialog implements TravellerView {
 	private JPanel contentPanel;
 	private JPanel ipPanel;
 	private JPanel buttonsPanel;
@@ -102,6 +102,7 @@ public class InterestPointsFrame extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("InterestPointsFrame");
 	}
 
@@ -141,8 +142,8 @@ public class InterestPointsFrame extends JDialog implements View {
 		try {
 			input[1] = (String) this.tableModel.getValueAt(
 					this.table.getSelectedRow(), 0);
-		} catch (ArrayIndexOutOfBoundsException e) {
-
+		} catch (Exception e) {
+			input[1] = "";
 		}
 		return input;
 	}

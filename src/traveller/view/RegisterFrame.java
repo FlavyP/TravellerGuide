@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class RegisterFrame extends JDialog implements View {
+public class RegisterFrame extends JDialog implements TravellerView {
 	private static RegisterFrame instance = null;
 	private JLabel nameLabel;
 	private JLabel emailLabel;
@@ -80,6 +80,7 @@ public class RegisterFrame extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("RegisterFrame");
 	}
 

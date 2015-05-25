@@ -8,7 +8,7 @@ import traveller.controller.TravellerClientController;
 
 public class TravellerGUI {
 	private TravellerGUIHandler handler;
-	private View active;
+	private TravellerView active;
 
 	public TravellerGUI() {
 		this.handler = null;
@@ -32,18 +32,18 @@ public class TravellerGUI {
 	}
 
 	public String[] getInput() {
-		View window = (View) this.getActiveWindow();
+		TravellerView window = (TravellerView) this.getActiveWindow();
 
 		return window.getInput();
 	}
 
 	public void update(String[] update) {
-		View window = (View) this.getActiveWindow();
+		TravellerView window = (TravellerView) this.getActiveWindow();
 		window.update(update);
 	}
 
 	public void update(String[][] update) {
-		View window = (View) this.getActiveWindow();
+		TravellerView window = (TravellerView) this.getActiveWindow();
 		window.update(update);
 	}
 

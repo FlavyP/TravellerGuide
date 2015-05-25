@@ -13,7 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class GuestFrame extends JDialog implements View {
+public class GuestFrame extends JDialog implements TravellerView {
 
 	private JButton searchButton;
 	private JButton myResButton;
@@ -63,6 +63,7 @@ public class GuestFrame extends JDialog implements View {
 		setSize(new Dimension(500, 500));
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setResizable(false);
 		this.setName("GuestFrame");
 
 	}

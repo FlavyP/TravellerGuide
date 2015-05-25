@@ -10,7 +10,7 @@ import traveller.model.MyDate;
 import traveller.model.Reservation;
 import traveller.model.User;
 import traveller.view.TravellerGUI;
-import traveller.view.View;
+import traveller.view.TravellerView;
 
 public class TravellerClientController {
 	private TravellerClientModelManager model;
@@ -127,27 +127,104 @@ public class TravellerClientController {
 
 	public void controllerAddHotelFrame(String command) {
 		if (command.equals("Add hotel")) {
-			String[] input = this.gui.getInput();
-			model.addHotel(input);
+			try {
+				String[] input = this.gui.getInput();
+				if (input[0].isEmpty()) {
+					throw new Exception("Error: no name entered");
+				} else if (input[1].isEmpty()) {
+					throw new Exception("Error: no city entered");
+				} else if (input[2].isEmpty()) {
+					throw new Exception("Error: no address entered");
+				} else if (input[3].isEmpty()) {
+					throw new Exception(
+							"Error: no number of single rooms entered");
+				} else if (input[4].isEmpty()) {
+					throw new Exception(
+							"Error: no price of single rooms entered");
+				} else if (input[5].isEmpty()) {
+					throw new Exception(
+							"Error: no number of double rooms entered");
+				} else if (input[6].isEmpty()) {
+					throw new Exception("Error: no price of double entered");
+				} else if (input[7].isEmpty()) {
+					throw new Exception(
+							"Error: no number of triple rooms entered");
+				} else if (input[8].isEmpty()) {
+					throw new Exception(
+							"Error: no price of triple rooms entered");
+				} else if (input[9].isEmpty()) {
+					throw new Exception("Error: no number apartments entered");
+				} else if (input[10].isEmpty()) {
+					throw new Exception("Error: no price of apartments entered");
+				} else {
+					model.addHotel(input);
+					this.gui.disposeActiveWindow();
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
 		} else if (command.equals("Clear")) {
 			this.gui.update(this.clear);
 		}
 	}
 
 	public void controllerEditHotelFrame(String command) {
-		if (command.equals("Get info")) {
-			String[] input = this.gui.getInput();
-			String[] answer = model.getHotelInfo(Integer.parseInt(input[0]));
-			this.gui.update(answer);
-		} else if (command.equals("Clear")) {
-			this.gui.update(this.clear);
-		} else if (command.equals("Edit hotel")) {
-			String[] input = this.gui.getInput();
-			model.editHotel(input);
-		} else if (command.equals("Delete")) {
-			String[] input = this.gui.getInput();
-			model.deleteHotel(Integer.parseInt(input[0]));
+		try {
+			if (command.equals("Get info")) {
+				String[] input = this.gui.getInput();
+				if (input[0].isEmpty()) {
+					throw new Exception("Error: no id of hotel entered");
+				}
+				String[] answer = model
+						.getHotelInfo(Integer.parseInt(input[0]));
+				if (answer[0].isEmpty()) {
+					throw new Exception("Error: hotel with id " + input[0] + " does not exist");
+				} else {
+					this.gui.update(answer);
+				}
+			} else if (command.equals("Clear")) {
+				this.gui.update(this.clear);
+			} else if (command.equals("Edit hotel")) {
+				String[] input = this.gui.getInput();
+				if (input[1].isEmpty()) {
+					throw new Exception("Error: no name entered");
+				} else if (input[2].isEmpty()) {
+					throw new Exception("Error: no city entered");
+				} else if (input[3].isEmpty()) {
+					throw new Exception("Error: no address entered");
+				} else if (input[4].isEmpty()) {
+					throw new Exception(
+							"Error: no number of single rooms entered");
+				} else if (input[5].isEmpty()) {
+					throw new Exception(
+							"Error: no price of single rooms entered");
+				} else if (input[6].isEmpty()) {
+					throw new Exception(
+							"Error: no number of double rooms entered");
+				} else if (input[7].isEmpty()) {
+					throw new Exception("Error: no price of double entered");
+				} else if (input[8].isEmpty()) {
+					throw new Exception(
+							"Error: no number of triple rooms entered");
+				} else if (input[9].isEmpty()) {
+					throw new Exception(
+							"Error: no price of triple rooms entered");
+				} else if (input[10].isEmpty()) {
+					throw new Exception("Error: no number apartments entered");
+				} else if (input[11].isEmpty()) {
+					throw new Exception("Error: no price of apartments entered");
+				} else {
+					model.editHotel(input);
+					this.gui.update(this.clear);
+				}
+			} else if (command.equals("Delete")) {
+				String[] input = this.gui.getInput();
+				model.deleteHotel(Integer.parseInt(input[0]));
+			}
+		} catch (Exception e) {
+			this.gui.displayErrorMessage(e.getMessage());
 		}
+
 	}
 
 	public void controllerGuestFrame(String command) {
@@ -254,8 +331,17 @@ public class TravellerClientController {
 			String[] input = this.gui.getInput();
 			input[0] = "" + model.getUserId();
 			input[1] = hotelId[0][0];
-			model.addReview(input);
-			this.gui.disposeActiveWindow();
+			try {
+				if (input[3].isEmpty()) {
+					throw new Exception("Error: no comment entered");
+				} else {
+					model.addReview(input);
+					this.gui.disposeActiveWindow();
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
+
 		}
 	}
 
@@ -276,17 +362,25 @@ public class TravellerClientController {
 			inform[0] = "" + hotelId;
 			inform[1] = input[0];
 			this.gui.update(model.getInterestPoints(inform));
+
 		} else if (command.equals("Get directions")) {
-			String[] index = this.gui.getInput();
-			String[] inform = new String[3];
-			inform[0] = "" + hotelId;
-			inform[1] = index[1];
-			inform[2] = comboBoxSelection[0];
-			String[] answer = new String[1];
-			answer[0] = model.getDirections(inform);
-			model.copy(answer);
-			System.out.println(answer[0]);
-			this.gui.display("DirectionsFrame");
+			try {
+				String[] index = this.gui.getInput();
+				String[] inform = new String[3];
+				inform[0] = "" + hotelId;
+				inform[1] = index[1];
+				inform[2] = comboBoxSelection[0];
+				if (index[1].isEmpty()) {
+					throw new Exception("Error: no interest point selected");
+				} else {
+					String[] answer = new String[1];
+					answer[0] = model.getDirections(inform);
+					model.copy(answer);
+					this.gui.display("DirectionsFrame");
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
 		}
 	}
 
@@ -294,9 +388,18 @@ public class TravellerClientController {
 		if (command.equals("windowFocus")) {
 			this.gui.update(model.getReservations(model.getUserId()));
 		} else if (command.equals("Cancel Reservation")) {
-			String[] reservationId = this.gui.getInput();
-			model.cancelReservation(Integer.parseInt(reservationId[0]));
-			this.gui.update(model.getReservations(model.getUserId()));
+			try {
+				String[] reservationId = this.gui.getInput();
+				if (reservationId[0].isEmpty()) {
+					throw new Exception("Error: no reservation selected");
+				} else {
+					model.cancelReservation(Integer.parseInt(reservationId[0]));
+					this.gui.update(model.getReservations(model.getUserId()));
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
+
 		}
 	}
 
@@ -310,9 +413,18 @@ public class TravellerClientController {
 		if (command.equals("windowFocus")) {
 			this.gui.update(model.getUserReviews(model.getUserId()));
 		} else if (command.equals("Cancel review")) {
-			String[] reviewId = this.gui.getInput();
-			model.cancelReview(Integer.parseInt(reviewId[0]));
-			this.gui.update(model.getUserReviews(model.getUserId()));
+			try {
+				String[] reviewId = this.gui.getInput();
+				if (reviewId[0].isEmpty()) {
+					throw new Exception("Error: no review selected");
+				} else {
+					model.cancelReview(Integer.parseInt(reviewId[0]));
+					this.gui.update(model.getUserReviews(model.getUserId()));
+				}
+			} catch (Exception e) {
+				this.gui.displayErrorMessage(e.getMessage());
+			}
+
 		}
 	}
 

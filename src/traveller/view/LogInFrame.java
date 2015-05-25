@@ -24,7 +24,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.CaretListener;
 
-public class LogInFrame extends JFrame implements View {
+public class LogInFrame extends JFrame implements TravellerView {
 	private JButton registerButton;
 	private JButton logInButton;
 	private JButton exitButton;
@@ -84,6 +84,7 @@ public class LogInFrame extends JFrame implements View {
 		setSize(500, 500);
 		setLocationRelativeTo(null); // center of the screen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		this.setName("LogInFrame");
 	}
 	

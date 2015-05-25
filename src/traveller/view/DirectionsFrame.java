@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
-public class DirectionsFrame extends JDialog implements View
+public class DirectionsFrame extends JDialog implements TravellerView
 {
    private JPanel contentPanel;
    
@@ -66,6 +66,7 @@ public class DirectionsFrame extends JDialog implements View
       setSize(new Dimension(500, 500));
       setLocationRelativeTo(null); // center of the screen
       setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+      setResizable(false);
       this.setName("DirectionsFrame");
       
    }

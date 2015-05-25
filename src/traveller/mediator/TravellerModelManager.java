@@ -67,8 +67,9 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	}
 
 	public String[] getHotelInfo(int input) {
-		Hotel hotel = hList.getHotel(input);
 		String[] a = new String[11];
+		try{
+		Hotel hotel = hList.getHotel(input);
 		a[0] = hotel.getName();
 		a[1] = hotel.getCity();
 		a[2] = hotel.getAddress();
@@ -80,6 +81,10 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		a[8] = "" + hotel.getPriceOfRooms(2);
 		a[9] = "" + hotel.getNumberOfRooms(3);
 		a[10] = "" + hotel.getPriceOfRooms(3);
+		}
+		catch(Exception e){
+			a[0] = "";
+		}
 		return a;
 	}
 
