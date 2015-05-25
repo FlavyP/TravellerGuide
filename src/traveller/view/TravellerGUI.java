@@ -1,8 +1,6 @@
 package traveller.view;
 
 import java.awt.Window;
-
-import traveller.controller.Controller;
 import traveller.controller.TravellerClientController;
 
 public class TravellerGUI {

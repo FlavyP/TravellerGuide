@@ -1,10 +1,7 @@
-import traveller.controller.Controller;
 import traveller.controller.TravellerClientController;
 import traveller.mediator.TravellerClientModelManager;
 import traveller.mediator.TravellerModel;
 import traveller.mediator.TravellerModelManager;
-import traveller.view.TravellerClientConsole;
-import traveller.view.TravellerClientView;
 import traveller.view.TravellerGUI;
 
 

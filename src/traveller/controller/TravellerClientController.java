@@ -9,7 +9,6 @@ import traveller.model.Hotel;
 import traveller.model.MyDate;
 import traveller.model.Reservation;
 import traveller.model.User;
-import traveller.view.TravellerClientView;
 import traveller.view.TravellerGUI;
 import traveller.view.View;
 
