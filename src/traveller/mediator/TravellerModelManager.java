@@ -27,6 +27,7 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 			this.userList = database.loadUsers();
 			this.hList = database.loadHotels();
 			this.resList = database.loadReservations();
+			this.reviewList = database.loadReviews();
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -189,6 +190,13 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				hList.getHotel(Integer.parseInt(input[1]) - 1),
 				Integer.parseInt(input[2]), input[3]);
 		reviewList.addReview(review);
+		try
+      {
+         database.addReview(review);
+      }
+		 catch (Exception e) {
+	         e.getMessage();
+	      }
 	}
 
 	public String[] getReviews(int hotelId) {
@@ -277,6 +285,13 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 	
 	public void cancelReview(int input) {
 		reviewList.deleteReview(input - 1);
+		try
+      {
+         database.deleteReview(input);
+      }
+		catch (Exception e) {
+         e.getMessage();
+      }
 	}
 	
 	public void addUser(String[] input) {
