@@ -18,7 +18,6 @@ public class AdminFrame extends JDialog implements TravellerView
 
    private JButton addButton;
    private JButton editButton;
-   private JButton logsButton;
    private JButton logOutButton;
    private JPanel panel;
 
@@ -52,12 +51,10 @@ public class AdminFrame extends JDialog implements TravellerView
    {
       addButton = new JButton("Add Hotel");
       editButton = new JButton("Edit Hotel");
-      logsButton = new JButton("Logs Hotel");
       logOutButton = new JButton("Log Out");
-      panel = new JPanel(new GridLayout(4, 1));
+      panel = new JPanel(new GridLayout(3, 1));
       addButton.setFont(new Font("serif", Font.PLAIN, 24));
       editButton.setFont(new Font("serif", Font.PLAIN, 24));
-      logsButton.setFont(new Font("serif", Font.PLAIN, 24));
       logOutButton.setFont(new Font("serif", Font.PLAIN, 24));
 
    }
@@ -77,7 +74,6 @@ public class AdminFrame extends JDialog implements TravellerView
    {
       panel.add(addButton);
       panel.add(editButton);
-      panel.add(logsButton);
       panel.add(logOutButton);
       this.setContentPane(panel);
    }
@@ -87,7 +83,6 @@ public class AdminFrame extends JDialog implements TravellerView
    {
       addButton.addActionListener(actionListener);
       editButton.addActionListener(actionListener);
-      logsButton.addActionListener(actionListener);
       logOutButton.addActionListener(actionListener);
    }
 
