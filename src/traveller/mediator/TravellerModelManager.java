@@ -287,7 +287,7 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 		reviewList.deleteReview(input - 1);
 		try
       {
-         database.deleteReview(input-1);
+         database.deleteReview(input);
       }
 		catch (Exception e) {
          e.getMessage();
