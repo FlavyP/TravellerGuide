@@ -129,7 +129,7 @@ public class Hotel {
 	}
 
 	/**
-	 * Gets the hotel's room's Id
+	 * Gets the hotel's room Id
 	 * @param index what index to get room Id
 	 * @return the hotel's room's Id at index
 	 */

@@ -2,16 +2,33 @@ package traveller.model;
 
 import java.util.ArrayList;
 
+	/**
+	 * A class representing reservation list.
+	 * @author Flavian Popa
+	 * @author Gytis Kuosaitis
+	 * @author Julius Jurgauskas
+	 * @author Mihaela Diaconescu
+	 * @version 1.0
+	 */
+
 public class ReservationList
 {
    private ArrayList<Reservation> resList;
    
+   /**
+	* No-argument constructor
+    */
    public ReservationList()
    {
       resList = new ArrayList<Reservation>();
    }
    
-   public double reserve(Reservation res)
+   /**
+    * Reserves hotel's rooms
+    * @param res what reservation will be added
+    * @return total price of reservation
+    */
+public double reserve(Reservation res)
    {
       
       resList.add(res);
@@ -38,7 +55,12 @@ public class ReservationList
       
       //SQL Code for insert into 'Reservation'
    }
-   public int size()
+
+   /**
+    * Gets the reservation list size
+    * @return the reservation list size
+    */
+public int size()
    {
       return resList.size();
    }
@@ -46,10 +68,13 @@ public class ReservationList
    public Reservation getReservation(int index){
 	   return resList.get(index);
    }
-   public void cancelReservation(int resId)
+   
+   /**
+    * Cancels reservation at Id
+    * @param resId what reservation will be canceled Id
+    */
+public void cancelReservation(int resId)
    {
-      //Not sure = when you delete a reservation from DB, index is lost, when you delete a reservation from ArrayList
-      //every reservation goes -1 in index
       for( int i = 0; i < resList.size(); i++)
       {
          if ( resList.get(i).getResId() == resId)
@@ -57,10 +82,14 @@ public class ReservationList
             resList.remove(i);
          }
       }
-      //SQL Code for removing
    }
    
-   public ArrayList<Reservation> getReservationsByUser(int userId)
+   /**
+    * Gets reservation list by user Id
+    * @param userId what reservations will be selected by
+    * @return reservation list by user Id
+    */
+public ArrayList<Reservation> getReservationsByUser(int userId)
    {
       ArrayList<Reservation> res = new ArrayList<Reservation>();
       for(int i = 0; i < resList.size(); i++)
