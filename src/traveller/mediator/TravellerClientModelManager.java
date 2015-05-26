@@ -1,31 +1,14 @@
 package traveller.mediator;
 
-import java.util.ArrayList;
-import java.util.Observable;
-
-import traveller.model.Hotel;
-import traveller.model.HotelList;
-import traveller.model.MyDate;
-import traveller.model.Reservation;
-import traveller.model.ReservationList;
-import traveller.model.User;
-import traveller.model.UserList;
-
-public class TravellerClientModelManager extends Observable implements
+public class TravellerClientModelManager implements
 		TravellerModel {
 
-	private ReservationList resList;
-	private HotelList hList;
-	private UserList userList;
 	private TravellerModelProxy proxy;
 	private int userId;
 	private String[] dataCopy;
 	private String[][] tableCopy;
 
 	public TravellerClientModelManager() {
-		resList = new ReservationList();
-		hList = new HotelList();
-		userList = new UserList();
 		proxy = new TravellerModelProxy(this);
 		this.userId = -1;
 		this.dataCopy = null;
