@@ -5,13 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
-import traveller.model.Hotel;
-
-public class ServerCommunicationThread extends Thread implements Observer {
+public class ServerCommunicationThread extends Thread {
 	private ObjectInputStream inFromClient;
 	private ObjectOutputStream outToClient;
 	private TravellerModelManager model;
@@ -21,8 +16,6 @@ public class ServerCommunicationThread extends Thread implements Observer {
 		inFromClient = new ObjectInputStream(clientSocket.getInputStream());
 		outToClient = new ObjectOutputStream(clientSocket.getOutputStream());
 		this.model = model;
-		Observable obs = (Observable) model;
-		obs.addObserver(this);
 	}
 
 	public void run() {
@@ -110,18 +103,7 @@ public class ServerCommunicationThread extends Thread implements Observer {
 			e.printStackTrace();
 		}
 	}
-
-	public void send(String message) {
-		try {
-			outToClient.writeObject(message);
-		} catch (Exception e) {
-			// no client connection
-			System.out.println("Exception for client broadcast to client - "
-					+ e.getMessage());
-
-		}
-	}
-
+	
 	public void send(Object message) {
 		try {
 			outToClient.writeObject(message);
@@ -133,8 +115,4 @@ public class ServerCommunicationThread extends Thread implements Observer {
 		}
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		this.send(arg.toString());
-	}
 }
