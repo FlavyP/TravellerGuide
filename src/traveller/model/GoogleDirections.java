@@ -4,13 +4,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
+
+/**
+ * A class representing the Google Directions API.
+ * 
+ * @author Flavian Popa
+ * @author Gytis Kuosaitis
+ * @author Julius Jurgauskas
+ * @author Mihaela Diaconescu
+ * @version 1.0
+ */
 
 public class GoogleDirections
 {
@@ -22,6 +29,13 @@ public class GoogleDirections
    private JSONArray steps;
    private double[] placeLatLng = new double[2];
    
+   /**
+    * Three-argument constructor.
+    * @param lat the origin's latitude.
+    * @param lng the origin's longitude.
+    * @param dest the destination's address.
+    * @throws IOException
+    */
    public GoogleDirections(double lat, double lng, String dest) throws IOException
    {
       dest = dest.replaceAll(", ", "|");
@@ -42,6 +56,14 @@ public class GoogleDirections
       totalDistance = legs.getJSONObject("distance");
    }
    
+   /**
+    * Four-argument constructor
+    * @param orgLat origin's latitude
+    * @param orgLng origin's longitude
+    * @param dstLat destination's latitude
+    * @param dstLng destionation's longitude
+    * @throws IOException
+    */
    public GoogleDirections(double orgLat, double orgLng, double dstLat, double dstLng) throws IOException
    {
       url = new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + orgLat + "," 
@@ -60,6 +82,14 @@ public class GoogleDirections
       totalDistance = legs.getJSONObject("distance");
    }
    
+   /**
+    * Four-argument constructor.
+    * @param origAddess origin's address.
+    * @param origCity origin's city.
+    * @param dstLat destination's latitude.
+    * @param dstLng destionation's longitude.
+    * @throws IOException
+    */
    public GoogleDirections(String origAddess, String origCity, double dstLat, double dstLng) throws IOException
    {
       origAddess = origAddess.replaceAll(", ", "|");
@@ -71,7 +101,6 @@ public class GoogleDirections
       BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
       String output = "", full = "";
       while ((output = br.readLine()) != null) {
-//          System.out.println(output);
           full += output;
       }
       JSONObject obj2 = new JSONObject(full);
@@ -81,10 +110,6 @@ public class GoogleDirections
       JSONObject location = geometry.getJSONObject("location");
       double placeLat =location.getDouble("lat");
       double placeLng = location.getDouble("lng");
-//      System.out.println(placeLat + " " + placeLng);
-      
-      
-      
       url = new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + placeLat +"," +placeLng + "&destination=" + dstLat + dstLng + "&mode=walking");
       conn = (HttpURLConnection) url.openConnection();
       conn.setRequestMethod("GET");
@@ -100,6 +125,12 @@ public class GoogleDirections
       totalDistance = legs.getJSONObject("distance");
    }
    
+   /**
+    * Two-argument constructor.
+    * @param origAddess origin's address.
+    * @param origCity origin's city.
+    * @throws IOException
+    */
    public GoogleDirections(String origAddess, String origCity) throws IOException
    {
       origAddess = origAddess.replaceAll(", ", "|");
@@ -126,28 +157,49 @@ public class GoogleDirections
       placeLatLng[1] = placeLng;
    }
    
+   /**
+    * Gets the place's latitude and longitude.
+    * @return double array with first cell being latitude and second cell longitude.
+    */
    public double[] getPlaceLatAndLng()
    {
       return placeLatLng;
    }
    
+   /**
+    * Gets the total distance.
+    * @return total distance.
+    */
    public String getTotalDistance()
    {
       String totalValueDistance = totalDistance.getString("text");
       return totalValueDistance;
    }
    
+   /**
+    * Gets the total duration.
+    * @return total duration.
+    */
    public String getTotalDuration()
    {
       totalDuration = legs.getJSONObject("duration");
       return totalDuration.getString("text");
    }
    
+   /**
+    * Gets number of steps.
+    * @return number of steps.
+    */
    public int getNumberSteps()
    {
       return steps.length();
    }
    
+   /**
+    * Gets one steps distance.
+    * @param index step number.
+    * @return step distance.
+    */
    public String getStepDistance(int index)
    {
       JSONObject step = steps.getJSONObject(index);
@@ -156,6 +208,11 @@ public class GoogleDirections
       
    }
    
+   /**
+    * Gets one steps duration.
+    * @param index step number.
+    * @return step duration.
+    */
    public String getStepDuration(int index)
    {
       JSONObject step = steps.getJSONObject(index);
@@ -163,6 +220,11 @@ public class GoogleDirections
       return stepDurationObj.getString("text");
    }
    
+   /**
+    * Gets step instruction.
+    * @param index step number.
+    * @return step instruction.
+    */
    public String getStepInstruction(int index)
    {
       JSONObject step = steps.getJSONObject(index);
@@ -170,6 +232,9 @@ public class GoogleDirections
       return Jsoup.parse(stepInstructionsObj).text();
    }
    
+   /**
+    * Prints all steps with step distance, step duration and step instruction.
+    */
    public void printSteps()
    {
       String stepDistance = "";
@@ -194,6 +259,10 @@ public class GoogleDirections
       }
    }
    
+   /**
+    * Gets all information.
+    * @return all steps with step distance, step duration and step instruction.
+    */
    public String getInformation()
    {
       String res = "";

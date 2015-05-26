@@ -1,18 +1,7 @@
 package traveller.controller;
 
-import java.util.ArrayList;
-import java.util.Observable;
-
-import javax.swing.JOptionPane;
-
 import traveller.mediator.TravellerClientModelManager;
-import traveller.mediator.TravellerModel;
-import traveller.model.Hotel;
-import traveller.model.MyDate;
-import traveller.model.Reservation;
-import traveller.model.User;
 import traveller.view.TravellerGUI;
-import traveller.view.TravellerView;
 
 public class TravellerClientController {
 	private TravellerClientModelManager model;
