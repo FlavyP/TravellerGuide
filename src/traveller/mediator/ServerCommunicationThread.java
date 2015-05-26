@@ -108,10 +108,8 @@ public class ServerCommunicationThread extends Thread {
 		try {
 			outToClient.writeObject(message);
 		} catch (Exception e) {
-			// no client connection
 			System.out.println("Exception for client broadcast to client - "
 					+ e.getMessage());
-
 		}
 	}
 
