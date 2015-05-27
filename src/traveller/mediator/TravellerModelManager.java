@@ -315,5 +315,14 @@ public class TravellerModelManager extends Observable implements TravellerModel 
 				Integer.parseInt(input[8]), Integer.parseInt(input[9]), Integer
 						.parseInt(input[10]), Integer.parseInt(input[11]));
 	}
+	
+	public boolean isBefore(String[] input)
+	{
+	   MyDate checkIn = new MyDate(
+            Integer.parseInt(input[4]), Integer.parseInt(input[3]),
+            Integer.parseInt(input[2]));
+	   MyDate checkOut = new MyDate( Integer.parseInt(input[7]), Integer.parseInt(input[6]), Integer.parseInt(input[5]));
+	   return checkIn.isBefore(checkOut);
+	}
 
 }

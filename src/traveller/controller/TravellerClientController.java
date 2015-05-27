@@ -311,6 +311,9 @@ public class TravellerClientController {
 				else if (input[11].isEmpty())
 					throw new Exception(
 							"Error: no number of apartments entered");
+				else if (model.isBefore(this.gui.getInput()) == false)
+				   throw new Exception(
+                     "Error: date is before");
 				model.reserve(input);
 				this.gui.disposeActiveWindow();
 

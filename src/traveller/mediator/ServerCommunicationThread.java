@@ -93,6 +93,10 @@ public class ServerCommunicationThread extends Thread {
 					String[] input17 = (String[]) inFromClient.readObject();
 					send(model.totalPrice(input17));
 					break;
+				case 18:
+               String[] input18 = (String[]) inFromClient.readObject();
+               send(model.isBefore(input18));
+               break;
 				default:
 					break;
 				}

@@ -206,4 +206,16 @@ public class TravellerModelProxy extends Thread {
 		}
 		return answer;
 	}
+	public boolean isBefore(String[] input)
+	{
+	   boolean answer = true;
+      try {
+         outToServer.writeObject("18");
+         outToServer.writeObject(input);
+         answer = (boolean) inFromServer.readObject();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return answer;
+	}
 }

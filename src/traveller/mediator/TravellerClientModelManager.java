@@ -117,4 +117,7 @@ public class TravellerClientModelManager implements
 	public double totalPrice(String[] input){
 		return proxy.totalPrice(input);
 	}
+	public boolean isBefore(String[] input){
+	   return proxy.isBefore(input);
+	}
 }
