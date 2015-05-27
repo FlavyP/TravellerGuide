@@ -87,22 +87,23 @@ public class TravellerClientController {
 		if (command.equals("Register")) {
 			try {
 				String[] input = this.gui.getInput();
+				Integer.parseInt(input[2]);
 				if (input[0].isEmpty())
-					throw new Exception("Error: no name entered");
+					throw new Exception();
 				else if (input[1].isEmpty())
-					throw new Exception("Error: no email entered");
+					throw new Exception();
 				else if (input[2].isEmpty())
-					throw new Exception("Error: no phone number entered");
+					throw new Exception();
 				else if (input[3].isEmpty())
-					throw new Exception("Error: no address entered");
+					throw new Exception();
 				else if (input[4].isEmpty())
-					throw new Exception("Error: no password entered");
+					throw new Exception();
 				else {
 					model.addUser(input);
 					this.gui.disposeActiveWindow();
 				}
 			} catch (Exception e) {
-				this.gui.displayErrorMessage(e.getMessage());
+				this.gui.displayErrorMessage("Incorrect information");
 			}
 		}
 
@@ -120,39 +121,20 @@ public class TravellerClientController {
 		if (command.equals("Add hotel")) {
 			try {
 				String[] input = this.gui.getInput();
-				if (input[0].isEmpty()) {
-					throw new Exception("Error: no name entered");
-				} else if (input[1].isEmpty()) {
-					throw new Exception("Error: no city entered");
-				} else if (input[2].isEmpty()) {
-					throw new Exception("Error: no address entered");
-				} else if (input[3].isEmpty()) {
-					throw new Exception(
-							"Error: no number of single rooms entered");
-				} else if (input[4].isEmpty()) {
-					throw new Exception(
-							"Error: no price of single rooms entered");
-				} else if (input[5].isEmpty()) {
-					throw new Exception(
-							"Error: no number of double rooms entered");
-				} else if (input[6].isEmpty()) {
-					throw new Exception("Error: no price of double entered");
-				} else if (input[7].isEmpty()) {
-					throw new Exception(
-							"Error: no number of triple rooms entered");
-				} else if (input[8].isEmpty()) {
-					throw new Exception(
-							"Error: no price of triple rooms entered");
-				} else if (input[9].isEmpty()) {
-					throw new Exception("Error: no number apartments entered");
-				} else if (input[10].isEmpty()) {
-					throw new Exception("Error: no price of apartments entered");
-				} else {
+				for(int i = 3; i <= 10; i++)
+				{
+				   Integer.parseInt(input[i]);
+				}
+				for(int i = 0; i <= 10; i++)
+				{
+				   if(input[i].isEmpty())
+				      throw new Exception();
+				}
 					model.addHotel(input);
 					this.gui.disposeActiveWindow();
-				}
+				
 			} catch (Exception e) {
-				this.gui.displayErrorMessage(e.getMessage());
+				this.gui.displayErrorMessage("Information incorrect");
 			}
 		} else if (command.equals("Clear")) {
 			this.gui.update(this.clear);
@@ -367,7 +349,12 @@ public class TravellerClientController {
 			try {
 				if (input[3].isEmpty()) {
 					throw new Exception("Error: no comment entered");
-				} else {
+				} 
+				else if (input[3].trim().isEmpty()){
+				   throw new Exception("Error: comment with whitespaces not allowed");
+				}
+				else {
+				
 					model.addReview(input);
 					this.gui.disposeActiveWindow();
 				}
