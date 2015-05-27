@@ -349,7 +349,12 @@ public class TravellerClientController {
 			try {
 				if (input[3].isEmpty()) {
 					throw new Exception("Error: no comment entered");
-				} else {
+				} 
+				else if (input[3].trim().isEmpty()){
+				   throw new Exception("Error: comment with whitespaces not allowed");
+				}
+				else {
+				
 					model.addReview(input);
 					this.gui.disposeActiveWindow();
 				}
