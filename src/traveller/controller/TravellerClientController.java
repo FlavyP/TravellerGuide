@@ -299,18 +299,22 @@ public class TravellerClientController {
 			input[0] = "" + model.getUserId();
 			input[1] = hotelId[0];
 			try {
-				if (input[8].isEmpty())
+				if (input[8].isEmpty() || Integer.parseInt(input[8]) < 0)
 					throw new Exception(
-							"Error: no number of single rooms entered");
-				else if (input[9].isEmpty())
+							"Error: number of single rooms incorrect");
+				else if (input[9].isEmpty() || Integer.parseInt(input[9]) < 0)
 					throw new Exception(
-							"Error: no number of double rooms entered");
-				else if (input[10].isEmpty())
+							"Error: number of double rooms incorrect");
+				else if (input[10].isEmpty() || Integer.parseInt(input[10]) < 0)
 					throw new Exception(
-							"Error: no number of triple rooms entered");
-				else if (input[11].isEmpty())
+							"Error: number of triple rooms incorrect");
+				else if (input[11].isEmpty() || Integer.parseInt(input[11]) < 0)
 					throw new Exception(
-							"Error: no number of apartments entered");
+							"Error: number of apartments rooms incorrect");
+				else if (Integer.parseInt(input[8]) <= 0 && Integer.parseInt(input[9]) <= 0 && 
+				      Integer.parseInt(input[10]) <= 0 && Integer.parseInt(input[11]) <= 0)
+               throw new Exception(
+                     "Error: number of rooms incorrect");
 				else if (model.isBefore(this.gui.getInput()) == false)
 				   throw new Exception(
                      "Error: date is before");
@@ -326,18 +330,25 @@ public class TravellerClientController {
 			input[0] = "" + model.getUserId();
 			input[1] = hotelId[0];
 			try {
-				if (input[8].isEmpty())
-					throw new Exception(
-							"Error: no number of single rooms entered");
-				else if (input[9].isEmpty())
-					throw new Exception(
-							"Error: no number of double rooms entered");
-				else if (input[10].isEmpty())
-					throw new Exception(
-							"Error: no number of triple rooms entered");
-				else if (input[11].isEmpty())
-					throw new Exception(
-							"Error: no number of apartments entered");
+            if (input[8].isEmpty() || Integer.parseInt(input[8]) < 0)
+               throw new Exception(
+                     "Error: number of single rooms incorrect");
+            else if (input[9].isEmpty() || Integer.parseInt(input[9]) < 0)
+               throw new Exception(
+                     "Error: number of double rooms incorrect");
+            else if (input[10].isEmpty() || Integer.parseInt(input[10]) < 0)
+               throw new Exception(
+                     "Error: number of triple rooms incorrect");
+            else if (input[11].isEmpty() || Integer.parseInt(input[11]) < 0)
+               throw new Exception(
+                     "Error: number of apartments rooms incorrect");
+            else if (Integer.parseInt(input[8]) <= 0 && Integer.parseInt(input[9]) <= 0 && 
+                  Integer.parseInt(input[10]) <= 0 && Integer.parseInt(input[11]) <= 0)
+               throw new Exception(
+                     "Error: number of rooms incorrect");
+            else if (model.isBefore(this.gui.getInput()) == false)
+               throw new Exception(
+                     "Error: date is before");
 				String[] answer = new String[1];
 				answer[0] = "" + model.totalPrice(input);
 				this.gui.update(answer);
