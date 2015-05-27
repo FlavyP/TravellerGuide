@@ -16,14 +16,14 @@ public class Review {
 	private User user;
 	private Hotel hotel;
 	
-	/**
-	   * Five-argument constructor.
-	   * @param revId reservation's id
-	   * @param user user's object
-	   * @param hotel hotel's object
-	   * @param grade given grade of review
-	   * @param comment review's comment
-	   */
+   /**
+   * Five-argument constructor.
+   * @param revId reservation's id
+   * @param user user's object
+   * @param hotel hotel's object
+   * @param grade given grade of review
+   * @param comment review's comment
+   */
 
 	public Review(int revId, User user, Hotel hotel, int grade, String comment) {
 		this.grade = grade;

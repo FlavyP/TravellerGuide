@@ -2,14 +2,14 @@ package traveller.model;
 
 import java.util.ArrayList;
 
-	/**
-	 * A class representing reservation list.
-	 * @author Flavian Popa
-	 * @author Gytis Kuosaitis
-	 * @author Julius Jurgauskas
-	 * @author Mihaela Diaconescu
-	 * @version 1.0
-	 */
+/**
+ * A class representing reservation list.
+ * @author Flavian Popa
+ * @author Gytis Kuosaitis
+ * @author Julius Jurgauskas
+ * @author Mihaela Diaconescu
+ * @version 1.0
+ */
 
 public class ReservationList
 {
@@ -17,7 +17,7 @@ public class ReservationList
    
    /**
 	* No-argument constructor
-    */
+   */
    public ReservationList()
    {
       resList = new ArrayList<Reservation>();
