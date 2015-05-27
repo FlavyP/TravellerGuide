@@ -123,7 +123,14 @@ public class TravellerClientController {
 				String[] input = this.gui.getInput();
 				for(int i = 3; i <= 10; i++)
 				{
-				   Integer.parseInt(input[i]);
+				   if(i%2 == 0)
+				   {
+				      Double.parseDouble(input[i]);
+				   }
+				   else
+				   {
+				      Integer.parseInt(input[i]);
+				   }
 				}
 				for(int i = 0; i <= 10; i++)
 				{
