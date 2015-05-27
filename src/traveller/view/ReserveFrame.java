@@ -164,10 +164,10 @@ public class ReserveFrame extends JDialog implements TravellerView {
    public String[] getInput() {
       String[] input = new String[12];
       input[2] = "" + datePicker.getModel().getDay();
-      input[3] = "" + datePicker.getModel().getMonth();
+      input[3] = "" + (datePicker.getModel().getMonth() + 1);
       input[4] = "" + datePicker.getModel().getYear();
       input[5] = "" + datePicker2.getModel().getDay();
-      input[6] = "" + datePicker2.getModel().getMonth();
+      input[6] = "" + (datePicker2.getModel().getMonth() + 1);
       input[7] = "" + datePicker2.getModel().getYear();
       input[8] = sRnField.getText();
       input[9] = dRnField.getText();
