@@ -38,12 +38,12 @@ public class MainForTravellerDatabase
       System.out.println(reservationlist);
       System.out.println(reviewlist);
       
-//      Hotel hotel = new Hotel(1, "KamjatkaSucks", "Horsens", "Kamjatka", 0, 0, 0, 0, 0, 0, 0, 0);
-//      User user = new User(1, "John", "John@gmail.com", "5615656", "Balbieriskis", true, "dfgdfgdfdf");
-//      Review review = new Review(1, user, hotel, 4, "Kamjatka sucks rlly bad");
-//      
-//      database.addReview(review);
-//      database.deleteReview(1);
+      Hotel hotel = new Hotel(1, "HotelIn", "Horsens", "Kamjatka", 0, 0, 0, 0, 0, 0, 0, 0);
+      User user = new User(1, "John", "John@gmail.com", "5615656", "Balbieriskis", true, "dfgdfgdfdf");
+      Review review = new Review(1, user, hotel, 4, "Good Hotel");
+      
+      database.addReview(review);
+      database.deleteReview(1);
       
    }
 
