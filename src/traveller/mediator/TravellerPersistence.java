@@ -20,8 +20,6 @@ public interface TravellerPersistence
    public ReviewList loadReviews() throws IOException;
    public int addHotel(Hotel hotel) throws IOException;
    public int addUser(User user) throws IOException;
-   //public int EditHotel(Hotel hotel) throws IOException;
-  // public int EditHotel(Hotel hotel, String pname, String paddress) throws IOException;
    public int editHotel(Hotel hotel, int pid) throws IOException;
    public int deleteHotel(int hotelId) throws IOException;
    public int addReservation(Reservation rsrv, int userId, int hotelId) throws IOException;

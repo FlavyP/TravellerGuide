@@ -17,11 +17,9 @@ public class ServerConnectionThread extends Thread
    {
       try
       {
-//         System.out.println("Starting server...");
          ServerSocket welcomeSocket = new ServerSocket(PORT);
          while (true)
          {
-//            System.out.println("Waiting for a client...");
             Socket connectionSocket = welcomeSocket.accept();
             ServerCommunicationThread communicationThread = new ServerCommunicationThread(connectionSocket, model);
             communicationThread.start();

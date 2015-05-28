@@ -18,13 +18,11 @@ public class TravellerGUIHandler implements ActionListener, WindowFocusListener 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-//		System.out.println(command + ", " + e.toString());
 		controller.execute(command);
 	}
 
 	public void windowGainedFocus(WindowEvent event) {
 		String command = "windowFocus";
-//		System.out.println(command + ", " + event.toString());
 		controller.execute(command);
 	}
 

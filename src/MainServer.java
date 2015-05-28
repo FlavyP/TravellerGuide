@@ -6,8 +6,8 @@ import traveller.view.ServerFrame;
 public class MainServer {
 	public static void main(String[] args) {
 		try {
-			TravellerModelManager model = new TravellerModelManager();
 			ServerFrame.getInstance();
+			TravellerModelManager model = new TravellerModelManager();
 			ServerConnectionThread server = new ServerConnectionThread(model);
 		} catch (Exception e) {
 			e.printStackTrace();

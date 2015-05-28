@@ -16,14 +16,8 @@ public class TravellerModelProxy extends Thread {
 		try {
 			this.model = model;
 			socket = new Socket(HOST, PORT);
-			// System.out.println("Connected to server");
 			outToServer = new ObjectOutputStream(socket.getOutputStream());
 			inFromServer = new ObjectInputStream(socket.getInputStream());
-			// ClientRecieverThread recieverThread = new ClientRecieverThread(
-			// inFromServer, model);
-			// recieverThread.setDaemon(true);
-			// recieverThread.start();
-			// System.out.println("Receiver thread started");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
