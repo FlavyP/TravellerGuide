@@ -24,7 +24,7 @@ public class ReviewList
    }
    /**
     * Adds review to the review list
-    * @param hotel what review will be added
+    * @param r what review will be added
     */
    public void addReview(Review r)
    {

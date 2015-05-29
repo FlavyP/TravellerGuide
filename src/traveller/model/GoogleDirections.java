@@ -34,7 +34,7 @@ public class GoogleDirections
     * @param lat the origin's latitude.
     * @param lng the origin's longitude.
     * @param dest the destination's address.
-    * @throws IOException
+    * @throws IOException exception
     */
    public GoogleDirections(double lat, double lng, String dest) throws IOException
    {
@@ -62,7 +62,7 @@ public class GoogleDirections
     * @param orgLng origin's longitude
     * @param dstLat destination's latitude
     * @param dstLng destionation's longitude
-    * @throws IOException
+    * @throws IOException exception
     */
    public GoogleDirections(double orgLat, double orgLng, double dstLat, double dstLng) throws IOException
    {
@@ -88,7 +88,7 @@ public class GoogleDirections
     * @param origCity origin's city.
     * @param dstLat destination's latitude.
     * @param dstLng destionation's longitude.
-    * @throws IOException
+    * @throws IOException exception
     */
    public GoogleDirections(String origAddess, String origCity, double dstLat, double dstLng) throws IOException
    {
@@ -129,7 +129,7 @@ public class GoogleDirections
     * Two-argument constructor.
     * @param origAddess origin's address.
     * @param origCity origin's city.
-    * @throws IOException
+    * @throws IOException exception
     */
    public GoogleDirections(String origAddess, String origCity) throws IOException
    {

@@ -96,7 +96,7 @@ public class Hotel {
 	}
 	/**
 	* Sets the hotel's city.
-	* @param address what the hotel's city will be set to
+	* @param city what the hotel's city will be set to
 	*/
 	public void setCity(String city) {
 		this.city = city;

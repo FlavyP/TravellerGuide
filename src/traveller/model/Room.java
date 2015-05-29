@@ -42,7 +42,7 @@ public abstract class Room {
 	
 	/**
 	 * Abstract method
-	 * @return
+	 * @return the price of the room
 	 */
 	
 	

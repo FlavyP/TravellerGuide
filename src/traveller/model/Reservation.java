@@ -84,7 +84,7 @@ public class Reservation
    
    /**
     * Set the check out date
-    * @param checkIn what the check out date will be set to
+    * @param checkOut what the check out date will be set to
     */
 
    public void setCheckOut(MyDate checkOut)
@@ -251,7 +251,7 @@ public class Reservation
     * @param dR number of double rooms
     * @param tR number of triple rooms
     * @param aP number of apartments
-    * @return
+    * @return total price of the reservation
     */
    public static double totalPrice(Hotel h, MyDate checkIn, MyDate checkOut, int sR, int dR, int tR, int aP)
    {

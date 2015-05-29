@@ -34,7 +34,7 @@ public class GooglePlaces
     * @param lng origin's longitude.
     * @param radius the given radius.
     * @param type the type of place.
-    * @throws IOException
+    * @throws IOException exception
     */
    public GooglePlaces (double lat, double lng, int radius, String type) throws IOException
    {
